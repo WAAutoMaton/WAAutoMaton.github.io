@@ -55,7 +55,7 @@ ga('send', 'pageview');
 <div class="intrude-less">
 	<header id="header" class="inner">
 		<a href="/" class="profilepic">
-			<img src="http://ospu7jd96.bkt.clouddn.com/static/images/test.jpg" class="js-avatar">
+			<img src="http://ospu7jd96.bkt.clouddn.com/static/images/头像.jpg" class="js-avatar">
 		</a>
 		<hgroup>
 		  <h1 class="header-author"><a href="/">WA自动机</a></h1>
@@ -111,7 +111,7 @@ ga('send', 'pageview');
 	<div class="intrude-less">
 		<header id="header" class="inner">
 			<div class="profilepic">
-				<img src="http://ospu7jd96.bkt.clouddn.com/static/images/test.jpg" class="js-avatar">
+				<img src="http://ospu7jd96.bkt.clouddn.com/static/images/头像.jpg" class="js-avatar">
 			</div>
 			<hgroup>
 			  <h1 class="header-author js-header-author">WA自动机</h1>
@@ -157,6 +157,78 @@ ga('send', 'pageview');
           </div>
           <div id="js-content" class="content-ll">
             
+  
+    <article id="post-SuffixArray" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/09/21/SuffixArray/">【邪教慎入】Nlog^2N后缀数组学习笔记</a>
+    </h1>
+  
+
+        
+        <a href="/2017/09/21/SuffixArray/" class="archive-article-date">
+  	<time datetime="2017-09-21T08:07:17.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-09-21</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p><strong>此文中主要内容为蒟蒻的YY算法，随手O(nlogn)或者O(n)的dalao们请轻喷</strong></p>
+<p>坑了好久的算法，今天打算认真学一下。<br>然后，还是觉得基排太麻烦了（其实孔爷跟我吐槽说基排容易写错，然后我就怂了），于是就作死写了一下快排版的倍增算法。<br>果然比基排的好写了很多的说。<br>当然复杂度变成了$O(nlog^2n)$了，跑的也就慢了，在洛谷的<a href="https://daniu.luogu.org/problem/show?pid=3809" target="_blank" rel="external">后缀排序</a>题里比跑的最快的基排倍增慢了2倍多，感觉要是不卡常的题的话也许还是可以接受的吧。<br><figure class="highlight cpp"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></div><div class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</div><div class="line"><span class="meta">#<span class="meta-keyword">define</span> MAXN 1000000</span></div><div class="line"><span class="class"><span class="keyword">struct</span> <span class="title">Data</span></span></div><div class="line">&#123;</div><div class="line">    <span class="keyword">int</span> a,b;</div><div class="line">    <span class="keyword">int</span> id;</div><div class="line">&#125;x[MAXN+<span class="number">10</span>];</div><div class="line"><span class="keyword">char</span> a[MAXN+<span class="number">10</span>];</div><div class="line"><span class="keyword">int</span> rk[<span class="number">2</span>*MAXN+<span class="number">10</span>],sa[MAXN+<span class="number">10</span>];</div><div class="line"><span class="keyword">int</span> n,p;</div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></div><div class="line">&#123;</div><div class="line">    <span class="built_in">scanf</span>(<span class="string">"%s"</span>,a+<span class="number">1</span>);</div><div class="line">    n=<span class="built_in">strlen</span>(a+<span class="number">1</span>);</div><div class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>; i&lt;=n ;++i)</div><div class="line">    &#123;</div><div class="line">        x[i].a=a[i]-<span class="string">'a'</span>+<span class="number">1</span>;</div><div class="line">        x[i].id=i;</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>; p&lt;n; i*=<span class="number">2</span>)</div><div class="line">    &#123;</div><div class="line">        p=<span class="number">0</span>;</div><div class="line">        sort(x+<span class="number">1</span>,x+<span class="number">1</span>+n,[](<span class="keyword">const</span> Data&amp; a,<span class="keyword">const</span> Data&amp; b)-&gt;<span class="keyword">bool</span>&#123;</div><div class="line">            <span class="keyword">if</span> (a.a==b.a &amp;&amp; a.b==b.b) <span class="keyword">return</span> a.id&lt;b.id;</div><div class="line">            <span class="keyword">if</span> (a.a==b.a) <span class="keyword">return</span> a.b&lt;b.b;</div><div class="line">            <span class="keyword">return</span> a.a&lt;b.a;</div><div class="line">        &#125;);</div><div class="line">        Data t=(Data)&#123;<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>&#125;;</div><div class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> j=<span class="number">1</span>; j&lt;=n; ++j)</div><div class="line">        &#123;</div><div class="line">            <span class="keyword">if</span> (t.a!=x[j].a || t.b!=x[j].b)</div><div class="line">            &#123;</div><div class="line">                ++p;</div><div class="line">                t=x[j];</div><div class="line">            &#125;</div><div class="line">            rk[x[j].id]=p;</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> j=<span class="number">1</span>; j&lt;=n; ++j)</div><div class="line">        &#123;</div><div class="line">            x[j].a=rk[j];</div><div class="line">            x[j].b=rk[j+i];</div><div class="line">            x[j].id=j;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>; i&lt;=n; ++i) sa[rk[i]]=i;</div><div class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>; i&lt;=n; ++i) <span class="built_in">printf</span>(<span class="string">"%d "</span>,sa[i]);</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>感觉写起来顺很多，应该出错率会低一些吧。</p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">OI</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/OI/" class="article-tag-list-link color3">OI</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2017/09/21/SuffixArray/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+
+
+
+
   
     <article id="post-solution_dp1" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
@@ -711,11 +783,15 @@ MathJax.Hub.Queue(function() {
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">其他</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">灌水</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">其他</a>
+                <a href="javascript:void(0)" class="js-tag color3">测试</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -724,10 +800,6 @@ MathJax.Hub.Queue(function() {
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">题解</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">测试</a>
               </li>
             
             <div class="clearfix"></div>
