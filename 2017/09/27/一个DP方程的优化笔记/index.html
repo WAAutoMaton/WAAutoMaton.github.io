@@ -181,6 +181,9 @@ ga('send', 'pageview');
     
     <div class="article-entry" itemprop="articleBody">
       
+        
+          
+        
         <p>这是我最近做一道题的时候写的一个dp。（由于某些原因，题面就不贴了）<br>原题的数据规模是$n \le 10^6$ 因此$O(n^2)$的dp显然是会tle的，需要优化。<br>但是当时写下的这个n^2暴力实在有点糟糕，一眼看去n^2个状态没有可以优化的，然后就GG了。<br><figure class="highlight cpp"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">f[<span class="number">1</span>][<span class="number">0</span>]=<span class="number">1</span>;</div><div class="line">f[<span class="number">0</span>][<span class="number">1</span>]=<span class="number">1</span>;</div><div class="line"><span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>; i&lt;n; ++i)</div><div class="line">&#123;</div><div class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> j=<span class="number">0</span>; j&lt;n; ++j)</div><div class="line">	&#123;</div><div class="line">		<span class="keyword">if</span> (i==j || f[i][j]==<span class="number">0</span>) <span class="keyword">continue</span>;</div><div class="line">		<span class="keyword">int</span> now=max(i,j)+<span class="number">1</span>;</div><div class="line">		<span class="keyword">if</span> (i==<span class="number">0</span> || a[i]&lt;a[now]) f[now][j]=MOD(f[now][j]+f[i][j]);</div><div class="line">		<span class="keyword">if</span> (j==<span class="number">0</span> || a[j]&gt;a[now]) f[i][now]=MOD(f[i][now]+f[i][j]);</div><div class="line">	&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
 <a id="more"></a>
 <p>后来看了题解才知道，可以把dp过程修改成这样（上下两种dp本质上是一样的）<br><figure class="highlight cpp"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">f[<span class="number">1</span>][<span class="number">0</span>]=<span class="number">1</span>;</div><div class="line">g[<span class="number">1</span>][<span class="number">0</span>]=<span class="number">1</span>;</div><div class="line"><span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>; i&lt;n; ++i)</div><div class="line">&#123;</div><div class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> j=<span class="number">0</span>; j&lt;i; ++j)</div><div class="line">	&#123;</div><div class="line">		<span class="keyword">if</span> (i==j) <span class="keyword">continue</span>;</div><div class="line">		<span class="keyword">if</span> (i==<span class="number">0</span> || a[i]&lt;a[i+<span class="number">1</span>]) f[i+<span class="number">1</span>][j]+=f[i][j];</div><div class="line">		<span class="keyword">if</span> (j==<span class="number">0</span> || a[j]&gt;a[i+<span class="number">1</span>]) g[i+<span class="number">1</span>][i]+=f[i][j];</div><div class="line">		<span class="keyword">if</span> (j==<span class="number">0</span> || a[j]&lt;a[i+<span class="number">1</span>]) f[i+<span class="number">1</span>][i]+=g[i][j];</div><div class="line">		<span class="keyword">if</span> (i==<span class="number">0</span> || a[i]&gt;a[i+<span class="number">1</span>]) g[i+<span class="number">1</span>][j]+=g[i][j];</div><div class="line">	&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
@@ -438,11 +441,11 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">其他</a>
+                <a href="javascript:void(0)" class="js-tag color3">题解</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">题解</a>
+                <a href="javascript:void(0)" class="js-tag color3">其他</a>
               </li>
              
               <li class="article-tag-list-item">
