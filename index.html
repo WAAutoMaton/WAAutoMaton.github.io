@@ -324,23 +324,10 @@ ga('send', 'pageview');
       
         <p>一些DP练习题的题解</p>
 <h3 id="T1-简单题"><a href="#T1-简单题" class="headerlink" title="T1 简单题"></a>T1 简单题</h3><p>已有题解，见<a href="http://blog.csdn.net/donald_ty/article/details/52416344" target="_blank" rel="external">http://blog.csdn.net/donald_ty/article/details/52416344</a></p>
-<h3 id="T2-大水题"><a href="#T2-大水题" class="headerlink" title="T2 大水题"></a>T2 大水题</h3><p>已有题解，见<a href="http://blog.csdn.net/chunkitlau/article/details/54562740" target="_blank" rel="external">http://blog.csdn.net/chunkitlau/article/details/54562740</a></p>
-<h3 id="T3-帮助Bsny"><a href="#T3-帮助Bsny" class="headerlink" title="T3 帮助Bsny"></a>T3 帮助Bsny</h3><p>已有题解，见<a href="http://www.debugrun.com/a/fPgIrXH.html" target="_blank" rel="external">http://www.debugrun.com/a/fPgIrXH.html</a></p>
-<h3 id="T4-贪吃蛇"><a href="#T4-贪吃蛇" class="headerlink" title="T4 贪吃蛇"></a>T4 贪吃蛇</h3><p>观察样例可得结论：$ans=\sum_{k=1}^n 1/k$，然后就做完了<br>并不会有理有据的做法</p>
-<h3 id="T5-我想大声告诉你"><a href="#T5-我想大声告诉你" class="headerlink" title="T5 我想大声告诉你"></a>T5 我想大声告诉你</h3><p>暂时不会</p>
-<h3 id="T6-光棍"><a href="#T6-光棍" class="headerlink" title="T6 光棍"></a>T6 光棍</h3><p>暂时不会</p>
-<h3 id="T7-五子棋"><a href="#T7-五子棋" class="headerlink" title="T7 五子棋"></a>T7 五子棋</h3><p>暂时不会</p>
-<h3 id="T8-Exhibit"><a href="#T8-Exhibit" class="headerlink" title="T8 Exhibit"></a>T8 Exhibit</h3><p>洛谷原题<a href="https://www.luogu.org/problem/show?pid=1638" target="_blank" rel="external">P1638</a></p>
-<h3 id="T9-保龄球"><a href="#T9-保龄球" class="headerlink" title="T9 保龄球"></a>T9 保龄球</h3><p>预处理sum(i,j)表示$\sum_{k=i}^ja_k$<br>f[i][j]表示当前已经扔了i个球，且全部扔在第j个位置前面且第j个位置一定已经被击倒时的最大分数。<br>可得dp方程$f[i][j]=max{f[l][j-1]+sum(i-w+1,i)(0 \le l &lt; i-w),f[l][j-1]+sum(l+1,i) (i-w \le l &lt; i)}$<br>复杂度是$O(Tn^2k)$的，所以要优化一下。<br>max的前半部分用一个变量记录一下最大值就行，后半部分可以单调队列优化搞成均摊O(1)转移。<br>总复杂度$O(Tnk)$，略卡常（我一开始用deque然后不停的TLE，后来换成数组才过<img src="http://ospu7jd96.bkt.clouddn.com/static//images/表情包/6.jpg">  ）</p>
-<h3 id="T10-摆放汉堡"><a href="#T10-摆放汉堡" class="headerlink" title="T10 摆放汉堡"></a>T10 摆放汉堡</h3><p>暂时不会</p>
-<h3 id="T11-X神的书架"><a href="#T11-X神的书架" class="headerlink" title="T11 X神的书架"></a>T11 X神的书架</h3><p>只看出可以四边形不等式优化（julao们说能单调队列优化，表示不会），但是写炸了</p>
-<h3 id="T12-序列游戏"><a href="#T12-序列游戏" class="headerlink" title="T12 序列游戏"></a>T12 序列游戏</h3><p>暂时不会</p>
-<h3 id="T13-跑路"><a href="#T13-跑路" class="headerlink" title="T13 跑路"></a>T13 跑路</h3><p>洛谷原题<a href="https://www.luogu.org/problem/show?pid=1613" target="_blank" rel="external">P1613</a></p>
-<h3 id="T14-游戏"><a href="#T14-游戏" class="headerlink" title="T14 游戏"></a>T14 游戏</h3><p>f[i][j]表示当前删了i行j列，是否为必胜态。<br>若f[i-1][j]或f[i][j-1]为true且能转移到f[i][j]则f[i][j]=true否则f[i][j]=false。<br>需要对行和列做一下前缀和优化。</p>
-<h3 id="T15-锻炼身体"><a href="#T15-锻炼身体" class="headerlink" title="T15 锻炼身体"></a>T15 锻炼身体</h3><p>f[k][i][j]表示当前在第k个时间段，人在i行j列时的最大值。<br>根据当前时间段的方向分4种情况写一遍就行。<br>复杂度为$O(kn^3)$，理论上为复杂度爆了但实际上能过（这套练习题少有的一道数据较弱的题）。<br>当然可以单调队列优化到$O(kn^2)$</p>
-<h3 id="T16-过河"><a href="#T16-过河" class="headerlink" title="T16 过河"></a>T16 过河</h3><p>暂时不会</p>
-<h3 id="T17-fss"><a href="#T17-fss" class="headerlink" title="T17 fss"></a>T17 fss</h3><p>暂时不会</p>
-
+<h3 id="T2-大水题"><a href="#T2-大水题" class="headerlink" title="T2 大水题"></a>T2 大水题</h3><p>已有题解，见<a href="http://blog.csdn.net/chunkitlau/article/details/54562740" target="_blank" rel="external">http://blog.csdn.net/chunkitlau/article/details/54562740</a><br>
+        
+          <a class="article-more-a" href="/2017/09/20/solution_dp1/#more">更多 >></a>
+        
       
 
       
