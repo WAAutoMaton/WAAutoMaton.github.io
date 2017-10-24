@@ -16,7 +16,7 @@
 <meta property="og:site_name" content="WA自动机的博客">
 <meta property="og:description" content="一些DP练习题的题解 T1 简单题已有题解，见http://blog.csdn.net/donald_ty/article/details/52416344 T2 大水题已有题解，见http://blog.csdn.net/chunkitlau/article/details/54562740">
 <meta property="og:image" content="http://ospu7jd96.bkt.clouddn.com/static//images/表情包/6.jpg">
-<meta property="og:updated_time" content="2017-09-27T07:47:35.885Z">
+<meta property="og:updated_time" content="2017-10-24T08:04:21.576Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="DP练习题题解">
 <meta name="twitter:description" content="一些DP练习题的题解 T1 简单题已有题解，见http://blog.csdn.net/donald_ty/article/details/52416344 T2 大水题已有题解，见http://blog.csdn.net/chunkitlau/article/details/54562740">
@@ -201,6 +201,7 @@ ga('send', 'pageview');
 <h3 id="T9-保龄球"><a href="#T9-保龄球" class="headerlink" title="T9 保龄球"></a>T9 保龄球</h3><p>预处理sum(i,j)表示$\sum_{k=i}^ja_k$<br>f[i][j]表示当前已经扔了i个球，且全部扔在第j个位置前面且第j个位置一定已经被击倒时的最大分数。<br>可得dp方程$f[i][j]=max{f[l][j-1]+sum(i-w+1,i)(0 \le l &lt; i-w),f[l][j-1]+sum(l+1,i) (i-w \le l &lt; i)}$<br>复杂度是$O(Tn^2k)$的，所以要优化一下。<br>max的前半部分用一个变量记录一下最大值就行，后半部分可以单调队列优化搞成均摊O(1)转移。<br>总复杂度$O(Tnk)$，略卡常（我一开始用deque然后不停的TLE，后来换成数组才过<img src="http://ospu7jd96.bkt.clouddn.com/static//images/表情包/6.jpg">  ）</p>
 <h3 id="T10-摆放汉堡"><a href="#T10-摆放汉堡" class="headerlink" title="T10 摆放汉堡"></a>T10 摆放汉堡</h3><p>暂时不会</p>
 <h3 id="T11-X神的书架"><a href="#T11-X神的书架" class="headerlink" title="T11 X神的书架"></a>T11 X神的书架</h3><p>只看出可以四边形不等式优化（julao们说能单调队列优化，表示不会），但是写炸了</p>
+<h5 id="update"><a href="#update" class="headerlink" title="update:"></a>update:</h5><p>经过kczno1大爷的教导，发现这题既不能四边形不等式也不能单调队列优化，GG。</p>
 <h3 id="T12-序列游戏"><a href="#T12-序列游戏" class="headerlink" title="T12 序列游戏"></a>T12 序列游戏</h3><p>暂时不会</p>
 <h3 id="T13-跑路"><a href="#T13-跑路" class="headerlink" title="T13 跑路"></a>T13 跑路</h3><p>洛谷原题<a href="https://www.luogu.org/problem/show?pid=1613" target="_blank" rel="external">P1613</a></p>
 <h3 id="T14-游戏"><a href="#T14-游戏" class="headerlink" title="T14 游戏"></a>T14 游戏</h3><p>f[i][j]表示当前删了i行j列，是否为必胜态。<br>若f[i-1][j]或f[i][j-1]为true且能转移到f[i][j]则f[i][j]=true否则f[i][j]=false。<br>需要对行和列做一下前缀和优化。</p>
@@ -343,7 +344,7 @@ ga('send', 'pageview');
                 </span>
                 <span class="tooltip-content">
                     <div class="toc-article">
-                    <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#T1-简单题"><span class="toc-number">1.</span> <span class="toc-text">T1 简单题</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#T2-大水题"><span class="toc-number">2.</span> <span class="toc-text">T2 大水题</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#T3-帮助Bsny"><span class="toc-number">3.</span> <span class="toc-text">T3 帮助Bsny</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#T4-贪吃蛇"><span class="toc-number">4.</span> <span class="toc-text">T4 贪吃蛇</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#T5-我想大声告诉你"><span class="toc-number">5.</span> <span class="toc-text">T5 我想大声告诉你</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#T6-光棍"><span class="toc-number">6.</span> <span class="toc-text">T6 光棍</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#T7-五子棋"><span class="toc-number">7.</span> <span class="toc-text">T7 五子棋</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#T8-Exhibit"><span class="toc-number">8.</span> <span class="toc-text">T8 Exhibit</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#T9-保龄球"><span class="toc-number">9.</span> <span class="toc-text">T9 保龄球</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#T10-摆放汉堡"><span class="toc-number">10.</span> <span class="toc-text">T10 摆放汉堡</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#T11-X神的书架"><span class="toc-number">11.</span> <span class="toc-text">T11 X神的书架</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#T12-序列游戏"><span class="toc-number">12.</span> <span class="toc-text">T12 序列游戏</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#T13-跑路"><span class="toc-number">13.</span> <span class="toc-text">T13 跑路</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#T14-游戏"><span class="toc-number">14.</span> <span class="toc-text">T14 游戏</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#T15-锻炼身体"><span class="toc-number">15.</span> <span class="toc-text">T15 锻炼身体</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#T16-过河"><span class="toc-number">16.</span> <span class="toc-text">T16 过河</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#T17-fss"><span class="toc-number">17.</span> <span class="toc-text">T17 fss</span></a></li></ol>
+                    <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#T1-简单题"><span class="toc-number">1.</span> <span class="toc-text">T1 简单题</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#T2-大水题"><span class="toc-number">2.</span> <span class="toc-text">T2 大水题</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#T3-帮助Bsny"><span class="toc-number">3.</span> <span class="toc-text">T3 帮助Bsny</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#T4-贪吃蛇"><span class="toc-number">4.</span> <span class="toc-text">T4 贪吃蛇</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#T5-我想大声告诉你"><span class="toc-number">5.</span> <span class="toc-text">T5 我想大声告诉你</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#T6-光棍"><span class="toc-number">6.</span> <span class="toc-text">T6 光棍</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#T7-五子棋"><span class="toc-number">7.</span> <span class="toc-text">T7 五子棋</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#T8-Exhibit"><span class="toc-number">8.</span> <span class="toc-text">T8 Exhibit</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#T9-保龄球"><span class="toc-number">9.</span> <span class="toc-text">T9 保龄球</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#T10-摆放汉堡"><span class="toc-number">10.</span> <span class="toc-text">T10 摆放汉堡</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#T11-X神的书架"><span class="toc-number">11.</span> <span class="toc-text">T11 X神的书架</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#update"><span class="toc-number">11.0.1.</span> <span class="toc-text">update:</span></a></li></ol></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#T12-序列游戏"><span class="toc-number">12.</span> <span class="toc-text">T12 序列游戏</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#T13-跑路"><span class="toc-number">13.</span> <span class="toc-text">T13 跑路</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#T14-游戏"><span class="toc-number">14.</span> <span class="toc-text">T14 游戏</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#T15-锻炼身体"><span class="toc-number">15.</span> <span class="toc-text">T15 锻炼身体</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#T16-过河"><span class="toc-number">16.</span> <span class="toc-text">T16 过河</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#T17-fss"><span class="toc-number">17.</span> <span class="toc-text">T17 fss</span></a></li></ol>
                     </div>
                 </span>
             </div>
@@ -496,7 +497,11 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">灌水</a>
+                <a href="javascript:void(0)" class="js-tag color3">题解</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">测试</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -504,11 +509,7 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">题解</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">测试</a>
+                <a href="javascript:void(0)" class="js-tag color3">灌水</a>
               </li>
             
             <div class="clearfix"></div>
