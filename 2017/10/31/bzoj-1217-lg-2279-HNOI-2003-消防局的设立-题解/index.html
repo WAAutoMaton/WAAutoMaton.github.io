@@ -6,19 +6,19 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="https://waautomaton.tk">
-  <title>Hello,World! | WA自动机的博客</title>
+  <title>[bzoj 1217][lg 2279][HNOI 2003]消防局的设立 题解 | WA自动机的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="这是一个蒟蒻无聊的时候建的博客，求神犇轻踩～">
-<meta name="keywords" content="灌水">
+  <meta name="description" content="题目链接http://www.lydsy.com/JudgeOnline/problem.php?id=1217https://www.luogu.org/problemnew/show/2279 题目大意给出一个n个节点的树，可以选择一些节点，使得所有节点到这些选定节点的最短路径都小于等于2，求选择节点的最小数量 题解对于一道$O(n^2)$可过的题来说，只需要非常暴力的做法就够了。我们只需要每">
+<meta name="keywords" content="OI,题解">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Hello,World!">
-<meta property="og:url" content="https://waautomaton.tk/2017/07/07/Hello-World/index.html">
+<meta property="og:title" content="[bzoj 1217][lg 2279][HNOI 2003]消防局的设立 题解">
+<meta property="og:url" content="https://waautomaton.tk/2017/10/31/bzoj-1217-lg-2279-HNOI-2003-消防局的设立-题解/index.html">
 <meta property="og:site_name" content="WA自动机的博客">
-<meta property="og:description" content="这是一个蒟蒻无聊的时候建的博客，求神犇轻踩～">
-<meta property="og:updated_time" content="2017-07-07T12:10:14.968Z">
+<meta property="og:description" content="题目链接http://www.lydsy.com/JudgeOnline/problem.php?id=1217https://www.luogu.org/problemnew/show/2279 题目大意给出一个n个节点的树，可以选择一些节点，使得所有节点到这些选定节点的最短路径都小于等于2，求选择节点的最小数量 题解对于一道$O(n^2)$可过的题来说，只需要非常暴力的做法就够了。我们只需要每">
+<meta property="og:updated_time" content="2017-10-31T08:25:31.386Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Hello,World!">
-<meta name="twitter:description" content="这是一个蒟蒻无聊的时候建的博客，求神犇轻踩～">
+<meta name="twitter:title" content="[bzoj 1217][lg 2279][HNOI 2003]消防局的设立 题解">
+<meta name="twitter:description" content="题目链接http://www.lydsy.com/JudgeOnline/problem.php?id=1217https://www.luogu.org/problemnew/show/2279 题目大意给出一个n个节点的树，可以选择一些节点，使得所有节点到这些选定节点的最短路径都小于等于2，求选择节点的最小数量 题解对于一道$O(n^2)$可过的题来说，只需要非常暴力的做法就够了。我们只需要每">
   
     <link rel="alternative" href="/atom.xml" title="WA自动机的博客" type="application/atom+xml">
   
@@ -167,28 +167,30 @@ ga('send', 'pageview');
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-Hello-World" class="article article-type-post " itemscope itemprop="blogPost">
+            <article id="post-bzoj-1217-lg-2279-HNOI-2003-消防局的设立-题解" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 class="article-title" itemprop="name">
-      Hello,World!
+      [bzoj 1217][lg 2279][HNOI 2003]消防局的设立 题解
     </h1>
   
 
         
-        <a href="/2017/07/07/Hello-World/" class="archive-article-date">
-  	<time datetime="2017-07-07T10:19:05.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-07-07</time>
+        <a href="/2017/10/31/bzoj-1217-lg-2279-HNOI-2003-消防局的设立-题解/" class="archive-article-date">
+  	<time datetime="2017-10-31T08:21:16.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-10-31</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>这是一个蒟蒻无聊的时候建的博客，求神犇轻踩～</p>
-
+        <h4 id="题目链接"><a href="#题目链接" class="headerlink" title="题目链接"></a>题目链接</h4><p><a href="http://www.lydsy.com/JudgeOnline/problem.php?id=1217" target="_blank" rel="external">http://www.lydsy.com/JudgeOnline/problem.php?id=1217</a><br><a href="https://www.luogu.org/problemnew/show/2279" target="_blank" rel="external">https://www.luogu.org/problemnew/show/2279</a></p>
+<h4 id="题目大意"><a href="#题目大意" class="headerlink" title="题目大意"></a>题目大意</h4><p>给出一个n个节点的树，可以选择一些节点，使得所有节点到这些选定节点的最短路径都小于等于2，求选择节点的最小数量</p>
+<h4 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h4><p>对于一道$O(n^2)$可过的题来说，只需要非常暴力的做法就够了。<br>我们只需要每次找出最深的未被消防局覆盖的节点，然后在他的爷爷处建一个消防局就行了（这个做法的正确性可见其他题解）。<br>第一步，找最深的节点用堆？没必要啊，$O(n)$遍历一遍就行了。<br>第二步，建一个消防局咋建？打标记？没必要啊，暴力dfs覆盖范围内的所有节点就行了，还是$O(n)$的。<br>消防局一共有$O(n)$个，所以总复杂度是$O(n^2)$的。<br>这个做法虽然复杂度比其他题解高，但是好写不是么？（而且也足够通过本题）</p>
+<h5 id="参考代码"><a href="#参考代码" class="headerlink" title="参考代码"></a>参考代码</h5><figure class="highlight cpp"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></div><div class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</div><div class="line"><span class="meta">#<span class="meta-keyword">define</span> MAXN 1000</span></div><div class="line"><span class="class"><span class="keyword">struct</span> <span class="title">Edge</span></span></div><div class="line">&#123;</div><div class="line">	<span class="keyword">int</span> to,next;</div><div class="line">&#125;e[MAXN+<span class="number">10</span>];</div><div class="line"><span class="keyword">int</span> head[MAXN+<span class="number">10</span>];</div><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">addEdge</span><span class="params">(<span class="keyword">int</span> from,<span class="keyword">int</span> to)</span></span></div><div class="line">&#123;</div><div class="line">	<span class="keyword">static</span> <span class="keyword">int</span> c=<span class="number">0</span>;</div><div class="line">	e[++c]=(Edge)&#123;to,head[from]&#125;;</div><div class="line">	head[from]=c;</div><div class="line">&#125;</div><div class="line"><span class="keyword">int</span> fa[MAXN+<span class="number">10</span>];</div><div class="line"><span class="keyword">bool</span> vis[MAXN+<span class="number">10</span>];</div><div class="line"><span class="keyword">int</span> deep[MAXN+<span class="number">10</span>];</div><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">dfs2</span><span class="params">(<span class="keyword">int</span> now,<span class="keyword">int</span> d)</span></span></div><div class="line">&#123;</div><div class="line">	vis[now]=<span class="literal">false</span>;</div><div class="line">	<span class="keyword">if</span> (d==<span class="number">0</span>) <span class="keyword">return</span>;</div><div class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=head[now]; i!=<span class="number">0</span>; i=e[i].next)</div><div class="line">	&#123;</div><div class="line">		dfs2(e[i].to,d<span class="number">-1</span>);</div><div class="line">	&#125;</div><div class="line">	dfs2(fa[now],d<span class="number">-1</span>);</div><div class="line">&#125;</div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></div><div class="line">&#123;</div><div class="line"><span class="meta">#<span class="meta-keyword">ifndef</span> ONLINE_JUDGE</span></div><div class="line">	freopen(<span class="string">"in.txt"</span>,<span class="string">"r"</span>,<span class="built_in">stdin</span>);</div><div class="line"><span class="meta">#<span class="meta-keyword">endif</span></span></div><div class="line">	<span class="keyword">int</span> n;</div><div class="line">	<span class="built_in">scanf</span>(<span class="string">"%d"</span>,&amp;n);</div><div class="line">	fa[<span class="number">1</span>]=<span class="number">1</span>;</div><div class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">2</span>; i&lt;=n; ++i)</div><div class="line">	&#123;</div><div class="line">		<span class="keyword">int</span> a;</div><div class="line">		<span class="built_in">scanf</span>(<span class="string">"%d"</span>,&amp;a);</div><div class="line">		addEdge(a,i);</div><div class="line">		fa[i]=a;</div><div class="line">	&#125;</div><div class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>; i&lt;=n; ++i)</div><div class="line">	&#123;</div><div class="line">		deep[i]=deep[fa[i]]+<span class="number">1</span>;</div><div class="line">	&#125;</div><div class="line">	<span class="keyword">int</span> ans=<span class="number">0</span>;</div><div class="line">	<span class="built_in">memset</span>(vis,<span class="literal">true</span>,<span class="keyword">sizeof</span>(vis));</div><div class="line">	<span class="keyword">while</span>(<span class="literal">true</span>)</div><div class="line">	&#123;</div><div class="line">		<span class="keyword">int</span> t=<span class="number">0</span>;</div><div class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>; i&lt;=n; ++i)</div><div class="line">		&#123;</div><div class="line">			<span class="keyword">if</span> (vis[i] &amp;&amp; deep[i]&gt;deep[t]) t=i;</div><div class="line">		&#125;</div><div class="line">		<span class="keyword">if</span> (t==<span class="number">0</span>) <span class="keyword">break</span>;</div><div class="line">		dfs2(fa[fa[t]],<span class="number">2</span>);</div><div class="line">		++ans;</div><div class="line">	&#125;</div><div class="line">	<span class="built_in">printf</span>(<span class="string">"%d\n"</span>,ans);</div><div class="line">	<span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
       
 
       
@@ -201,7 +203,11 @@ ga('send', 'pageview');
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">灌水</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">OI</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">题解</a>
         		</li>
       		
 		</ul>
@@ -257,7 +263,7 @@ ga('send', 'pageview');
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="http://s.jiathis.com/qrcode.php?url=https://waautomaton.tk/2017/07/07/Hello-World/" alt="微信分享二维码">
+      <img src="http://s.jiathis.com/qrcode.php?url=https://waautomaton.tk/2017/10/31/bzoj-1217-lg-2279-HNOI-2003-消防局的设立-题解/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -271,15 +277,11 @@ ga('send', 'pageview');
   
 <nav id="article-nav">
   
-    <a href="/2017/07/07/test/" id="article-nav-newer" class="article-nav-link-wrap">
-      <i class="icon-circle-left"></i>
-      <div class="article-nav-title">
-        
-          test
-        
-      </div>
-    </a>
   
+    <a href="/2017/10/18/bzoj-2049-lg-2147-SDOI-2008-Cave-洞穴勘测-题解/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">[bzoj 2049][lg 2147][SDOI 2008]Cave 洞穴勘测 题解</div>
+      <i class="icon-circle-right"></i>
+    </a>
   
 </nav>
 
@@ -304,7 +306,7 @@ ga('send', 'pageview');
                 </span>
                 <span class="tooltip-content">
                     <div class="toc-article">
-                    这篇文章没有目录哦
+                    <ol class="toc"><li class="toc-item toc-level-4"><a class="toc-link" href="#题目链接"><span class="toc-number">1.</span> <span class="toc-text">题目链接</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#题目大意"><span class="toc-number">2.</span> <span class="toc-text">题目大意</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#题解"><span class="toc-number">3.</span> <span class="toc-text">题解</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#参考代码"><span class="toc-number">3.1.</span> <span class="toc-text">参考代码</span></a></li></ol></li></ol>
                     </div>
                 </span>
             </div>
@@ -329,7 +331,7 @@ ga('send', 'pageview');
 <script src="//imsun.github.io/gitment/dist/gitment.browser.js"></script>
 <script>
 var gitment = new Gitment({
-  id: "https://waautomaton.tk/2017/07/07/Hello-World/",
+  id: "https://waautomaton.tk/2017/10/31/bzoj-1217-lg-2279-HNOI-2003-消防局的设立-题解/",
   owner: 'WAAutoMaton',
   repo: 'waautomaton.github.io',
   oauth: {
