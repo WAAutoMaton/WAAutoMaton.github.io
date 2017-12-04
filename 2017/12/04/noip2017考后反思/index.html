@@ -8,17 +8,17 @@
   <link rel="dns-prefetch" href="https://waautomaton.tk">
   <title>noip2017考后反思 | WA自动机的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="这次noip，获得的分数为100+100+60+100+70+30=460分，与目标（500分以上）还是有一定的差距。从失分原因来看，考试结束之后的估分为460分，分数构成和实际得分完全一样，因此没有“写挂题”造成的失分（算是一件好事吧），所有没得到的分都是在考场上就确认无法得到的。">
+  <meta name="description" content="老早就想写这么一篇反思了，刚好今天教练要求每个人写反思，就有了这篇反思。语文渣，求轻喷（当然大概也没人看）">
 <meta name="keywords" content="OI">
 <meta property="og:type" content="article">
 <meta property="og:title" content="noip2017考后反思">
 <meta property="og:url" content="https://waautomaton.tk/2017/12/04/noip2017考后反思/index.html">
 <meta property="og:site_name" content="WA自动机的博客">
-<meta property="og:description" content="这次noip，获得的分数为100+100+60+100+70+30=460分，与目标（500分以上）还是有一定的差距。从失分原因来看，考试结束之后的估分为460分，分数构成和实际得分完全一样，因此没有“写挂题”造成的失分（算是一件好事吧），所有没得到的分都是在考场上就确认无法得到的。">
-<meta property="og:updated_time" content="2017-12-04T08:32:59.058Z">
+<meta property="og:description" content="老早就想写这么一篇反思了，刚好今天教练要求每个人写反思，就有了这篇反思。语文渣，求轻喷（当然大概也没人看）">
+<meta property="og:updated_time" content="2017-12-04T09:20:58.864Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="noip2017考后反思">
-<meta name="twitter:description" content="这次noip，获得的分数为100+100+60+100+70+30=460分，与目标（500分以上）还是有一定的差距。从失分原因来看，考试结束之后的估分为460分，分数构成和实际得分完全一样，因此没有“写挂题”造成的失分（算是一件好事吧），所有没得到的分都是在考场上就确认无法得到的。">
+<meta name="twitter:description" content="老早就想写这么一篇反思了，刚好今天教练要求每个人写反思，就有了这篇反思。语文渣，求轻喷（当然大概也没人看）">
   
     <link rel="alternative" href="/atom.xml" title="WA自动机的博客" type="application/atom+xml">
   
@@ -187,7 +187,8 @@ ga('send', 'pageview');
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>这次noip，获得的分数为100+100+60+100+70+30=460分，与目标（500分以上）还是有一定的差距。<br>从失分原因来看，考试结束之后的估分为460分，分数构成和实际得分完全一样，因此没有“写挂题”造成的失分（算是一件好事吧），所有没得到的分都是在考场上就确认无法得到的。<br><a id="more"></a></p>
+        <p>老早就想写这么一篇反思了，刚好今天教练要求每个人写反思，就有了这篇反思。<br>语文渣，求轻喷（当然大概也没人看）<br><a id="more"></a></p>
+<p>这次noip，获得的分数为100+100+60+100+70+30=460分，与目标（500分以上）还是有一定的差距。<br>从失分原因来看，考试结束之后的估分为460分，分数构成和实际得分完全一样，因此没有“写挂题”造成的失分（算是一件好事吧），所有没得到的分都是在考场上就确认无法得到的。</p>
 <h3 id="失分分析"><a href="#失分分析" class="headerlink" title="失分分析"></a>失分分析</h3><h5 id="day1："><a href="#day1：" class="headerlink" title="day1："></a>day1：</h5><p>t1t2拿到了100分。<br>t3中没有“0”边的部分分为70分，实际拿到了60分。<br>t3的AC算法思维难度较大，赛后自认为以自己现在的水平考场上没有能力想出来（而且还有卡常的问题），而无“0”边的部分分有70分，考场上主要针对的是这70分。但是考场上时把解法想复杂了，最后写了一个O(kmnlogn)的好像是分层图最短路的算法，跑的有点慢，有一个10分的点没能跑过去，少掉了10分，而70分做法“最短路+DP”是不太难的，如果考场上能从坑里跳出来的话应该是能想到的，算是一个遗憾吧。<br>总的来说day1考了260分，与最大可能分数270只差了10分，基本发挥出了水平。</p>
 <h5 id="day2："><a href="#day2：" class="headerlink" title="day2："></a>day2：</h5><p>t1惊险的拿到了100，根据其他人的计算，我的long long应该是能被hack的，并查集的做法在ccf老爷机上也可能会被卡常，还好实际上没被卡掉。<br>t2是一个非常显然的状压dp，但是状压dp这方面我实在是弱了点，考场上只想到了一个错误的状压dp（在对拍时被hack掉了），没能想出正确的压法，最后只能交了一个很弱的启发式搜索水了70分。赛后看吉老师说搜索也能AC，如果考场上自信点加强一下启发式的话说不定就能水过去了，亏了一个亿。<br>t3是这场比赛的最大失误，只拿到了最暴力的30分。  实际上这题的暴力有50分，考场上看数据范围的时候没发现另外20分暴力分（q&lt;=500），重大失误。<br>考场上这题想出了一种分块+splay的奇怪做法，理论上应该有70分左右，但是写了2个小时左右没能调出来，GG。赛后发现这个算法稍微改下就是qlogn的splay了。<br>做这题的失误非常大，首先观察数据范围时没注意到q&lt;=500暴力分，白白少了20分，然后yy出一个算法之后又没能实现出来，这2个小时如果不拿来写这个算法的话，回去优化一下t2的搜索的话说不定能A掉t2。<br>day2总共只获得了200分，而理论上是能有220~250分的，大大拖低了分数。</p>
 <h3 id="反思"><a href="#反思" class="headerlink" title="反思"></a>反思</h3><p>这次考试失掉的分，其中d2t2的AC算法和d2t3的splay都说明平时的训练时对于知识点的学习还有较大的疏忽，状压dp在考前时没有做过多少，splay则是因为觉得noip不会考所以没有复习。可见平时的训练应该还有不少的知识点没有渗透到——考前一段时间不知道该做些什么题，考完后才发现还有好多东西是没有掌握好的。<br>另外d2t3的审题失误，也可见平时训练没有训练好审题。不过这也和近两年noip的数据范围风格有关——数据范围给一张很大的表，看懂这张表就要半天。不像以前的“对于** %的数据，n&lt;=***”直白。<br>d2t1的long long失误，可见无论如何都应该算一下中间结果会不会溢出，而不是想当然（这次是long long可能溢出，unsigned long long不会，平时从没做过卡的这么紧的题，所以根本没把数据范围放在心上）。<br>d1t3的失误，还是没有落实好“think twice，code once”导致的吧。</p>
@@ -457,11 +458,11 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">其他</a>
+                <a href="javascript:void(0)" class="js-tag color3">灌水</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">灌水</a>
+                <a href="javascript:void(0)" class="js-tag color3">其他</a>
               </li>
              
               <li class="article-tag-list-item">
