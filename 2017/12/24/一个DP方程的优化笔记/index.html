@@ -6,19 +6,19 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="https://waautomaton.tk">
-  <title>终于给网站配置上cdn了 | WA自动机的博客</title>
+  <title>一个DP方程的优化笔记 | WA自动机的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="撒花！总算直连的时候不至于打不开了（虽然还是不是很快,而且没能解决mathjax载入慢的问题）">
-<meta name="keywords" content="测试">
+  <meta name="description" content="这是我最近做一道题的时候写的一个dp。（由于某些原因，题面就不贴了）原题的数据规模是$n \le 10^6$ 因此$O(n^2)$的dp显然是会tle的，需要优化。但是当时写下的这个n^2暴力实在有点糟糕，一眼看去n^2个状态没有可以优化的，然后就GG了。">
+<meta name="keywords" content="OI">
 <meta property="og:type" content="article">
-<meta property="og:title" content="终于给网站配置上cdn了">
-<meta property="og:url" content="https://waautomaton.tk/2017/10/12/cdn/index.html">
+<meta property="og:title" content="一个DP方程的优化笔记">
+<meta property="og:url" content="https://waautomaton.tk/2017/12/24/一个DP方程的优化笔记/index.html">
 <meta property="og:site_name" content="WA自动机的博客">
-<meta property="og:description" content="撒花！总算直连的时候不至于打不开了（虽然还是不是很快,而且没能解决mathjax载入慢的问题）">
-<meta property="og:updated_time" content="2017-10-12T12:38:11.568Z">
+<meta property="og:description" content="这是我最近做一道题的时候写的一个dp。（由于某些原因，题面就不贴了）原题的数据规模是$n \le 10^6$ 因此$O(n^2)$的dp显然是会tle的，需要优化。但是当时写下的这个n^2暴力实在有点糟糕，一眼看去n^2个状态没有可以优化的，然后就GG了。">
+<meta property="og:updated_time" content="2017-12-24T03:21:04.017Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="终于给网站配置上cdn了">
-<meta name="twitter:description" content="撒花！总算直连的时候不至于打不开了（虽然还是不是很快,而且没能解决mathjax载入慢的问题）">
+<meta name="twitter:title" content="一个DP方程的优化笔记">
+<meta name="twitter:description" content="这是我最近做一道题的时候写的一个dp。（由于某些原因，题面就不贴了）原题的数据规模是$n \le 10^6$ 因此$O(n^2)$的dp显然是会tle的，需要优化。但是当时写下的这个n^2暴力实在有点糟糕，一眼看去n^2个状态没有可以优化的，然后就GG了。">
   
     <link rel="alternative" href="/atom.xml" title="WA自动机的博客" type="application/atom+xml">
   
@@ -167,27 +167,33 @@ ga('send', 'pageview');
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-cdn" class="article article-type-post " itemscope itemprop="blogPost">
+            <article id="post-一个DP方程的优化笔记" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 class="article-title" itemprop="name">
-      终于给网站配置上cdn了
+      一个DP方程的优化笔记
     </h1>
   
 
         
-        <a href="/2017/10/12/cdn/" class="archive-article-date">
-  	<time datetime="2017-10-12T12:36:08.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-10-12</time>
+        <a href="/2017/12/24/一个DP方程的优化笔记/" class="archive-article-date">
+  	<time datetime="2017-12-24T03:21:04.017Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-12-24</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p><strong>撒花！</strong><br>总算直连的时候不至于打不开了（虽然还是不是很快,而且没能解决mathjax载入慢的问题）</p>
+        <p>这是我最近做一道题的时候写的一个dp。（由于某些原因，题面就不贴了）<br>原题的数据规模是$n \le 10^6$ 因此$O(n^2)$的dp显然是会tle的，需要优化。<br>但是当时写下的这个n^2暴力实在有点糟糕，一眼看去n^2个状态没有可以优化的，然后就GG了。<br><a id="more"></a><br><figure class="highlight cpp"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">f[<span class="number">1</span>][<span class="number">0</span>]=<span class="number">1</span>;</div><div class="line">f[<span class="number">0</span>][<span class="number">1</span>]=<span class="number">1</span>;</div><div class="line"><span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>; i&lt;n; ++i)</div><div class="line">&#123;</div><div class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> j=<span class="number">0</span>; j&lt;n; ++j)</div><div class="line">	&#123;</div><div class="line">		<span class="keyword">if</span> (i==j || f[i][j]==<span class="number">0</span>) <span class="keyword">continue</span>;</div><div class="line">		<span class="keyword">int</span> now=max(i,j)+<span class="number">1</span>;</div><div class="line">		<span class="keyword">if</span> (i==<span class="number">0</span> || a[i]&lt;a[now]) f[now][j]=MOD(f[now][j]+f[i][j]);</div><div class="line">		<span class="keyword">if</span> (j==<span class="number">0</span> || a[j]&gt;a[now]) f[i][now]=MOD(f[i][now]+f[i][j]);</div><div class="line">	&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>后来看了题解才知道，可以把dp过程修改成这样（上下两种dp本质上是一样的）<br><figure class="highlight cpp"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">f[<span class="number">1</span>][<span class="number">0</span>]=<span class="number">1</span>;</div><div class="line">g[<span class="number">1</span>][<span class="number">0</span>]=<span class="number">1</span>;</div><div class="line"><span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>; i&lt;n; ++i)</div><div class="line">&#123;</div><div class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> j=<span class="number">0</span>; j&lt;i; ++j)</div><div class="line">	&#123;</div><div class="line">		<span class="keyword">if</span> (i==j) <span class="keyword">continue</span>;</div><div class="line">		<span class="keyword">if</span> (i==<span class="number">0</span> || a[i]&lt;a[i+<span class="number">1</span>]) f[i+<span class="number">1</span>][j]+=f[i][j];</div><div class="line">		<span class="keyword">if</span> (j==<span class="number">0</span> || a[j]&gt;a[i+<span class="number">1</span>]) g[i+<span class="number">1</span>][i]+=f[i][j];</div><div class="line">		<span class="keyword">if</span> (j==<span class="number">0</span> || a[j]&lt;a[i+<span class="number">1</span>]) f[i+<span class="number">1</span>][i]+=g[i][j];</div><div class="line">		<span class="keyword">if</span> (i==<span class="number">0</span> || a[i]&gt;a[i+<span class="number">1</span>]) g[i+<span class="number">1</span>][j]+=g[i][j];</div><div class="line">	&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>这样就明显可以看出，f/g[i]的值只与f/g[i-1]有关，所以可以滚动数组优化。<br>但这题的dp方程比较特殊，通过记录一下tmp可以直接压掉一维。<br><figure class="highlight cpp"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">f[<span class="number">0</span>]=<span class="number">1</span>;</div><div class="line">g[<span class="number">0</span>]=<span class="number">1</span>;</div><div class="line"><span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>; i&lt;n; ++i)</div><div class="line">&#123;</div><div class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> j=<span class="number">0</span>; j&lt;i; ++j)</div><div class="line">	&#123;</div><div class="line">		<span class="keyword">int</span> tmpf=f[j],tmpg=g[j];</div><div class="line">		f[j]=<span class="number">0</span>; g[j]=<span class="number">0</span>;</div><div class="line">		<span class="keyword">if</span> (i==<span class="number">0</span> || a[i]&lt;a[i+<span class="number">1</span>]) f[j]+=tmpf;</div><div class="line">		<span class="keyword">if</span> (j==<span class="number">0</span> || a[j]&gt;a[i+<span class="number">1</span>]) g[i]+=tmpf;</div><div class="line">		<span class="keyword">if</span> (j==<span class="number">0</span> || a[j]&lt;a[i+<span class="number">1</span>]) f[i]+=tmpg;</div><div class="line">		<span class="keyword">if</span> (i==<span class="number">0</span> || a[i]&gt;a[i+<span class="number">1</span>]) g[j]+=tmpg;</div><div class="line">	&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>然后dp方程里的if是十分讨厌的，所以先去掉i==0和j==0.<br><figure class="highlight cpp"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line">f[<span class="number">0</span>]=<span class="number">1</span>;</div><div class="line">g[<span class="number">0</span>]=<span class="number">1</span>;</div><div class="line"><span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>; i&lt;n; ++i)</div><div class="line">&#123;</div><div class="line">	g[i]+=f[<span class="number">0</span>];</div><div class="line">	f[i]+=g[<span class="number">0</span>];</div><div class="line">	<span class="keyword">if</span> (a[i]&lt;a[i+<span class="number">1</span>]) g[<span class="number">0</span>]=<span class="number">0</span>;</div><div class="line">	<span class="keyword">else</span> f[<span class="number">0</span>]=<span class="number">0</span>;</div><div class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> j=<span class="number">1</span>; j&lt;i; ++j)</div><div class="line">	&#123;</div><div class="line">		<span class="keyword">int</span> tmpf=f[j],tmpg=g[j];</div><div class="line">		<span class="keyword">if</span> (a[i]&lt;a[i+<span class="number">1</span>]) g[j]=<span class="number">0</span>;</div><div class="line">		<span class="keyword">else</span> f[j]=<span class="number">0</span>;</div><div class="line">		<span class="keyword">if</span> (a[j]&gt;a[i+<span class="number">1</span>]) g[i]+=tmpf;</div><div class="line">		<span class="keyword">else</span> f[i]+=tmpg;</div><div class="line">	&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>可以发现，<code>if (a[i]&lt;a[i+1])</code>这个条件和j无关，可以转移到外层循环去。<br><figure class="highlight cpp"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line">f[<span class="number">0</span>]=<span class="number">1</span>;</div><div class="line">g[<span class="number">0</span>]=<span class="number">1</span>;</div><div class="line"><span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>; i&lt;n; ++i)</div><div class="line">&#123;</div><div class="line">	<span class="keyword">int</span> nf=g[<span class="number">0</span>],ng=f[<span class="number">0</span>];</div><div class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> j=<span class="number">1</span>; j&lt;=n; ++j)</div><div class="line">	&#123;</div><div class="line">		<span class="keyword">if</span> (a[j]&gt;a[i+<span class="number">1</span>]) ng+=f[j];</div><div class="line">		<span class="keyword">else</span> nf+=g[j];</div><div class="line">	&#125;</div><div class="line">	<span class="keyword">if</span> (a[i]&lt;a[i+<span class="number">1</span>]) <span class="built_in">memset</span>(g,<span class="number">0</span>,<span class="keyword">sizeof</span>(g));</div><div class="line">	<span class="keyword">else</span> <span class="built_in">memset</span>(f,<span class="number">0</span>,<span class="keyword">sizeof</span>(f));</div><div class="line">	f[i]=nf;</div><div class="line">	g[i]=ng;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>于是现在内层循环只剩下一个if了，但还是让本蒟蒻感到无从优化。<br>经过zjh大佬的指点，f/g[i]可以不存“第i个位置dp值”，而是保存“值为i的位置的dp值”，然后就变成了<br><figure class="highlight cpp"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">int</span> f0=<span class="number">1</span>,g0=<span class="number">1</span>;</div><div class="line"><span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>; i&lt;n; ++i)</div><div class="line">&#123;</div><div class="line">	<span class="keyword">int</span> nf=g0,ng=f0;</div><div class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> j=<span class="number">1</span>; j&lt;a[i+<span class="number">1</span>]; ++j) nf+=g[j];</div><div class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> j=a[i+<span class="number">1</span>]; j&lt;=n; ++j) ng+=f[j];</div><div class="line">	<span class="keyword">if</span> (a[i]&lt;a[i+<span class="number">1</span>]) <span class="built_in">memset</span>(g,<span class="number">0</span>,<span class="keyword">sizeof</span>(g)),g0=<span class="number">0</span>;</div><div class="line">	<span class="keyword">else</span> <span class="built_in">memset</span>(f,<span class="number">0</span>,<span class="keyword">sizeof</span>(f)),f0=<span class="number">0</span>;</div><div class="line">	f[a[i]]=nf;</div><div class="line">	g[a[i]]=ng;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>现在就十分明显了，对于f/g数组，只需要区间询问，区间置零，单点修改即可，因此就可以用线段树优化到$O(nlogn)$<br><figure class="highlight cpp"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">rf=newNode(<span class="number">1</span>,n);</div><div class="line">rg=newNode(<span class="number">1</span>,n);</div><div class="line"><span class="keyword">int</span> f0=<span class="number">1</span>,g0=<span class="number">1</span>;</div><div class="line"><span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>; i&lt;n; ++i)</div><div class="line">&#123;</div><div class="line">	<span class="keyword">int</span> nf=g0,ng=f0;</div><div class="line">	<span class="keyword">if</span> (a[i+<span class="number">1</span>]&gt;<span class="number">1</span>) nf+=rg-&gt;query(<span class="number">1</span>,a[i+<span class="number">1</span>]<span class="number">-1</span>);</div><div class="line">	ng+=rf-&gt;query(a[i+<span class="number">1</span>],n);</div><div class="line">	<span class="keyword">if</span> (a[i]&lt;a[i+<span class="number">1</span>]) rg-&gt;clear(),g0=<span class="number">0</span>;</div><div class="line">	<span class="keyword">else</span> rf-&gt;clear(),f0=<span class="number">0</span>;</div><div class="line">	rf-&gt;add(a[i],nf);</div><div class="line">	rg-&gt;add(a[i],ng);</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
 
       
 
@@ -201,7 +207,7 @@ ga('send', 'pageview');
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">测试</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">OI</a>
         		</li>
       		
 		</ul>
@@ -213,7 +219,11 @@ ga('send', 'pageview');
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="/categories/测试//" class="article-tag-list-link color3">测试</a>
+        			<a href="/categories/OI//" class="article-tag-list-link color3">OI</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/OI/object-Object//" class="article-tag-list-link color1">[object Object]</a>
         		</li>
       		
 		</ul>
@@ -268,7 +278,7 @@ ga('send', 'pageview');
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="http://s.jiathis.com/qrcode.php?url=https://waautomaton.tk/2017/10/12/cdn/" alt="微信分享二维码">
+      <img src="http://s.jiathis.com/qrcode.php?url=https://waautomaton.tk/2017/12/24/一个DP方程的优化笔记/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -282,18 +292,9 @@ ga('send', 'pageview');
   
 <nav id="article-nav">
   
-    <a href="/2017/10/18/bzoj-2049-lg-2147-SDOI-2008-Cave-洞穴勘测-题解/" id="article-nav-newer" class="article-nav-link-wrap">
-      <i class="icon-circle-left"></i>
-      <div class="article-nav-title">
-        
-          [bzoj 2049][lg 2147][SDOI 2008]Cave 洞穴勘测 题解
-        
-      </div>
-    </a>
   
-  
-    <a href="/2017/09/23/noip2017前做题日记/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">noip2017前做题日记</div>
+    <a href="/2017/12/15/SuffixArray/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">【邪教慎入】Nlog^2N后缀数组学习笔记</div>
       <i class="icon-circle-right"></i>
     </a>
   
@@ -345,7 +346,7 @@ ga('send', 'pageview');
 <script src="//imsun.github.io/gitment/dist/gitment.browser.js"></script>
 <script>
 var gitment = new Gitment({
-  id: "https://waautomaton.tk/2017/10/12/cdn/",
+  id: "https://waautomaton.tk/2017/12/24/一个DP方程的优化笔记/",
   owner: 'WAAutoMaton',
   repo: 'waautomaton.github.io',
   oauth: {
