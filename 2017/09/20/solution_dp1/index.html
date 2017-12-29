@@ -15,12 +15,12 @@
 <meta property="og:url" content="https://waautomaton.tk/2017/09/20/solution_dp1/index.html">
 <meta property="og:site_name" content="WA自动机的博客">
 <meta property="og:description" content="一些DP练习题的题解 T1 简单题已有题解，见http://blog.csdn.net/donald_ty/article/details/52416344 T2 大水题已有题解，见http://blog.csdn.net/chunkitlau/article/details/54562740">
-<meta property="og:image" content="http://ospu7jd96.bkt.clouddn.com/static//images/表情包/6.jpg">
-<meta property="og:updated_time" content="2017-10-24T08:04:21.576Z">
+<meta property="og:image" content="https://waautomaton.tk/static/images/表情包/6.jpg">
+<meta property="og:updated_time" content="2017-12-29T12:50:30.002Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="DP练习题题解">
 <meta name="twitter:description" content="一些DP练习题的题解 T1 简单题已有题解，见http://blog.csdn.net/donald_ty/article/details/52416344 T2 大水题已有题解，见http://blog.csdn.net/chunkitlau/article/details/54562740">
-<meta name="twitter:image" content="http://ospu7jd96.bkt.clouddn.com/static//images/表情包/6.jpg">
+<meta name="twitter:image" content="https://waautomaton.tk/static/images/表情包/6.jpg">
   
     <link rel="alternative" href="/atom.xml" title="WA自动机的博客" type="application/atom+xml">
   
@@ -62,7 +62,7 @@ ga('send', 'pageview');
 <div class="intrude-less">
 	<header id="header" class="inner">
 		<a href="null" class="profilepic">
-			<img src="http://ospu7jd96.bkt.clouddn.com/static/images/头像.png" class="js-avatar">
+			<img src="https://waautomaton.tk/static/images/头像.png" class="js-avatar">
 		</a>
 		<hgroup>
 		  <h1 class="header-author"><a href="null">WA自动机</a></h1>
@@ -120,7 +120,7 @@ ga('send', 'pageview');
 	<div class="intrude-less">
 		<header id="header" class="inner">
 			<div class="profilepic">
-				<img src="http://ospu7jd96.bkt.clouddn.com/static/images/头像.png" class="js-avatar">
+				<img src="https://waautomaton.tk/static/images/头像.png" class="js-avatar">
 			</div>
 			<hgroup>
 			  <h1 class="header-author js-header-author">WA自动机</h1>
@@ -198,7 +198,7 @@ ga('send', 'pageview');
 <h3 id="T6-光棍"><a href="#T6-光棍" class="headerlink" title="T6 光棍"></a>T6 光棍</h3><p>暂时不会</p>
 <h3 id="T7-五子棋"><a href="#T7-五子棋" class="headerlink" title="T7 五子棋"></a>T7 五子棋</h3><p>暂时不会</p>
 <h3 id="T8-Exhibit"><a href="#T8-Exhibit" class="headerlink" title="T8 Exhibit"></a>T8 Exhibit</h3><p>洛谷原题<a href="https://www.luogu.org/problem/show?pid=1638" target="_blank" rel="external">P1638</a></p>
-<h3 id="T9-保龄球"><a href="#T9-保龄球" class="headerlink" title="T9 保龄球"></a>T9 保龄球</h3><p>预处理sum(i,j)表示$\sum_{k=i}^ja_k$<br>f[i][j]表示当前已经扔了i个球，且全部扔在第j个位置前面且第j个位置一定已经被击倒时的最大分数。<br>可得dp方程$f[i][j]=max{f[l][j-1]+sum(i-w+1,i)(0 \le l &lt; i-w),f[l][j-1]+sum(l+1,i) (i-w \le l &lt; i)}$<br>复杂度是$O(Tn^2k)$的，所以要优化一下。<br>max的前半部分用一个变量记录一下最大值就行，后半部分可以单调队列优化搞成均摊O(1)转移。<br>总复杂度$O(Tnk)$，略卡常（我一开始用deque然后不停的TLE，后来换成数组才过<img src="http://ospu7jd96.bkt.clouddn.com/static//images/表情包/6.jpg">  ）</p>
+<h3 id="T9-保龄球"><a href="#T9-保龄球" class="headerlink" title="T9 保龄球"></a>T9 保龄球</h3><p>预处理sum(i,j)表示$\sum_{k=i}^ja_k$<br>f[i][j]表示当前已经扔了i个球，且全部扔在第j个位置前面且第j个位置一定已经被击倒时的最大分数。<br>可得dp方程$f[i][j]=max{f[l][j-1]+sum(i-w+1,i)(0 \le l &lt; i-w),f[l][j-1]+sum(l+1,i) (i-w \le l &lt; i)}$<br>复杂度是$O(Tn^2k)$的，所以要优化一下。<br>max的前半部分用一个变量记录一下最大值就行，后半部分可以单调队列优化搞成均摊O(1)转移。<br>总复杂度$O(Tnk)$，略卡常（我一开始用deque然后不停的TLE，后来换成数组才过<img src="/static/images/表情包/6.jpg" alt="">  ）</p>
 <h3 id="T10-摆放汉堡"><a href="#T10-摆放汉堡" class="headerlink" title="T10 摆放汉堡"></a>T10 摆放汉堡</h3><p>暂时不会</p>
 <h3 id="T11-X神的书架"><a href="#T11-X神的书架" class="headerlink" title="T11 X神的书架"></a>T11 X神的书架</h3><p>只看出可以四边形不等式优化（julao们说能单调队列优化，表示不会），但是写炸了</p>
 <h5 id="update"><a href="#update" class="headerlink" title="update:"></a>update:</h5><p>经过kczno1大爷的教导，发现这题既不能四边形不等式也不能单调队列优化，GG。</p>
@@ -497,15 +497,15 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">其他</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">OI</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">题解</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">其他</a>
               </li>
              
               <li class="article-tag-list-item">
