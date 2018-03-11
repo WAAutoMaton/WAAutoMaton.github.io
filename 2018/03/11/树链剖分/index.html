@@ -15,7 +15,7 @@
 <meta property="og:url" content="https://waautomaton.tk/2018/03/11/树链剖分/index.html">
 <meta property="og:site_name" content="WA自动机的博客">
 <meta property="og:description" content="今天复习树剖模板的时候突然想到，对于链操作而言，链加法，链询问结构是完全一样的，只是需要调用的操作不同。于是就产生了一个大胆的想法（雾）——把两个（甚至多个）链操作写到一起去。">
-<meta property="og:updated_time" content="2018-03-11T12:42:42.712Z">
+<meta property="og:updated_time" content="2018-03-11T12:45:34.115Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="树链剖分的一种节约代码量的实现姿势">
 <meta name="twitter:description" content="今天复习树剖模板的时候突然想到，对于链操作而言，链加法，链询问结构是完全一样的，只是需要调用的操作不同。于是就产生了一个大胆的想法（雾）——把两个（甚至多个）链操作写到一起去。">
@@ -194,10 +194,10 @@ ga('send', 'pageview');
     <div class="article-entry" itemprop="articleBody">
       
         <p>今天复习树剖模板的时候突然想到，对于链操作而言，链加法，链询问结构是完全一样的，只是需要调用的操作不同。于是就产生了一个大胆的想法（雾）——把两个（甚至多个）链操作写到一起去。<br><a id="more"></a></p>
-<p>下面是链操作函数：<br><figure class="highlight cpp"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">template</span>&lt;<span class="keyword">typename</span> Func&gt;</div><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">lian</span><span class="params">(Node* x,Node* y,Func func)</span>  <span class="comment">//注意这个func</span></span></div><div class="line">&#123;</div><div class="line">	<span class="keyword">while</span>(x-&gt;top!=y-&gt;top) &#123;</div><div class="line">		<span class="keyword">if</span> (x-&gt;top-&gt;deep&lt;y-&gt;top-&gt;deep) swap(x,y);</div><div class="line">		func(x-&gt;top-&gt;uid,x-&gt;uid); <span class="comment">//这里</span></div><div class="line">		x=x-&gt;top-&gt;fa;</div><div class="line">	&#125;</div><div class="line">	<span class="keyword">if</span> (x-&gt;deep&lt;y-&gt;deep) swap(x,y);</div><div class="line">	func(y-&gt;uid,x-&gt;uid); <span class="comment">//还有这里</span></div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>下面是链操作函数：<br><figure class="highlight cpp"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">template</span>&lt;<span class="keyword">typename</span> Func&gt;</div><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">chain</span><span class="params">(Node* x,Node* y,Func func)</span>  <span class="comment">//注意这个func</span></span></div><div class="line">&#123;</div><div class="line">	<span class="keyword">while</span>(x-&gt;top!=y-&gt;top) &#123;</div><div class="line">		<span class="keyword">if</span> (x-&gt;top-&gt;deep&lt;y-&gt;top-&gt;deep) swap(x,y);</div><div class="line">		func(x-&gt;top-&gt;uid,x-&gt;uid); <span class="comment">//这里</span></div><div class="line">		x=x-&gt;top-&gt;fa;</div><div class="line">	&#125;</div><div class="line">	<span class="keyword">if</span> (x-&gt;deep&lt;y-&gt;deep) swap(x,y);</div><div class="line">	func(y-&gt;uid,x-&gt;uid); <span class="comment">//还有这里</span></div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
 <p>主要就是把原本要传进去的参数换成了一个func（由于我<del>太懒了</del>不知道这个func的类型怎么写所以就直接写了个模板），然后把不同需求会产生不同行为的地方全部交给func就好了。</p>
-<p>然后是使用部分：<br><figure class="highlight cpp"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//root是线段树的根，root-&gt;add为线段树区间加法，root-&gt;query为线段树区间求和</span></div><div class="line"><span class="keyword">if</span> (op==<span class="number">1</span>) &#123; <span class="comment">//链加法</span></div><div class="line">	<span class="keyword">int</span> x,y,z;</div><div class="line">	<span class="built_in">scanf</span>(<span class="string">"%d%d%d"</span>,&amp;x,&amp;y,&amp;z);</div><div class="line">	lian(node+x,node+y,[z](<span class="keyword">int</span> l,<span class="keyword">int</span> r)&#123;root-&gt;add(l,r,z);&#125;); <span class="comment">//这里</span></div><div class="line">&#125; <span class="keyword">else</span> <span class="keyword">if</span> (op==<span class="number">2</span>) &#123; <span class="comment">//链求和</span></div><div class="line">	<span class="keyword">int</span> x,y;</div><div class="line">	<span class="built_in">scanf</span>(<span class="string">"%d%d"</span>,&amp;x,&amp;y);</div><div class="line">	<span class="keyword">int</span> ans=<span class="number">0</span>;</div><div class="line">	lian(node+x,node+y,[&amp;ans](<span class="keyword">int</span> l,<span class="keyword">int</span> r)&#123;ans=MOD(ans+root-&gt;query(l,r));&#125;); <span class="comment">//还有这里</span></div><div class="line">	<span class="built_in">printf</span>(<span class="string">"%d\n"</span>,ans);</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-<p>配合不同的lambda（当然传全局函数进去也是可行的）就能用同一个“lian”函数产生不同的功能了。</p>
+<p>然后是使用部分：<br><figure class="highlight cpp"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//root是线段树的根，root-&gt;add为线段树区间加法，root-&gt;query为线段树区间求和</span></div><div class="line"><span class="keyword">if</span> (op==<span class="number">1</span>) &#123; <span class="comment">//链加法</span></div><div class="line">	<span class="keyword">int</span> x,y,z;</div><div class="line">	<span class="built_in">scanf</span>(<span class="string">"%d%d%d"</span>,&amp;x,&amp;y,&amp;z);</div><div class="line">	chain(node+x,node+y,[z](<span class="keyword">int</span> l,<span class="keyword">int</span> r)&#123;root-&gt;add(l,r,z);&#125;); <span class="comment">//这里</span></div><div class="line">&#125; <span class="keyword">else</span> <span class="keyword">if</span> (op==<span class="number">2</span>) &#123; <span class="comment">//链求和</span></div><div class="line">	<span class="keyword">int</span> x,y;</div><div class="line">	<span class="built_in">scanf</span>(<span class="string">"%d%d"</span>,&amp;x,&amp;y);</div><div class="line">	<span class="keyword">int</span> ans=<span class="number">0</span>;</div><div class="line">	chain(node+x,node+y,[&amp;ans](<span class="keyword">int</span> l,<span class="keyword">int</span> r)&#123;ans=MOD(ans+root-&gt;query(l,r));&#125;); <span class="comment">//还有这里</span></div><div class="line">	<span class="built_in">printf</span>(<span class="string">"%d\n"</span>,ans);</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>配合不同的lambda（当然传全局函数进去也是可行的）就能用同一个“chain”函数产生不同的功能了。</p>
 
       
 
@@ -467,15 +467,15 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">其他</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">题解</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">测试</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">其他</a>
               </li>
             
             <div class="clearfix"></div>
