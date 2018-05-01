@@ -6,14 +6,21 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="https://waautomaton.tk">
-  <title>Archives: 2017/10 | WA自动机的博客</title>
+  <title>[loj 2345][JOI 2016]縄張り 领地 题解 | WA自动机的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="WA自动机的博客">
-<meta property="og:url" content="https://waautomaton.tk/archives/2017/10/index.html">
+  <meta name="description" content="题目链接https://loj.ac/problem/2345 https://www.luogu.org/problemnew/show/AT2440 https://joi2016ho.contest.atcoder.jp/tasks/joi2016ho_d 题解这题完全不符合JOI偏重考察思维难度而相对不侧重代码能力的特点，官方标程长达近300行….">
+<meta name="keywords" content="OI,题解,LOJ,JOI,平衡树&#x2F;map&#x2F;set">
+<meta property="og:type" content="article">
+<meta property="og:title" content="[loj 2345][JOI 2016]縄張り 领地 题解">
+<meta property="og:url" content="https://waautomaton.tk/2018/05/01/loj-2345-题解/index.html">
 <meta property="og:site_name" content="WA自动机的博客">
+<meta property="og:description" content="题目链接https://loj.ac/problem/2345 https://www.luogu.org/problemnew/show/AT2440 https://joi2016ho.contest.atcoder.jp/tasks/joi2016ho_d 题解这题完全不符合JOI偏重考察思维难度而相对不侧重代码能力的特点，官方标程长达近300行….">
+<meta property="og:image" content="https://waautomaton.tk/static/images/loj-2345-题解/1.png">
+<meta property="og:updated_time" content="2018-05-01T13:27:36.617Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="WA自动机的博客">
+<meta name="twitter:title" content="[loj 2345][JOI 2016]縄張り 领地 题解">
+<meta name="twitter:description" content="题目链接https://loj.ac/problem/2345 https://www.luogu.org/problemnew/show/AT2440 https://joi2016ho.contest.atcoder.jp/tasks/joi2016ho_d 题解这题完全不符合JOI偏重考察思维难度而相对不侧重代码能力的特点，官方标程长达近300行….">
+<meta name="twitter:image" content="https://waautomaton.tk/static/images/loj-2345-题解/1.png">
   
     <link rel="alternative" href="/atom.xml" title="WA自动机的博客" type="application/atom+xml">
   
@@ -172,36 +179,44 @@ ga('send', 'pageview');
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-loj-2345-题解" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2017" class="archive-year">2017</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/10/31/bzoj-1217-lg-2279-HNOI-2003-消防局的设立-题解/" class="archive-article-date">
-  	<time datetime="2017-10-31T08:21:16.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-10-31</time>
-</a>
-        </div>
-    	 
+      <header class="article-header">
+        
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/10/31/bzoj-1217-lg-2279-HNOI-2003-消防局的设立-题解/">[bzoj 1217][lg 2279][HNOI 2003]消防局的设立 题解</a>
+    <h1 class="article-title" itemprop="name">
+      [loj 2345][JOI 2016]縄張り 领地 题解
     </h1>
   
 
-        <div class="article-info info-on-right">
-          
+        
+        <a href="/2018/05/01/loj-2345-题解/" class="archive-article-date">
+  	<time datetime="2018-05-01T12:33:53.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-05-01</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h4 id="题目链接"><a href="#题目链接" class="headerlink" title="题目链接"></a>题目链接</h4><p><a href="https://loj.ac/problem/2345" target="_blank" rel="external">https://loj.ac/problem/2345</a></p>
+<p><a href="https://www.luogu.org/problemnew/show/AT2440" target="_blank" rel="external">https://www.luogu.org/problemnew/show/AT2440</a></p>
+<p><a href="https://joi2016ho.contest.atcoder.jp/tasks/joi2016ho_d" target="_blank" rel="external">https://joi2016ho.contest.atcoder.jp/tasks/joi2016ho_d</a></p>
+<h4 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h4><p>这题完全不符合JOI偏重考察思维难度而相对不侧重代码能力的特点，官方标程长达近300<br>行….<br><a id="more"></a></p>
+<p>首先这题是一个移动序列重复k次，我们可以先求出单次的起点到终点的位移$(p,q)$。然后为了讨论和编程方便，不妨设$p&gt;0,q&gt;=0$（显然我们可以通过翻转图来做到这一点）（注意虽然loj的中文翻译里说保证不会出现$p=q=0$的情况，但实际上测试数据里是存在的，要特判一下这种情况。）<br>然后对于坐标系上的每一个点，我们都可以用$(x+pr,y+qr),0\le x &lt; p$的方式唯一地表示出来，记作$(x,y,r)$ 。<br>由于每一次重复移动序列，起点到终点的位移都是相同的，所以对于移动序列上相同位置的点，用上述方式表示出来时，$x,y$都是相同的，而r则是一段连续的数。所以我们可以把移动序列上的第i个点记为$(x_i,y_i,s_i,t_i)$，表示这个点实际上涵盖了点$(x_i,y_i,s_i),(x_i,y_i,s_i+1),…,(x_i,y_i,t_i-1),(x_i,y_i,t_i)$   </p>
+<p>我们可以把$(x,y)$相同的点全部并到一起，开一个map，key维护$(x,y)$，value维护所有的$(s_i,t_i)$，即<code>map&lt;pair&lt;int,int&gt;,vector&lt;pair&lt;int,int&gt;&gt;</code>  。这会方便我们下一步做区间交集。<br>然后我们考虑怎么统计答案。可以发现每一个小正方形4个顶点的坐标都是$(x,y,r),(x+1,y,r),(x,y+1,r),(x+1,y+1,r)$（当$x=p-1$的时候例外，此时4个点的坐标为$(x,y,r),(x+1-p,y-q,r+1),(x,y+1,r),(x+1-p,y+1-q,r+1)$，详见参考代码中的mov函数），所以我们只要暴力枚举每一个$(x,y,*)$，计算以它为左下角的正方形的四个顶点的r区间的交集（见下图），然后取长度贡献入答案即可。<br><img src="/static/images/loj-2345-题解/1.png" alt=""><br>复杂度上，我们要将$\mathcal O(n)$个元素插入map，并查询$\mathcal O(n)$次。对于vector，可以发现所有vector里的元素总数是$\mathcal O(n)$级别的，并且对于每个元素我们只会访问$\mathcal O(1)$次。所以总复杂度为$\mathcal O(n \log n)$</p>
+<h4 id="参考代码"><a href="#参考代码" class="headerlink" title="参考代码"></a>参考代码</h4><p>这题实现相当麻烦…我大量<del>滥用</del>使用了C++11和STL之后才做到比标程短了一半以上…<br><del>还好JOI不卡常</del></p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div><div class="line">82</div><div class="line">83</div><div class="line">84</div><div class="line">85</div><div class="line">86</div><div class="line">87</div><div class="line">88</div><div class="line">89</div><div class="line">90</div><div class="line">91</div><div class="line">92</div><div class="line">93</div><div class="line">94</div><div class="line">95</div><div class="line">96</div><div class="line">97</div><div class="line">98</div><div class="line">99</div><div class="line">100</div><div class="line">101</div><div class="line">102</div><div class="line">103</div><div class="line">104</div><div class="line">105</div><div class="line">106</div><div class="line">107</div><div class="line">108</div><div class="line">109</div><div class="line">110</div><div class="line">111</div><div class="line">112</div><div class="line">113</div><div class="line">114</div><div class="line">115</div><div class="line">116</div><div class="line">117</div><div class="line">118</div><div class="line">119</div><div class="line">120</div><div class="line">121</div><div class="line">122</div><div class="line">123</div><div class="line">124</div><div class="line">125</div><div class="line">126</div><div class="line">127</div><div class="line">128</div><div class="line">129</div><div class="line">130</div><div class="line">131</div><div class="line">132</div><div class="line">133</div><div class="line">134</div><div class="line">135</div></pre></td><td class="code"><pre><div class="line">#include &lt;bits/stdc++.h&gt;</div><div class="line">using namespace std;</div><div class="line">typedef long long LL;</div><div class="line">#define MAXN 100000</div><div class="line">char a[MAXN + 10];</div><div class="line">LL n, k,xx,yy;</div><div class="line">template &lt;typename Func1, typename Func2, typename Func3, typename Func4&gt;</div><div class="line">void doit(Func1 f1, Func2 f2, Func3 f3, Func4 f4)</div><div class="line">&#123;</div><div class="line">    for (int i = 1; i &lt;= n; ++i) &#123;</div><div class="line">        switch (a[i]) &#123;</div><div class="line">            case 'E':</div><div class="line">                f1(a[i]);</div><div class="line">                break;</div><div class="line">            case 'N':</div><div class="line">                f2(a[i]);</div><div class="line">                break;</div><div class="line">            case 'W':</div><div class="line">                f3(a[i]);</div><div class="line">                break;</div><div class="line">            case 'S':</div><div class="line">                f4(a[i]);</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line">using vpll = vector&lt;pair&lt;LL, LL&gt;&gt;;</div><div class="line">map&lt;pair&lt;int, int&gt;, vpll&gt; m;</div><div class="line">void merge(vpll &amp;a, const vpll &amp;b) //计算2个区间交集</div><div class="line">&#123;</div><div class="line">    vpll v;</div><div class="line">    auto p = b.begin();</div><div class="line">    for(const auto&amp; i:a) &#123;</div><div class="line">        while(true) &#123;</div><div class="line">            while (p-&gt;second &lt; i.first &amp;&amp; p != b.end()) ++p;</div><div class="line">            if (p == b.end()) break;</div><div class="line">            if (p-&gt;first &gt; i.second) break;</div><div class="line">            v.push_back(&#123;max(p-&gt;first, i.first), min(p-&gt;second, i.second)&#125;);</div><div class="line">            if (p-&gt;second&gt;i.second) break;</div><div class="line">            ++p;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">    a = std::move(v);</div><div class="line">&#125;</div><div class="line">int main()</div><div class="line">&#123;</div><div class="line">    scanf("%lld%lld", &amp;n, &amp;k);</div><div class="line">    scanf("%s", a + 1);</div><div class="line">    doit([](const char &amp;now) &#123; ++xx; &#125;, [](const char &amp;now) &#123; ++yy; &#125;, [](const char &amp;now) &#123; --xx; &#125;,</div><div class="line">         [](const char &amp;now) &#123; --yy; &#125;);</div><div class="line">    if (xx &lt; 0) &#123;</div><div class="line">        xx = -xx;</div><div class="line">        doit([](char &amp;now) &#123; now = 'W'; &#125;, [](char &amp;now) &#123;&#125;, [](char &amp;now) &#123; now = 'E'; &#125;,</div><div class="line">             [](char &amp;now) &#123;&#125;);</div><div class="line">    &#125;</div><div class="line">    if (yy &lt; 0) &#123;</div><div class="line">        yy = -yy;</div><div class="line">        doit([](char &amp;now) &#123;&#125;, [](char &amp;now) &#123; now = 'S'; &#125;, [](char &amp;now) &#123;&#125;,</div><div class="line">             [](char &amp;now) &#123; now = 'N'; &#125;);</div><div class="line">    &#125;</div><div class="line">    if (xx == 0) &#123;</div><div class="line">        swap(xx, yy);</div><div class="line">        doit([](char &amp;now) &#123; now = 'N'; &#125;, [](char &amp;now) &#123; now = 'E'; &#125;,</div><div class="line">             [](char &amp;now) &#123; now = 'S'; &#125;, [](char &amp;now) &#123; now = 'W'; &#125;);</div><div class="line">    &#125;</div><div class="line">    if (xx==0) &#123;</div><div class="line">        k=1;</div><div class="line">        xx=100000;</div><div class="line">    &#125;</div><div class="line">    for (int i = 0; i &lt;= n; ++i) &#123;</div><div class="line">        static int x = 0, y = 0;</div><div class="line">        if (i&gt;0)</div><div class="line">            switch (a[i]) &#123;</div><div class="line">                case 'E':</div><div class="line">                    ++x;</div><div class="line">                    break;</div><div class="line">                case 'N':</div><div class="line">                    ++y;</div><div class="line">                    break;</div><div class="line">                case 'W':</div><div class="line">                    --x;</div><div class="line">                    break;</div><div class="line">                case 'S':</div><div class="line">                    --y;</div><div class="line">                    break;</div><div class="line">            &#125;</div><div class="line">        int tx=x,ty=y;</div><div class="line">        LL t = (tx + n * xx) / xx - n;</div><div class="line">        tx -= t * xx;</div><div class="line">        ty -= t * yy;</div><div class="line">        m[&#123; tx, ty &#125;].push_back(&#123; t + 1, t + k &#125;);</div><div class="line">    &#125;</div><div class="line">    for (auto &amp;i : m) &#123; //合并区间</div><div class="line">        auto &amp;v = i.second;</div><div class="line">        sort(v.begin(), v.end());</div><div class="line">        LL l = INT_MIN, r = INT_MIN;</div><div class="line">        vpll nv;</div><div class="line">        for (const auto &amp;j : v) &#123;</div><div class="line">            if (l == INT_MIN) &#123;</div><div class="line">                l = j.first;</div><div class="line">                r = j.second;</div><div class="line">            &#125; else if (j.first &lt;= r + 1)</div><div class="line">                r = max(r, j.second);</div><div class="line">            else &#123;</div><div class="line">                nv.push_back(&#123; l, r &#125;);</div><div class="line">                l = j.first;</div><div class="line">                r = j.second;</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">        nv.push_back(&#123; l, r &#125;);</div><div class="line">        v = nv;</div><div class="line">    &#125;</div><div class="line">    LL ans=0;</div><div class="line">    for (const auto &amp;i : m) &#123;</div><div class="line">        int x = i.first.first, y = i.first.second;</div><div class="line">        auto py=[](int x,int y)&#123;return (x&lt;xx)?make_pair(x,y):make_pair(int(x-xx),int(y-yy));&#125;;</div><div class="line">        if (m.count(py(x+1,y)) + m.count(py(x,y+1)) + m.count(py(x+1,y+1)) == 3) &#123; //若其他3个位置都存在点</div><div class="line">            auto v = i.second;</div><div class="line">            auto mov=[&amp;](int x,int y) &#123;</div><div class="line">                if (x&lt;xx) return m[&#123;x,y&#125;];</div><div class="line">                auto point=py(x,y);</div><div class="line">                auto p=m[point];</div><div class="line">                vpll v(p.size());</div><div class="line">                std::transform(p.begin(),p.end(),v.begin(),[](const pair&lt;LL,LL&gt; &amp;x)&#123;return make_pair(x.first-1,x.second-1);&#125;);</div><div class="line">                return v;</div><div class="line">            &#125;;</div><div class="line">            merge(v, mov(x+1,y));</div><div class="line">            merge(v, mov(x, y + 1));</div><div class="line">            merge(v, mov( x + 1, y + 1 ));</div><div class="line">            for(const auto &amp;j:v)</div><div class="line">                ans+=j.second-j.first+1;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">    cout&lt;&lt;ans&lt;&lt;endl;</div><div class="line">    return 0;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h4 id="参考文献"><a href="#参考文献" class="headerlink" title="参考文献"></a>参考文献</h4><p><a href="https://www.ioi-jp.org/joi/2015/2016-ho/2016-ho-t4-review.pdf" target="_blank" rel="external">官方题解（日文）</a>  </p>
+<p><a href="https://www.ioi-jp.org/joi/2015/2016-ho/2016-ho-t4-sample.cpp" target="_blank" rel="external">官方标程</a></p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
@@ -215,128 +230,149 @@ ga('send', 'pageview');
         		</li>
       		 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">BZOJ</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">LOJ</a>
         		</li>
       		 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">洛谷</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">JOI</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">平衡树/map/set</a>
         		</li>
       		
 		</ul>
 	</div>
 
-          
+      
 
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="http://s.jiathis.com/qrcode.php?url=https://waautomaton.tk/2018/05/01/loj-2345-题解/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/10/18/bzoj-2049-lg-2147-SDOI-2008-Cave-洞穴勘测-题解/" class="archive-article-date">
-  	<time datetime="2017-10-18T01:48:53.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-10-18</time>
-</a>
+<nav id="article-nav">
+  
+  
+    <a href="/2018/04/29/loj-2350-题解/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">[loj 2350][JOI 2018]定期券 月票购买 题解</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
         </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/10/18/bzoj-2049-lg-2147-SDOI-2008-Cave-洞穴勘测-题解/">[bzoj 2049][lg 2147][SDOI 2008]Cave 洞穴勘测 题解</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">OI</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">题解</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">BZOJ</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">洛谷</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
+        
+        
+        <div class="toc-container tooltip-left">
+            <i class="icon-font icon-category"></i>
+            <div class="tooltip tooltip-east">
+                <span class="tooltip-item">
+                </span>
+                <span class="tooltip-content">
+                    <div class="toc-article">
+                    <ol class="toc"><li class="toc-item toc-level-4"><a class="toc-link" href="#题目链接"><span class="toc-number">1.</span> <span class="toc-text">题目链接</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#题解"><span class="toc-number">2.</span> <span class="toc-text">题解</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#参考代码"><span class="toc-number">3.</span> <span class="toc-text">参考代码</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#参考文献"><span class="toc-number">4.</span> <span class="toc-text">参考文献</span></a></li></ol>
+                    </div>
+                </span>
+            </div>
         </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/10/12/cdn/" class="archive-article-date">
-  	<time datetime="2017-10-12T12:36:08.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-10-12</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/10/12/cdn/">终于给网站配置上cdn了</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">测试</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/测试//" class="article-tag-list-link color3">测试</a>
-        		</li>
-      		
-		</ul>
-	</div>
+        
+    </div>
+</aside>
 
 
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
+
   
   
-    </div></section>
   
 
-    
+  
+
+  
+
+  
+  <div id="gitment-ctn"></div> 
+<link rel="stylesheet" href="//imsun.github.io/gitment/style/default.css">
+<script src="//imsun.github.io/gitment/dist/gitment.browser.js"></script>
+<script>
+var gitment = new Gitment({
+  id: "https://waautomaton.tk/2018/05/01/loj-2345-题解/",
+  owner: 'WAAutoMaton',
+  repo: 'waautomaton.github.io',
+  oauth: {
+    client_id: '082c6dd30bf1c82ac2ab',
+    client_secret: '21e8a445c3b2c58db1433f3419a74991452ec0a9',
+  },
+})
+gitment.render('gitment-ctn')
+</script>
+  
 
 
           </div>
@@ -359,8 +395,8 @@ ga('send', 'pageview');
 	var yiliaConfig = {
 		mathjax: true,
 		isHome: false,
-		isPost: false,
-		isArchive: true,
+		isPost: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false,
