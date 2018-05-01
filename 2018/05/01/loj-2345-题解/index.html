@@ -16,7 +16,7 @@
 <meta property="og:site_name" content="WA自动机的博客">
 <meta property="og:description" content="题目链接https://loj.ac/problem/2345 https://www.luogu.org/problemnew/show/AT2440 https://joi2016ho.contest.atcoder.jp/tasks/joi2016ho_d 题解这题完全不符合JOI偏重考察思维难度而相对不侧重代码能力的特点，官方标程长达近300行….">
 <meta property="og:image" content="https://waautomaton.tk/static/images/loj-2345-题解/1.png">
-<meta property="og:updated_time" content="2018-05-01T13:27:36.617Z">
+<meta property="og:updated_time" content="2018-05-01T13:33:22.874Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="[loj 2345][JOI 2016]縄張り 领地 题解">
 <meta name="twitter:description" content="题目链接https://loj.ac/problem/2345 https://www.luogu.org/problemnew/show/AT2440 https://joi2016ho.contest.atcoder.jp/tasks/joi2016ho_d 题解这题完全不符合JOI偏重考察思维难度而相对不侧重代码能力的特点，官方标程长达近300行….">
@@ -202,7 +202,7 @@ ga('send', 'pageview');
         <h4 id="题目链接"><a href="#题目链接" class="headerlink" title="题目链接"></a>题目链接</h4><p><a href="https://loj.ac/problem/2345" target="_blank" rel="external">https://loj.ac/problem/2345</a></p>
 <p><a href="https://www.luogu.org/problemnew/show/AT2440" target="_blank" rel="external">https://www.luogu.org/problemnew/show/AT2440</a></p>
 <p><a href="https://joi2016ho.contest.atcoder.jp/tasks/joi2016ho_d" target="_blank" rel="external">https://joi2016ho.contest.atcoder.jp/tasks/joi2016ho_d</a></p>
-<h4 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h4><p>这题完全不符合JOI偏重考察思维难度而相对不侧重代码能力的特点，官方标程长达近300<br>行….<br><a id="more"></a></p>
+<h4 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h4><p>这题完全不符合JOI偏重考察思维难度而相对不侧重代码能力的特点，官方标程长达近300行….<br><a id="more"></a></p>
 <p>首先这题是一个移动序列重复k次，我们可以先求出单次的起点到终点的位移$(p,q)$。然后为了讨论和编程方便，不妨设$p&gt;0,q&gt;=0$（显然我们可以通过翻转图来做到这一点）（注意虽然loj的中文翻译里说保证不会出现$p=q=0$的情况，但实际上测试数据里是存在的，要特判一下这种情况。）<br>然后对于坐标系上的每一个点，我们都可以用$(x+pr,y+qr),0\le x &lt; p$的方式唯一地表示出来，记作$(x,y,r)$ 。<br>由于每一次重复移动序列，起点到终点的位移都是相同的，所以对于移动序列上相同位置的点，用上述方式表示出来时，$x,y$都是相同的，而r则是一段连续的数。所以我们可以把移动序列上的第i个点记为$(x_i,y_i,s_i,t_i)$，表示这个点实际上涵盖了点$(x_i,y_i,s_i),(x_i,y_i,s_i+1),…,(x_i,y_i,t_i-1),(x_i,y_i,t_i)$   </p>
 <p>我们可以把$(x,y)$相同的点全部并到一起，开一个map，key维护$(x,y)$，value维护所有的$(s_i,t_i)$，即<code>map&lt;pair&lt;int,int&gt;,vector&lt;pair&lt;int,int&gt;&gt;</code>  。这会方便我们下一步做区间交集。<br>然后我们考虑怎么统计答案。可以发现每一个小正方形4个顶点的坐标都是$(x,y,r),(x+1,y,r),(x,y+1,r),(x+1,y+1,r)$（当$x=p-1$的时候例外，此时4个点的坐标为$(x,y,r),(x+1-p,y-q,r+1),(x,y+1,r),(x+1-p,y+1-q,r+1)$，详见参考代码中的mov函数），所以我们只要暴力枚举每一个$(x,y,*)$，计算以它为左下角的正方形的四个顶点的r区间的交集（见下图），然后取长度贡献入答案即可。<br><img src="/static/images/loj-2345-题解/1.png" alt=""><br>复杂度上，我们要将$\mathcal O(n)$个元素插入map，并查询$\mathcal O(n)$次。对于vector，可以发现所有vector里的元素总数是$\mathcal O(n)$级别的，并且对于每个元素我们只会访问$\mathcal O(1)$次。所以总复杂度为$\mathcal O(n \log n)$</p>
 <h4 id="参考代码"><a href="#参考代码" class="headerlink" title="参考代码"></a>参考代码</h4><p>这题实现相当麻烦…我大量<del>滥用</del>使用了C++11和STL之后才做到比标程短了一半以上…<br><del>还好JOI不卡常</del></p>
