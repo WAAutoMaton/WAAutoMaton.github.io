@@ -6,14 +6,25 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="https://waautomaton.tk">
-  <title>Archives: 2018 | WA自动机的博客</title>
+  <title>配对堆 | WA自动机的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="WA自动机的博客">
-<meta property="og:url" content="https://waautomaton.tk/archives/2018/index.html">
+  <meta name="description" content="简介&amp;emsp;&amp;emsp;配对堆是一个支持插入，查询/删除最小值，合并，修改元素等操作的数据结构，也就是俗称的可并堆。&amp;emsp;&amp;emsp;配对堆在OI界十分的冷门，很少见有人用，但其实跑得非常快（复杂度低还常数小），很好写（如果没有decrease-key操作的话），除了不能可持久化（因为配对堆复杂度是势能分析出来的均摊复杂度）之外比常见的左偏树高到不知道哪里去了（逃。">
+<meta name="keywords" content="OI,数据结构,堆">
+<meta property="og:type" content="article">
+<meta property="og:title" content="配对堆">
+<meta property="og:url" content="https://waautomaton.tk/2018/05/13/配对堆/index.html">
 <meta property="og:site_name" content="WA自动机的博客">
+<meta property="og:description" content="简介&amp;emsp;&amp;emsp;配对堆是一个支持插入，查询/删除最小值，合并，修改元素等操作的数据结构，也就是俗称的可并堆。&amp;emsp;&amp;emsp;配对堆在OI界十分的冷门，很少见有人用，但其实跑得非常快（复杂度低还常数小），很好写（如果没有decrease-key操作的话），除了不能可持久化（因为配对堆复杂度是势能分析出来的均摊复杂度）之外比常见的左偏树高到不知道哪里去了（逃。">
+<meta property="og:image" content="https://waautomaton.tk/static/images/配对堆/4.png">
+<meta property="og:image" content="https://waautomaton.tk/static/images/配对堆/5.png">
+<meta property="og:image" content="https://waautomaton.tk/static/images/配对堆/6.png">
+<meta property="og:image" content="https://waautomaton.tk/static/images/配对堆/7.jpg">
+<meta property="og:image" content="https://waautomaton.tk/static/images/配对堆/8.jpg">
+<meta property="og:updated_time" content="2018-05-13T08:17:58.372Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="WA自动机的博客">
+<meta name="twitter:title" content="配对堆">
+<meta name="twitter:description" content="简介&amp;emsp;&amp;emsp;配对堆是一个支持插入，查询/删除最小值，合并，修改元素等操作的数据结构，也就是俗称的可并堆。&amp;emsp;&amp;emsp;配对堆在OI界十分的冷门，很少见有人用，但其实跑得非常快（复杂度低还常数小），很好写（如果没有decrease-key操作的话），除了不能可持久化（因为配对堆复杂度是势能分析出来的均摊复杂度）之外比常见的左偏树高到不知道哪里去了（逃。">
+<meta name="twitter:image" content="https://waautomaton.tk/static/images/配对堆/4.png">
   
     <link rel="alternative" href="/atom.xml" title="WA自动机的博客" type="application/atom+xml">
   
@@ -172,36 +183,113 @@ ga('send', 'pageview');
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-配对堆" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2018" class="archive-year">2018</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/05/13/配对堆/" class="archive-article-date">
-  	<time datetime="2018-05-13T02:48:17.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-05-13</time>
-</a>
-        </div>
-    	 
+      <header class="article-header">
+        
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/05/13/配对堆/">配对堆</a>
+    <h1 class="article-title" itemprop="name">
+      配对堆
     </h1>
   
 
-        <div class="article-info info-on-right">
-          
+        
+        <a href="/2018/05/13/配对堆/" class="archive-article-date">
+  	<time datetime="2018-05-13T02:48:17.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-05-13</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h3><p>&emsp;&emsp;配对堆是一个支持插入，查询/删除最小值，合并，修改元素等操作的数据结构，也就是俗称的可并堆。<br>&emsp;&emsp;配对堆在OI界十分的冷门，很少见有人用，但其实跑得非常快（复杂度低还常数小），很好写（如果没有decrease-key操作的话），除了不能可持久化（因为配对堆复杂度是势能分析出来的均摊复杂度）之外比常见的左偏树高到不知道哪里去了（逃。<br><a id="more"></a><br>&emsp;&emsp;下面简单比较一下配对堆和其他比较有名的堆的复杂度。  （注：本文默认堆为小根堆）</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">操作\数据结构</th>
+<th style="text-align:center">配对堆</th>
+<th style="text-align:center">二叉堆</th>
+<th style="text-align:center">左偏树</th>
+<th style="text-align:center">斐波那契堆</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">插入（insert）</td>
+<td style="text-align:center">$\mathcal O(1)$</td>
+<td style="text-align:center">$\mathcal O(\log n)$</td>
+<td style="text-align:center">$\mathcal O(\log n)$</td>
+<td style="text-align:center">$\mathcal O(1)$</td>
+</tr>
+<tr>
+<td style="text-align:center">查询最小值（find-min）</td>
+<td style="text-align:center">$\mathcal O(1)$</td>
+<td style="text-align:center">$\mathcal O(1)$</td>
+<td style="text-align:center">$\mathcal O(1)$</td>
+<td style="text-align:center">$\mathcal O(1)$</td>
+</tr>
+<tr>
+<td style="text-align:center">删除最小值（delete-min）</td>
+<td style="text-align:center">$\mathcal O(\log n)$</td>
+<td style="text-align:center">$\mathcal O(\log n)$</td>
+<td style="text-align:center">$\mathcal O(\log n)$</td>
+<td style="text-align:center">$\mathcal O(\log n)$</td>
+</tr>
+<tr>
+<td style="text-align:center">合并</td>
+<td style="text-align:center">$\mathcal O(1)$</td>
+<td style="text-align:center">$\mathcal O(n)$</td>
+<td style="text-align:center">$\mathcal O(\log n)$</td>
+<td style="text-align:center">$\mathcal O(1)$</td>
+</tr>
+<tr>
+<td style="text-align:center">减小一个元素的值</td>
+<td style="text-align:center">$o(\log n) (下界\Omega(\log \log n) ，\\上界\mathcal O(2^{2\sqrt{\log \log n}}) )$</td>
+<td style="text-align:center">$\mathcal O(\log n)$</td>
+<td style="text-align:center">$\mathcal O(n)$</td>
+<td style="text-align:center">$\mathcal O(1)$</td>
+</tr>
+</tbody>
+</table>
+<p>&emsp;&emsp;可见配对堆的复杂度可以吊打除斐波那契堆外的其他几种常见堆（而且实际运行效率也高于斐波那契堆）。</p>
+<h3 id="定义"><a href="#定义" class="headerlink" title="定义"></a>定义</h3><p>&emsp;&emsp;这里给出一个较为简单的定义，严谨的定义可以查阅参考文献[4]。<br> &emsp;&emsp;配对堆是一棵带权多叉树（如下图），其权值满足堆性质（即每个节点的权值都小于他的所有儿子）。<br><img src="/static/images/配对堆/4.png" alt=""><br>（注：本文所有图片均来自参考文献[6]）<br> &emsp;&emsp;通常我们使用左儿子右兄弟表示法储存一个配对堆(如下图)，从下文可以看出这种方式可以方便配对堆的实现。  </p>
+<p><img src="/static/images/配对堆/5.png" alt="">  </p>
+<h3 id="各项操作的实现"><a href="#各项操作的实现" class="headerlink" title="各项操作的实现"></a>各项操作的实现</h3><h4 id="存储结构定义"><a href="#存储结构定义" class="headerlink" title="存储结构定义"></a>存储结构定义</h4><p>&emsp;&emsp;就是普通的带权多叉树的表示方式。  </p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">struct</span> <span class="title">Node</span></span></div><div class="line">&#123;</div><div class="line">	T v; <span class="comment">//T为权值类型</span></div><div class="line">	Node *ch,*xd; <span class="comment">//ch为该节点儿子的指针，xd为该节点兄弟的指针。</span></div><div class="line">    			 <span class="comment">//若该节点没有儿子/兄弟则指针指向虚拟空节点。</span></div><div class="line">&#125;;</div></pre></td></tr></table></figure>
+<h4 id="查询最小值"><a href="#查询最小值" class="headerlink" title="查询最小值"></a>查询最小值</h4><p>&emsp;&emsp;从配对堆的定义可看出，配对堆的根节点的权值一定最小，所以我们直接返回根节点就行了。</p>
+<h4 id="合并"><a href="#合并" class="headerlink" title="合并"></a>合并</h4><p>&emsp;&emsp;配对堆的合并操作极为简单，直接把根节点权值较大的那个配对堆设成另一个的儿子就好了。（如下图）<br><img src="/static/images/配对堆/6.png" alt=""><br>&emsp;&emsp;复杂度的话，操作本身显然是$\mathcal O(1)$ 的，考虑到对势能的影响后还是均摊$\mathcal O(1)$</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="function">Node* <span class="title">merge</span><span class="params">(Node* a,Node* b)</span></span></div><div class="line">&#123;</div><div class="line">     <span class="comment">// 若有一个为空则直接返回另一个</span></div><div class="line">	<span class="keyword">if</span> (a==node) <span class="keyword">return</span> b;  </div><div class="line">	<span class="keyword">if</span> (b==node) <span class="keyword">return</span> a;</div><div class="line">	<span class="keyword">if</span> (a-&gt;v&gt;b-&gt;v) swap(a,b); <span class="comment">//swap后a为权值小的堆，b为权值大的堆</span></div><div class="line">    <span class="comment">//将b设为a的儿子</span></div><div class="line">	b-&gt;xd=a-&gt;ch; </div><div class="line">	a-&gt;ch=b;</div><div class="line">	<span class="keyword">return</span> a;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h4 id="插入"><a href="#插入" class="headerlink" title="插入"></a>插入</h4><p>&emsp;&emsp;合并都有了，插入就直接把新元素视为一个新的配对堆和原堆合并就行啦。</p>
+<h4 id="删除最小值"><a href="#删除最小值" class="headerlink" title="删除最小值"></a>删除最小值</h4><p>&emsp;&emsp;到这里我们会发现，前面的几个操作都十分偷懒，几乎完全没有对数据结构进行维护，所以删除最小值是配对堆最重要的（也是最复杂）的一个惭怍。<br>&emsp;&emsp;考虑我们拿掉根节点之后会发生什么，根节点原来的所有儿子构成了一片森林，所以我们要把他们合并起来。<br>&emsp;&emsp;一个很自然的想法是使用merge函数把儿子们一个一个并在一起，这样做的话正确性是显然的，但是会导致复杂度退化到$\mathcal O(n)$。为了保证删除操作的均摊复杂度为$\mathcal O(\log n)$，配对堆的发明者提出了一个神仙做法：把儿子们两两配成一对（我怀疑这就是“配对堆”这个名字的由来），先用merge操作把被配成同一对的2个儿子合并到一起(见下图1)，再按上述方法将新产生的堆暴力合并在一起（见下图2）。听起来好像没什么很大的区别？但这样就是能证明均摊复杂度为$\mathcal O(\log n)$。<br><img src="/static/images/配对堆/7.jpg" alt=""><br><img src="/static/images/配对堆/8.jpg" alt="">    </p>
+<p>​    实现上，这里我介绍一种好写的递归式实现，缺点是常数比迭代式大，但在配对堆本身优越的常数下这个问题并不大（通常跑的还是比左偏树快）。<br>    先实现一个辅助函数<del>（实际上是主要函数）</del><code>merges</code>，作用是合并一个节点的所有兄弟。  </p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="function">Node* <span class="title">merges</span><span class="params">(Node* x)</span> </span></div><div class="line">&#123;</div><div class="line">	<span class="keyword">if</span> (x==node || x-&gt;xd==node) <span class="keyword">return</span> x; <span class="comment">//如果该树为空或他没有兄弟（即他的父亲的儿子数小于2），就直接return。</span></div><div class="line">	Node* a=x-&gt;xd,*b=a-&gt;xd; <span class="comment">//a：x的一个兄弟，b：x的另一个兄弟</span></div><div class="line">	x-&gt;xd=a-&gt;xd=node; <span class="comment">//拆散</span></div><div class="line">	<span class="keyword">return</span> merge(merge(x,a),merges(b)); <span class="comment">//核心部分</span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>&emsp;&emsp;最后一句话是该函数的核心，这句话分三部分：  </p>
+<ol>
+<li><code>merge(x,a)</code>“配对”了x和a。  </li>
+<li><code>merges(b)</code>递归合并b和他的兄弟们。  </li>
+<li><p>将上面2个操作产生的2个新树合并。<br>&emsp;&emsp; 然后<code>delete-min</code>操作就显然了。  </p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="function">Node* <span class="title">delete_min</span><span class="params">(Node* x)</span></span></div><div class="line">&#123;</div><div class="line">    <span class="keyword">return</span> merges(x-&gt;ch);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</li>
+</ol>
+<h4 id="减小一个元素的值"><a href="#减小一个元素的值" class="headerlink" title="减小一个元素的值"></a>减小一个元素的值</h4><p>&emsp;&emsp;要实现这个操作，需要给节点添加一个father指针，会使实现变得相对复杂。<br>    【未完待续】</p>
+<h3 id="复杂度分析"><a href="#复杂度分析" class="headerlink" title="复杂度分析"></a>复杂度分析</h3><p>&emsp;&emsp;分析是永远不可能会分析的，只会记个结论了。(逃<br>&emsp;&emsp;好吧正经的说，要计算配对堆的复杂度需要势能分析<del>（但是我不会）</del>，感兴趣的话可以看配对堆的论文。</p>
+<h3 id="参考文献"><a href="#参考文献" class="headerlink" title="参考文献"></a>参考文献</h3><ol>
+<li><a href="https://hooccooh.blog.luogu.org/solution-p3377" target="_blank" rel="external">HOOCCOOH的题解</a></li>
+<li>集训队论文《黄源河–左偏树的特点及其应用》</li>
+<li><a href="https://wenku.baidu.com/view/f2527bc2bb4cf7ec4afed06d.html" target="_blank" rel="external">《配对堆中文版》</a></li>
+<li><a href="https://en.wikipedia.org/wiki/Pairing_heap" target="_blank" rel="external">维基百科pairing heap词条</a></li>
+<li><a href="https://blog.csdn.net/luofeixiongsix/article/details/50640668" target="_blank" rel="external">https://blog.csdn.net/luofeixiongsix/article/details/50640668</a></li>
+<li><a href="https://brilliant.org/wiki/pairing-heap/" target="_blank" rel="external">https://brilliant.org/wiki/pairing-heap/</a></li>
+</ol>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
@@ -221,310 +309,135 @@ ga('send', 'pageview');
 		</ul>
 	</div>
 
-          
+      
 
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="http://s.jiathis.com/qrcode.php?url=https://waautomaton.tk/2018/05/13/配对堆/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/05/01/loj-2345-题解/" class="archive-article-date">
-  	<time datetime="2018-05-01T12:33:53.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-05-01</time>
-</a>
+<nav id="article-nav">
+  
+  
+    <a href="/2018/05/01/loj-2345-题解/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">[loj 2345][JOI 2016]縄張り 领地 题解</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
         </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/05/01/loj-2345-题解/">[loj 2345][JOI 2016]縄張り 领地 题解</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">OI</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">题解</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">LOJ</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">JOI</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">平衡树/map/set</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
+        
+        
+        <div class="toc-container tooltip-left">
+            <i class="icon-font icon-category"></i>
+            <div class="tooltip tooltip-east">
+                <span class="tooltip-item">
+                </span>
+                <span class="tooltip-content">
+                    <div class="toc-article">
+                    <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#简介"><span class="toc-number">1.</span> <span class="toc-text">简介</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#定义"><span class="toc-number">2.</span> <span class="toc-text">定义</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#各项操作的实现"><span class="toc-number">3.</span> <span class="toc-text">各项操作的实现</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#存储结构定义"><span class="toc-number">3.1.</span> <span class="toc-text">存储结构定义</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#查询最小值"><span class="toc-number">3.2.</span> <span class="toc-text">查询最小值</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#合并"><span class="toc-number">3.3.</span> <span class="toc-text">合并</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#插入"><span class="toc-number">3.4.</span> <span class="toc-text">插入</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#删除最小值"><span class="toc-number">3.5.</span> <span class="toc-text">删除最小值</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#减小一个元素的值"><span class="toc-number">3.6.</span> <span class="toc-text">减小一个元素的值</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#复杂度分析"><span class="toc-number">4.</span> <span class="toc-text">复杂度分析</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#参考文献"><span class="toc-number">5.</span> <span class="toc-text">参考文献</span></a></li></ol>
+                    </div>
+                </span>
+            </div>
         </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/04/29/loj-2350-题解/" class="archive-article-date">
-  	<time datetime="2018-04-29T13:07:56.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-04-29</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/04/29/loj-2350-题解/">[loj 2350][JOI 2018]定期券 月票购买 题解</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">OI</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">题解</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">LOJ</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">JOI</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">最短路</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/04/18/loj-2335-足球-题解/" class="archive-article-date">
-  	<time datetime="2018-04-18T12:26:22.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-04-18</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/04/18/loj-2335-足球-题解/">[loj 2335][JOI 2017]サッカー 足球 题解</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">OI</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">题解</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">LOJ</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">JOI</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">最短路</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/03/29/不删除莫队学习笔记/" class="archive-article-date">
-  	<time datetime="2018-03-29T13:19:12.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-03-29</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/03/29/不删除莫队学习笔记/">【占坑待填】不删除莫队学习笔记</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">OI</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/03/11/树链剖分/" class="archive-article-date">
-  	<time datetime="2018-03-11T12:11:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-03-11</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/03/11/树链剖分/">树链剖分的一种节约代码量的实现姿势</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">OI</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">树链剖分</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/03/04/AStar-K短路/" class="archive-article-date">
-  	<time datetime="2018-03-04T07:16:33.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-03-04</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/03/04/AStar-K短路/">【占坑待填】从分层图最短路到A* K短路算法</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">OI</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/OI//" class="article-tag-list-link color3">OI</a>
-        		</li>
-      		
-		</ul>
-	</div>
+        
+    </div>
+</aside>
 
 
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
+
   
   
-    </div></section>
   
 
-    
+  
+
+  
+
+  
+  <div id="gitment-ctn"></div> 
+<link rel="stylesheet" href="//imsun.github.io/gitment/style/default.css">
+<script src="//imsun.github.io/gitment/dist/gitment.browser.js"></script>
+<script>
+var gitment = new Gitment({
+  id: "https://waautomaton.tk/2018/05/13/配对堆/",
+  owner: 'WAAutoMaton',
+  repo: 'waautomaton.github.io',
+  oauth: {
+    client_id: '082c6dd30bf1c82ac2ab',
+    client_secret: '21e8a445c3b2c58db1433f3419a74991452ec0a9',
+  },
+})
+gitment.render('gitment-ctn')
+</script>
+  
 
 
           </div>
@@ -547,8 +460,8 @@ ga('send', 'pageview');
 	var yiliaConfig = {
 		mathjax: true,
 		isHome: false,
-		isPost: false,
-		isArchive: true,
+		isPost: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false,
