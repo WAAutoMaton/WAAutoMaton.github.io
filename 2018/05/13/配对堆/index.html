@@ -20,7 +20,7 @@
 <meta property="og:image" content="https://waautomaton.tk/static/images/配对堆/6.png">
 <meta property="og:image" content="https://waautomaton.tk/static/images/配对堆/7.jpg">
 <meta property="og:image" content="https://waautomaton.tk/static/images/配对堆/8.jpg">
-<meta property="og:updated_time" content="2018-05-13T08:17:58.372Z">
+<meta property="og:updated_time" content="2018-07-10T03:17:52.012Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="配对堆">
 <meta name="twitter:description" content="简介&amp;emsp;&amp;emsp;配对堆是一个支持插入，查询/删除最小值，合并，修改元素等操作的数据结构，也就是俗称的可并堆。&amp;emsp;&amp;emsp;配对堆在OI界十分的冷门，很少见有人用，但其实跑得非常快（复杂度低还常数小），很好写（如果没有decrease-key操作的话），除了不能可持久化（因为配对堆复杂度是势能分析出来的均摊复杂度）之外比常见的左偏树高到不知道哪里去了（逃。">
@@ -247,12 +247,12 @@ ga('send', 'pageview');
 <td style="text-align:center">减小一个元素的值</td>
 <td style="text-align:center">$o(\log n) (下界\Omega(\log \log n) ，\\上界\mathcal O(2^{2\sqrt{\log \log n}}) )$</td>
 <td style="text-align:center">$\mathcal O(\log n)$</td>
-<td style="text-align:center">$\mathcal O(n)$</td>
+<td style="text-align:center">$\mathcal O(logn)$</td>
 <td style="text-align:center">$\mathcal O(1)$</td>
 </tr>
 </tbody>
 </table>
-<p>&emsp;&emsp;可见配对堆的复杂度可以吊打除斐波那契堆外的其他几种常见堆（而且实际运行效率也高于斐波那契堆）。</p>
+<p>update : negiizhao指出左偏树的decrease-key复杂度应为$O(logn)$<br>&emsp;&emsp;可见配对堆的复杂度可以吊打除斐波那契堆外的其他几种常见堆（而且实际运行效率也高于斐波那契堆）。</p>
 <h3 id="定义"><a href="#定义" class="headerlink" title="定义"></a>定义</h3><p>&emsp;&emsp;这里给出一个较为简单的定义，严谨的定义可以查阅参考文献[4]。<br> &emsp;&emsp;配对堆是一棵带权多叉树（如下图），其权值满足堆性质（即每个节点的权值都小于他的所有儿子）。<br><img src="/static/images/配对堆/4.png" alt=""><br>（注：本文所有图片均来自参考文献[6]）<br> &emsp;&emsp;通常我们使用左儿子右兄弟表示法储存一个配对堆(如下图)，从下文可以看出这种方式可以方便配对堆的实现。  </p>
 <p><img src="/static/images/配对堆/5.png" alt="">  </p>
 <h3 id="各项操作的实现"><a href="#各项操作的实现" class="headerlink" title="各项操作的实现"></a>各项操作的实现</h3><h4 id="存储结构定义"><a href="#存储结构定义" class="headerlink" title="存储结构定义"></a>存储结构定义</h4><p>&emsp;&emsp;就是普通的带权多叉树的表示方式。  </p>
@@ -263,15 +263,17 @@ ga('send', 'pageview');
 <h4 id="插入"><a href="#插入" class="headerlink" title="插入"></a>插入</h4><p>&emsp;&emsp;合并都有了，插入就直接把新元素视为一个新的配对堆和原堆合并就行啦。</p>
 <h4 id="删除最小值"><a href="#删除最小值" class="headerlink" title="删除最小值"></a>删除最小值</h4><p>&emsp;&emsp;到这里我们会发现，前面的几个操作都十分偷懒，几乎完全没有对数据结构进行维护，所以删除最小值是配对堆最重要的（也是最复杂）的一个惭怍。<br>&emsp;&emsp;考虑我们拿掉根节点之后会发生什么，根节点原来的所有儿子构成了一片森林，所以我们要把他们合并起来。<br>&emsp;&emsp;一个很自然的想法是使用merge函数把儿子们一个一个并在一起，这样做的话正确性是显然的，但是会导致复杂度退化到$\mathcal O(n)$。为了保证删除操作的均摊复杂度为$\mathcal O(\log n)$，配对堆的发明者提出了一个神仙做法：把儿子们两两配成一对（我怀疑这就是“配对堆”这个名字的由来），先用merge操作把被配成同一对的2个儿子合并到一起(见下图1)，再按上述方法将新产生的堆暴力合并在一起（见下图2）。听起来好像没什么很大的区别？但这样就是能证明均摊复杂度为$\mathcal O(\log n)$。<br><img src="/static/images/配对堆/7.jpg" alt=""><br><img src="/static/images/配对堆/8.jpg" alt="">    </p>
 <p>​    实现上，这里我介绍一种好写的递归式实现，缺点是常数比迭代式大，但在配对堆本身优越的常数下这个问题并不大（通常跑的还是比左偏树快）。<br>    先实现一个辅助函数<del>（实际上是主要函数）</del><code>merges</code>，作用是合并一个节点的所有兄弟。  </p>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="function">Node* <span class="title">merges</span><span class="params">(Node* x)</span> </span></div><div class="line">&#123;</div><div class="line">	<span class="keyword">if</span> (x==node || x-&gt;xd==node) <span class="keyword">return</span> x; <span class="comment">//如果该树为空或他没有兄弟（即他的父亲的儿子数小于2），就直接return。</span></div><div class="line">	Node* a=x-&gt;xd,*b=a-&gt;xd; <span class="comment">//a：x的一个兄弟，b：x的另一个兄弟</span></div><div class="line">	x-&gt;xd=a-&gt;xd=node; <span class="comment">//拆散</span></div><div class="line">	<span class="keyword">return</span> merge(merge(x,a),merges(b)); <span class="comment">//核心部分</span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h5 id="递归版本（推荐）"><a href="#递归版本（推荐）" class="headerlink" title="递归版本（推荐）"></a>递归版本（推荐）</h5><figure class="highlight cpp"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="function">Node* <span class="title">merges</span><span class="params">(Node* x)</span> </span></div><div class="line">&#123;</div><div class="line">	<span class="keyword">if</span> (x==node || x-&gt;xd==node) <span class="keyword">return</span> x; <span class="comment">//如果该树为空或他没有兄弟（即他的父亲的儿子数小于2），就直接return。</span></div><div class="line">	Node* a=x-&gt;xd,*b=a-&gt;xd; <span class="comment">//a：x的一个兄弟，b：x的另一个兄弟</span></div><div class="line">	x-&gt;xd=a-&gt;xd=node; <span class="comment">//拆散</span></div><div class="line">	<span class="keyword">return</span> merge(merge(x,a),merges(b)); <span class="comment">//核心部分</span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <p>&emsp;&emsp;最后一句话是该函数的核心，这句话分三部分：  </p>
 <ol>
 <li><code>merge(x,a)</code>“配对”了x和a。  </li>
 <li><code>merges(b)</code>递归合并b和他的兄弟们。  </li>
-<li><p>将上面2个操作产生的2个新树合并。<br>&emsp;&emsp; 然后<code>delete-min</code>操作就显然了。  </p>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="function">Node* <span class="title">delete_min</span><span class="params">(Node* x)</span></span></div><div class="line">&#123;</div><div class="line">    <span class="keyword">return</span> merges(x-&gt;ch);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-</li>
+<li>将上面2个操作产生的2个新树合并。  </li>
 </ol>
+<h5 id="迭代版本"><a href="#迭代版本" class="headerlink" title="迭代版本"></a>迭代版本</h5><figure class="highlight cpp"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="function">Node *<span class="title">merges</span><span class="params">(Node *x)</span></span></div><div class="line">&#123;</div><div class="line">	Node* t=x; x=x-&gt;xd;</div><div class="line">	t-&gt;xd=node;</div><div class="line">	<span class="keyword">while</span>(x-&gt;xd!=node) &#123;</div><div class="line">		Node* a=x-&gt;xd,*b=a-&gt;xd;</div><div class="line">		x-&gt;xd=a-&gt;xd=node;</div><div class="line">		t=merge(t,merge(x,a));</div><div class="line">		x=b;</div><div class="line">	&#125;</div><div class="line">	<span class="keyword">return</span> merge(t,x);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>&emsp;&emsp;由于迭代版本相对来说没那么好写，而且配对堆本身常数已经足够小，一般不会被卡常，所以仅推荐在极限卡常时使用。  </p>
+<p>&emsp;&emsp; 然后<code>delete-min</code>操作就显然了。  </p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="function">Node* <span class="title">delete_min</span><span class="params">(Node* x)</span></span></div><div class="line">&#123;</div><div class="line">    <span class="keyword">return</span> merges(x-&gt;ch);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <h4 id="减小一个元素的值"><a href="#减小一个元素的值" class="headerlink" title="减小一个元素的值"></a>减小一个元素的值</h4><p>&emsp;&emsp;要实现这个操作，需要给节点添加一个father指针，会使实现变得相对复杂。<br>    【未完待续】</p>
 <h3 id="复杂度分析"><a href="#复杂度分析" class="headerlink" title="复杂度分析"></a>复杂度分析</h3><p>&emsp;&emsp;分析是永远不可能会分析的，只会记个结论了。(逃<br>&emsp;&emsp;好吧正经的说，要计算配对堆的复杂度需要势能分析<del>（但是我不会）</del>，感兴趣的话可以看配对堆的论文。</p>
 <h3 id="参考文献"><a href="#参考文献" class="headerlink" title="参考文献"></a>参考文献</h3><ol>
@@ -402,7 +404,7 @@ ga('send', 'pageview');
                 </span>
                 <span class="tooltip-content">
                     <div class="toc-article">
-                    <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#简介"><span class="toc-number">1.</span> <span class="toc-text">简介</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#定义"><span class="toc-number">2.</span> <span class="toc-text">定义</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#各项操作的实现"><span class="toc-number">3.</span> <span class="toc-text">各项操作的实现</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#存储结构定义"><span class="toc-number">3.1.</span> <span class="toc-text">存储结构定义</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#查询最小值"><span class="toc-number">3.2.</span> <span class="toc-text">查询最小值</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#合并"><span class="toc-number">3.3.</span> <span class="toc-text">合并</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#插入"><span class="toc-number">3.4.</span> <span class="toc-text">插入</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#删除最小值"><span class="toc-number">3.5.</span> <span class="toc-text">删除最小值</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#减小一个元素的值"><span class="toc-number">3.6.</span> <span class="toc-text">减小一个元素的值</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#复杂度分析"><span class="toc-number">4.</span> <span class="toc-text">复杂度分析</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#参考文献"><span class="toc-number">5.</span> <span class="toc-text">参考文献</span></a></li></ol>
+                    <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#简介"><span class="toc-number">1.</span> <span class="toc-text">简介</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#定义"><span class="toc-number">2.</span> <span class="toc-text">定义</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#各项操作的实现"><span class="toc-number">3.</span> <span class="toc-text">各项操作的实现</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#存储结构定义"><span class="toc-number">3.1.</span> <span class="toc-text">存储结构定义</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#查询最小值"><span class="toc-number">3.2.</span> <span class="toc-text">查询最小值</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#合并"><span class="toc-number">3.3.</span> <span class="toc-text">合并</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#插入"><span class="toc-number">3.4.</span> <span class="toc-text">插入</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#删除最小值"><span class="toc-number">3.5.</span> <span class="toc-text">删除最小值</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#递归版本（推荐）"><span class="toc-number">3.5.1.</span> <span class="toc-text">递归版本（推荐）</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#迭代版本"><span class="toc-number">3.5.2.</span> <span class="toc-text">迭代版本</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#减小一个元素的值"><span class="toc-number">3.6.</span> <span class="toc-text">减小一个元素的值</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#复杂度分析"><span class="toc-number">4.</span> <span class="toc-text">复杂度分析</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#参考文献"><span class="toc-number">5.</span> <span class="toc-text">参考文献</span></a></li></ol>
                     </div>
                 </span>
             </div>
@@ -559,10 +561,6 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">其他</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">题解</a>
               </li>
              
@@ -572,10 +570,6 @@ MathJax.Hub.Queue(function() {
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">洛谷</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">测试</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -592,6 +586,14 @@ MathJax.Hub.Queue(function() {
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">平衡树/map/set</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">测试</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">其他</a>
               </li>
              
               <li class="article-tag-list-item">
