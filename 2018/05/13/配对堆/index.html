@@ -20,7 +20,7 @@
 <meta property="og:image" content="https://waautomaton.tk/static/images/配对堆/6.png">
 <meta property="og:image" content="https://waautomaton.tk/static/images/配对堆/7.jpg">
 <meta property="og:image" content="https://waautomaton.tk/static/images/配对堆/8.jpg">
-<meta property="og:updated_time" content="2018-07-17T14:02:38.267Z">
+<meta property="og:updated_time" content="2018-08-07T07:10:57.956Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="配对堆">
 <meta name="twitter:description" content="简介&amp;emsp;&amp;emsp;配对堆是一个支持插入，查询/删除最小值，合并，修改元素等操作的数据结构，也就是俗称的可并堆。&amp;emsp;&amp;emsp;配对堆在OI界十分的冷门，很少见有人用，但其实跑得非常快（复杂度低还常数小），很好写（如果没有decrease-key操作的话），除了不能可持久化（因为配对堆复杂度是势能分析出来的均摊复杂度）之外比常见的左偏树高到不知道哪里去了（逃。">
@@ -252,7 +252,7 @@ ga('send', 'pageview');
 </tr>
 </tbody>
 </table>
-<p>update : negiizhao指出左偏树的decrease-key复杂度应为$O(logn)$<br>&emsp;&emsp;可见配对堆的复杂度可以吊打除斐波那契堆外的其他几种常见堆（而且实际运行效率也高于斐波那契堆）。</p>
+<p>&emsp;&emsp;可见配对堆的复杂度可以吊打除斐波那契堆外的其他几种常见堆（而且实际运行效率也高于斐波那契堆）。</p>
 <h3 id="定义"><a href="#定义" class="headerlink" title="定义"></a>定义</h3><p>&emsp;&emsp;这里给出一个较为简单的定义，严谨的定义可以查阅参考文献[4]。<br> &emsp;&emsp;配对堆是一棵带权多叉树（如下图），其权值满足堆性质（即每个节点的权值都小于他的所有儿子）。<br><img src="/static/images/配对堆/4.png" alt=""><br>（注：本文所有图片均来自参考文献[6]）<br> &emsp;&emsp;通常我们使用左儿子右兄弟表示法储存一个配对堆(如下图)，从下文可以看出这种方式可以方便配对堆的实现。  </p>
 <p><img src="/static/images/配对堆/5.png" alt="">  </p>
 <h3 id="各项操作的实现"><a href="#各项操作的实现" class="headerlink" title="各项操作的实现"></a>各项操作的实现</h3><h4 id="存储结构定义"><a href="#存储结构定义" class="headerlink" title="存储结构定义"></a>存储结构定义</h4><p>&emsp;&emsp;就是普通的带权多叉树的表示方式。  </p>
@@ -374,15 +374,6 @@ ga('send', 'pageview');
 
   
 <nav id="article-nav">
-  
-    <a href="/2018/07/11/atcoder构造题选集/" id="article-nav-newer" class="article-nav-link-wrap">
-      <i class="icon-circle-left"></i>
-      <div class="article-nav-title">
-        
-          atcoder构造题选集
-        
-      </div>
-    </a>
   
   
     <a href="/2018/05/01/loj-2345-题解/" id="article-nav-older" class="article-nav-link-wrap">
@@ -566,15 +557,15 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">atcoder</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">灌水</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">其他</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">atcoder</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -607,6 +598,10 @@ MathJax.Hub.Queue(function() {
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">平衡树/map/set</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">区间DP</a>
               </li>
              
               <li class="article-tag-list-item">
