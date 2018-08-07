@@ -8,17 +8,17 @@
   <link rel="dns-prefetch" href="https://waautomaton.tk">
   <title>[loj 2725][JOI 2015]ケーキの切り分け２ 分蛋糕2 题解 | WA自动机的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="题目链接loj atcoder 一句话题意有一个含有n个数字的环，JOI和IOI在环上博弈，JOI一开始选择一个位置断开环并获得数字大小的收益，然后JOI和IOI轮流（从IOI开始）从序列两端选一个数字拿走，JOI可以任选，IOI只贪心的选更大的。求JOI能获得的收益的最大值。">
+  <meta name="description" content="题目链接lojatcoder 一句话题意有一个含有n个数字的环，JOI和IOI在环上博弈，JOI一开始选择一个位置断开环并获得数字大小的收益，然后JOI和IOI轮流（从IOI开始）从序列两端选一个数字拿走，JOI可以任选，IOI只贪心的选更大的。求JOI能获得的收益的最大值。">
 <meta name="keywords" content="OI,题解,LOJ,JOI,区间DP">
 <meta property="og:type" content="article">
 <meta property="og:title" content="[loj 2725][JOI 2015]ケーキの切り分け２ 分蛋糕2 题解">
 <meta property="og:url" content="https://waautomaton.tk/2018/08/07/loj-2725-分蛋糕-题解/index.html">
 <meta property="og:site_name" content="WA自动机的博客">
-<meta property="og:description" content="题目链接loj atcoder 一句话题意有一个含有n个数字的环，JOI和IOI在环上博弈，JOI一开始选择一个位置断开环并获得数字大小的收益，然后JOI和IOI轮流（从IOI开始）从序列两端选一个数字拿走，JOI可以任选，IOI只贪心的选更大的。求JOI能获得的收益的最大值。">
-<meta property="og:updated_time" content="2018-08-07T07:30:16.935Z">
+<meta property="og:description" content="题目链接lojatcoder 一句话题意有一个含有n个数字的环，JOI和IOI在环上博弈，JOI一开始选择一个位置断开环并获得数字大小的收益，然后JOI和IOI轮流（从IOI开始）从序列两端选一个数字拿走，JOI可以任选，IOI只贪心的选更大的。求JOI能获得的收益的最大值。">
+<meta property="og:updated_time" content="2018-08-07T07:40:06.744Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="[loj 2725][JOI 2015]ケーキの切り分け２ 分蛋糕2 题解">
-<meta name="twitter:description" content="题目链接loj atcoder 一句话题意有一个含有n个数字的环，JOI和IOI在环上博弈，JOI一开始选择一个位置断开环并获得数字大小的收益，然后JOI和IOI轮流（从IOI开始）从序列两端选一个数字拿走，JOI可以任选，IOI只贪心的选更大的。求JOI能获得的收益的最大值。">
+<meta name="twitter:description" content="题目链接lojatcoder 一句话题意有一个含有n个数字的环，JOI和IOI在环上博弈，JOI一开始选择一个位置断开环并获得数字大小的收益，然后JOI和IOI轮流（从IOI开始）从序列两端选一个数字拿走，JOI可以任选，IOI只贪心的选更大的。求JOI能获得的收益的最大值。">
   
     <link rel="alternative" href="/atom.xml" title="WA自动机的博客" type="application/atom+xml">
   
@@ -197,8 +197,7 @@ ga('send', 'pageview');
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h4 id="题目链接"><a href="#题目链接" class="headerlink" title="题目链接"></a>题目链接</h4><p><a href="https://loj.ac/problem/2725" target="_blank" rel="external">loj</a></p>
-<p><a href="https://beta.atcoder.jp/contests/joi2015ho/tasks/joi2015ho_b" target="_blank" rel="external">atcoder</a></p>
+        <h4 id="题目链接"><a href="#题目链接" class="headerlink" title="题目链接"></a>题目链接</h4><p><a href="https://loj.ac/problem/2725" target="_blank" rel="external">loj</a><br><a href="https://beta.atcoder.jp/contests/joi2015ho/tasks/joi2015ho_b" target="_blank" rel="external">atcoder</a></p>
 <h4 id="一句话题意"><a href="#一句话题意" class="headerlink" title="一句话题意"></a>一句话题意</h4><p>有一个含有n个数字的环，JOI和IOI在环上博弈，JOI一开始选择一个位置断开环并获得数字大小的收益，然后JOI和IOI轮流（从IOI开始）从序列两端选一个数字拿走，JOI可以任选，IOI只贪心的选更大的。求JOI能获得的收益的最大值。<br><a id="more"></a></p>
 <h4 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h4><p>&emsp;&emsp;一道显然的区间DP题，首先按照套路，把a数组复制一份，枚举断环的点。<br>&emsp;&emsp;然后设计状态$f_{i,j}$表示区间i到j，JOI先手能获得的最大贡献，状态转移为枚举JOI的两种决策，然后确定IOI的决策，向后转移即可（具体转移可见代码），单次状态转移复杂度$O(1)$ ，总状态数$O(n^2)$，记忆化搜索即可得到$O(n^2)$的总复杂度 </p>
 <h4 id="参考代码"><a href="#参考代码" class="headerlink" title="参考代码"></a>参考代码</h4><figure class="highlight cpp"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div></pre></td><td class="code"><pre><div class="line"><span class="comment">/*+lmake</span></div><div class="line"> * DEFINE += WAAUTOMATON</div><div class="line"> */</div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></div><div class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</div><div class="line"><span class="keyword">typedef</span> <span class="keyword">long</span> <span class="keyword">long</span> LL;</div><div class="line"><span class="keyword">typedef</span> <span class="keyword">unsigned</span> <span class="keyword">long</span> <span class="keyword">long</span> ULL;</div><div class="line"></div><div class="line"><span class="keyword">template</span> &lt;<span class="keyword">size_t</span> _I_Buffer_Size = <span class="number">1</span> &lt;&lt; <span class="number">23</span>, <span class="keyword">size_t</span> _O_Buffer_Size = <span class="number">1</span> &lt;&lt; <span class="number">23</span>&gt;</div><div class="line">struct IO_Tp</div><div class="line">&#123;</div><div class="line">    <span class="comment">//这是读入优化板子，为了阅读体验此部分内容省略。</span></div><div class="line">&#125;;</div><div class="line"> IO_Tp&lt;&gt; IO;</div><div class="line"><span class="keyword">const</span> <span class="keyword">int</span> maxn=<span class="number">2000</span>;</div><div class="line"><span class="keyword">int</span> a[<span class="number">2</span>*maxn+<span class="number">10</span>];</div><div class="line">LL f[<span class="number">2</span>*maxn+<span class="number">10</span>][<span class="number">2</span>*maxn+<span class="number">10</span>]; <span class="comment">//记忆化用数组</span></div><div class="line"><span class="function">LL <span class="title">dp</span><span class="params">(<span class="keyword">int</span> l,<span class="keyword">int</span> r)</span></span></div><div class="line">&#123;</div><div class="line">	<span class="keyword">if</span> (l&gt;r) <span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">	<span class="keyword">if</span> (l==r) <span class="keyword">return</span> a[l];</div><div class="line">	<span class="keyword">if</span> (l+<span class="number">1</span>==r) <span class="keyword">return</span> max(a[l],a[r]); <span class="comment">//边界条件</span></div><div class="line">	<span class="keyword">if</span> (f[l][r]&gt;<span class="number">0</span>) <span class="keyword">return</span> f[l][r];</div><div class="line">	LL ans=<span class="number">0</span>;</div><div class="line">	<span class="keyword">if</span> (a[l+<span class="number">1</span>]&gt;a[r]) </div><div class="line">		ans=max(ans,a[l]+dp(l+<span class="number">2</span>,r));</div><div class="line">	<span class="keyword">else</span></div><div class="line">		ans=max(ans,a[l]+dp(l+<span class="number">1</span>,r<span class="number">-1</span>));</div><div class="line">	<span class="keyword">if</span> (a[l]&gt;a[r<span class="number">-1</span>])</div><div class="line">		ans=max(ans,a[r]+dp(l+<span class="number">1</span>,r<span class="number">-1</span>));</div><div class="line">	<span class="keyword">else</span></div><div class="line">		ans=max(ans,a[r]+dp(l,r<span class="number">-2</span>));</div><div class="line">	<span class="keyword">return</span> f[l][r]=ans;</div><div class="line">&#125;</div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></div><div class="line">&#123;</div><div class="line">	<span class="keyword">int</span> n;</div><div class="line">	IO&gt;&gt;n;</div><div class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>; i&lt;=n; ++i) &#123;</div><div class="line">		IO&gt;&gt;a[i];</div><div class="line">		a[i+n]=a[i];</div><div class="line">	&#125;</div><div class="line">	LL ans=<span class="number">0</span>;</div><div class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>; i&lt;=n; ++i) &#123;</div><div class="line">		ans=max(ans,dp(i,i+n<span class="number">-1</span>));	<span class="comment">//枚举从哪个位置断开环</span></div><div class="line">	&#125;</div><div class="line">	IO&lt;&lt;ans&lt;&lt;<span class="string">'\n'</span>;</div><div class="line">    <span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
@@ -300,6 +299,15 @@ ga('send', 'pageview');
 
   
 <nav id="article-nav">
+  
+    <a href="/2018/08/07/loj-2726-JOI公园-题解/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          [loj 2726][JOI 2015]JOI公園 JOI公园 题解
+        
+      </div>
+    </a>
   
   
     <a href="/2018/05/13/配对堆/" id="article-nav-older" class="article-nav-link-wrap">
@@ -487,11 +495,11 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">其他</a>
+                <a href="javascript:void(0)" class="js-tag color3">灌水</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">灌水</a>
+                <a href="javascript:void(0)" class="js-tag color3">其他</a>
               </li>
              
               <li class="article-tag-list-item">
