@@ -15,7 +15,7 @@
 <meta property="og:url" content="https://waautomaton.tk/2018/08/07/loj-2727-题解/index.html">
 <meta property="og:site_name" content="WA自动机的博客">
 <meta property="og:description" content="题目链接lojatcoder">
-<meta property="og:updated_time" content="2018-08-07T13:27:45.251Z">
+<meta property="og:updated_time" content="2018-08-08T02:14:52.780Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="[loj 2727][JOI 2015]舞踏会 舞会 题解">
 <meta name="twitter:description" content="题目链接lojatcoder">
@@ -199,7 +199,7 @@ ga('send', 'pageview');
       
         <h4 id="题目链接"><a href="#题目链接" class="headerlink" title="题目链接"></a>题目链接</h4><p><a href="https://loj.ac/problem/2727" target="_blank" rel="external">loj</a><br><a href="https://beta.atcoder.jp/contests/joi2015ho/tasks/joi2015ho_d" target="_blank" rel="external">atcoder</a></p>
 <a id="more"></a>
-<h4 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h4><p>&emsp;&emsp;又是一道不看题解想不出来…看完题解感觉好简单的题….好吧这次没题解看了，看的是标程…<br>&emsp;&emsp;首先二分答案mid，以下称熟练度大于等于i的位置为“满足条件”，否则为“不满足条件”。<br>&emsp;&emsp;统计熟练度满足条件的 <strong>自由</strong> 贵族数量，记为cnt。<br>&emsp;&emsp;设数组$f_i$表示若要使得第i个位置最终满足条件，所需要的自由贵族数量，可得<br>$$f_i=\left\{ \begin{aligned} 1， 第i个位置没有固定贵族 \\ 0，第i个位置有固定贵族且满足条件 \\ inf，第i个位置有固定贵族且不满足条件 \end{aligned} \right.$$<br>&emsp;&emsp;设当前序列为l~r，则$f_{r+1}$应由$f_l,f_{l+1},f_{l+2}$转移得到。由题意可知，要使新数满足条件，原来的3个数中至少要有2个满足条件，因此新数的f值为原来3个f值中较小的2个的和，然后我们就可以$O(n)$暴力模拟求得最后剩下的那个数的f值，即为要使答案满足条件所需的最少自由贵族数量，与之前算出的cnt比较即可。具体细节可见代码及注释</p>
+<h4 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h4><p>&emsp;&emsp;又是一道不看题解想不出来…看完题解感觉好简单的题….好吧这次没题解看了，看的是标程…<br>&emsp;&emsp;首先二分答案mid，以下称熟练度大于等于i的位置为“满足条件”，否则为“不满足条件”。<br>&emsp;&emsp;统计熟练度满足条件的 <strong>自由</strong> 贵族数量，记为cnt。<br>&emsp;&emsp;设数组$f_i$表示若要使得第i个位置最终满足条件，所需要的自由贵族数量，可得<br>$$f_i=\left\{ \begin{aligned} 1， 第i个位置没有固定贵族 \\ 0，第i个位置有固定贵族且满足条件 \\ inf，第i个位置有固定贵族且不满足条件 \end{aligned} \right.$$<br>&emsp;&emsp;(注：如果发现公式渲染挂了，请右键公式-&gt;Math Settings-&gt;Math Renderer-&gt;SVG)<br>&emsp;&emsp;设当前序列为l~r，则$f_{r+1}$应由$f_l,f_{l+1},f_{l+2}$转移得到。由题意可知，要使新数满足条件，原来的3个数中至少要有2个满足条件，因此新数的f值为原来3个f值中较小的2个的和，然后我们就可以$O(n)$暴力模拟求得最后剩下的那个数的f值，即为要使答案满足条件所需的最少自由贵族数量，与之前算出的cnt比较即可。具体细节可见代码及注释</p>
 <h4 id="参考代码"><a href="#参考代码" class="headerlink" title="参考代码"></a>参考代码</h4><figure class="highlight cpp"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></div><div class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</div><div class="line"><span class="keyword">typedef</span> <span class="keyword">long</span> <span class="keyword">long</span> LL;</div><div class="line"><span class="keyword">typedef</span> <span class="keyword">unsigned</span> <span class="keyword">long</span> <span class="keyword">long</span> ULL;</div><div class="line"></div><div class="line"><span class="keyword">template</span> &lt;<span class="keyword">size_t</span> _I_Buffer_Size = <span class="number">1</span> &lt;&lt; <span class="number">23</span>, <span class="keyword">size_t</span> _O_Buffer_Size = <span class="number">1</span> &lt;&lt; <span class="number">23</span>&gt;</div><div class="line">struct IO_Tp</div><div class="line">&#123;</div><div class="line">    <span class="comment">//这是读入优化板子，为了阅读体验此部分内容省略。</span></div><div class="line">&#125;;</div><div class="line"> IO_Tp&lt;&gt; IO;</div><div class="line"><span class="keyword">const</span> <span class="keyword">int</span> maxn = <span class="number">100000</span>;</div><div class="line"><span class="keyword">const</span> <span class="keyword">int</span> inf =INT_MAX/<span class="number">5</span>;</div><div class="line"><span class="keyword">int</span> a[<span class="number">2</span> * maxn + <span class="number">10</span>], f[<span class="number">2</span> * maxn + <span class="number">10</span>], g[<span class="number">2</span> * maxn + <span class="number">10</span>];</div><div class="line"><span class="keyword">int</span> n, m;</div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">merge</span><span class="params">(<span class="keyword">int</span> a,<span class="keyword">int</span> b,<span class="keyword">int</span> c)</span></span></div><div class="line">&#123;</div><div class="line">	<span class="keyword">int</span> x[<span class="number">3</span>]=&#123;a,b,c&#125;;</div><div class="line">	sort(x,x+<span class="number">3</span>);</div><div class="line">	<span class="keyword">return</span> x[<span class="number">0</span>]+x[<span class="number">1</span>];</div><div class="line">&#125;</div><div class="line"><span class="function"><span class="keyword">bool</span> <span class="title">check</span><span class="params">(<span class="keyword">int</span> mid)</span></span></div><div class="line">&#123;</div><div class="line">    <span class="keyword">int</span> cnt = <span class="number">0</span>;</div><div class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = m+<span class="number">1</span>; i &lt;= n; ++i) <span class="comment">//统计cnt</span></div><div class="line">        <span class="keyword">if</span> (a[i] &gt;= mid)</div><div class="line">            ++cnt; </div><div class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>; i&lt;=n; ++i) &#123; <span class="comment">//初始化f数组</span></div><div class="line">		<span class="keyword">if</span> (g[i]==<span class="number">-1</span>)</div><div class="line">			f[i]=<span class="number">1</span>;</div><div class="line">		<span class="keyword">else</span> <span class="keyword">if</span> (g[i]&gt;=mid)</div><div class="line">			f[i]=<span class="number">0</span>;</div><div class="line">		<span class="keyword">else</span></div><div class="line">			f[i]=inf;</div><div class="line">	&#125;</div><div class="line">	<span class="keyword">int</span> l=<span class="number">1</span>,r=n;</div><div class="line">	<span class="keyword">while</span>(l&lt;r) &#123; <span class="comment">//暴力计算出最终f值</span></div><div class="line">		<span class="keyword">int</span> t=merge(f[l],f[l+<span class="number">1</span>],f[l+<span class="number">2</span>]);	</div><div class="line">		<span class="keyword">if</span> (t&gt;inf) t=inf;</div><div class="line">		l+=<span class="number">3</span>;</div><div class="line">		f[++r]=t;</div><div class="line">	&#125;</div><div class="line">	<span class="keyword">return</span> f[l]&lt;=cnt; <span class="comment">//将f值与cnt比较</span></div><div class="line">&#125;</div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></div><div class="line">&#123;</div><div class="line">    iopen();</div><div class="line">    IO &gt;&gt; n &gt;&gt; m;</div><div class="line">    <span class="built_in">memset</span>(g, <span class="number">-1</span>, <span class="keyword">sizeof</span>(g));</div><div class="line">    <span class="keyword">int</span> mxa = <span class="number">0</span>;</div><div class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= m; ++i) &#123;</div><div class="line">        <span class="keyword">int</span> p;</div><div class="line">        IO &gt;&gt; a[i] &gt;&gt; p;</div><div class="line">        g[p] = a[i];</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = m + <span class="number">1</span>; i &lt;= n; ++i) &#123;</div><div class="line">        IO &gt;&gt; a[i];</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= n; ++i) &#123;</div><div class="line">        mxa = max(mxa, a[i]);</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">int</span> l = <span class="number">0</span>, r = mxa;</div><div class="line">    <span class="keyword">while</span> (l &lt; r) &#123;<span class="comment">//二分答案</span></div><div class="line">        <span class="keyword">int</span> mid = (l + r + <span class="number">1</span>) / <span class="number">2</span>;</div><div class="line">        <span class="keyword">if</span> (check(mid))</div><div class="line">            l = mid;</div><div class="line">        <span class="keyword">else</span></div><div class="line">            r = mid - <span class="number">1</span>;</div><div class="line">    &#125;</div><div class="line">	IO&lt;&lt;l&lt;&lt;<span class="string">'\n'</span>;</div><div class="line">    <span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 
       
@@ -482,6 +482,14 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">灌水</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">其他</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">题解</a>
               </li>
              
@@ -510,15 +518,15 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">灌水</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">其他</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">平衡树/map/set</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">区间DP</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">树链剖分</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -527,14 +535,6 @@ MathJax.Hub.Queue(function() {
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">堆</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">树链剖分</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">区间DP</a>
               </li>
             
             <div class="clearfix"></div>
