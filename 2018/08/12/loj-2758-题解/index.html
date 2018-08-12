@@ -6,21 +6,19 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="https://waautomaton.tk">
-  <title>Nazo Game | WA自动机的博客</title>
+  <title>[loj 2758][JOI 2014]年轮蛋糕 题解 | WA自动机的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="宣传一下一个网页闯关游戏Nazo Game网址Nazo Game 介绍我也不知道说啥啊自己去玩吧。丢张首页截图跑。">
-<meta name="keywords" content="其他">
+  <meta name="description" content="题目链接loj">
+<meta name="keywords" content="OI,题解,LOJ,JOI,二分,贪心">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Nazo Game">
-<meta property="og:url" content="https://waautomaton.tk/2017/07/17/Nazo-Game/index.html">
+<meta property="og:title" content="[loj 2758][JOI 2014]年轮蛋糕 题解">
+<meta property="og:url" content="https://waautomaton.tk/2018/08/12/loj-2758-题解/index.html">
 <meta property="og:site_name" content="WA自动机的博客">
-<meta property="og:description" content="宣传一下一个网页闯关游戏Nazo Game网址Nazo Game 介绍我也不知道说啥啊自己去玩吧。丢张首页截图跑。">
-<meta property="og:image" content="https://waautomaton.tk/static/images/Nazo_Game/1.png">
-<meta property="og:updated_time" content="2017-12-29T12:50:09.019Z">
+<meta property="og:description" content="题目链接loj">
+<meta property="og:updated_time" content="2018-08-12T12:36:21.006Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Nazo Game">
-<meta name="twitter:description" content="宣传一下一个网页闯关游戏Nazo Game网址Nazo Game 介绍我也不知道说啥啊自己去玩吧。丢张首页截图跑。">
-<meta name="twitter:image" content="https://waautomaton.tk/static/images/Nazo_Game/1.png">
+<meta name="twitter:title" content="[loj 2758][JOI 2014]年轮蛋糕 题解">
+<meta name="twitter:description" content="题目链接loj">
   
     <link rel="alternative" href="/atom.xml" title="WA自动机的博客" type="application/atom+xml">
   
@@ -179,28 +177,30 @@ ga('send', 'pageview');
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-Nazo-Game" class="article article-type-post " itemscope itemprop="blogPost">
+            <article id="post-loj-2758-题解" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 class="article-title" itemprop="name">
-      Nazo Game
+      [loj 2758][JOI 2014]年轮蛋糕 题解
     </h1>
   
 
         
-        <a href="/2017/07/17/Nazo-Game/" class="archive-article-date">
-  	<time datetime="2017-07-17T08:17:06.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-07-17</time>
+        <a href="/2018/08/12/loj-2758-题解/" class="archive-article-date">
+  	<time datetime="2018-08-12T00:36:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-08-12</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="宣传一下一个网页闯关游戏Nazo-Game"><a href="#宣传一下一个网页闯关游戏Nazo-Game" class="headerlink" title="宣传一下一个网页闯关游戏Nazo Game"></a>宣传一下一个网页闯关游戏Nazo Game</h1><h2 id="网址"><a href="#网址" class="headerlink" title="网址"></a>网址</h2><p><a href="http://nazo.one-story.cn/nazo-start.html" target="_blank" rel="external">Nazo Game</a></p>
-<h2 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h2><p>我也不知道说啥啊自己去玩吧。<br>丢张首页截图跑。<br><img src="/static/images/Nazo_Game/1.png" alt=""></p>
+        <h4 id="题目链接"><a href="#题目链接" class="headerlink" title="题目链接"></a>题目链接</h4><p><a href="https://loj.ac/problem/2758" target="_blank" rel="external">loj</a>  </p>
+<a id="more"></a>
+<h4 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h4><p>&emsp;&emsp;套路题，首先显然先二分答案，然后枚举第一刀切口，贪心找出第二刀和第三刀的位置，判是否合法即可，由于后两刀位置是单调变化的所以单次check复杂度$O(n)$，总复杂度$O(n \log n$</p>
+<h4 id="参考代码"><a href="#参考代码" class="headerlink" title="参考代码"></a>参考代码</h4><figure class="highlight cpp"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></div><div class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</div><div class="line"><span class="keyword">typedef</span> <span class="keyword">long</span> <span class="keyword">long</span> LL;</div><div class="line"><span class="keyword">typedef</span> <span class="keyword">unsigned</span> <span class="keyword">long</span> <span class="keyword">long</span> ULL;</div><div class="line"></div><div class="line"><span class="keyword">template</span> &lt;<span class="keyword">size_t</span> _I_Buffer_Size = <span class="number">1</span> &lt;&lt; <span class="number">23</span>, <span class="keyword">size_t</span> _O_Buffer_Size = <span class="number">1</span> &lt;&lt; <span class="number">23</span>&gt;</div><div class="line">struct IO_Tp</div><div class="line">&#123;</div><div class="line">    <span class="comment">//这是读入优化板子，为了阅读体验此部分内容省略。</span></div><div class="line">&#125;;</div><div class="line"> IO_Tp&lt;&gt; IO;</div><div class="line"><span class="keyword">const</span> <span class="keyword">int</span> maxn=<span class="number">3</span>*<span class="number">100000</span>;</div><div class="line"><span class="keyword">int</span> a[maxn+<span class="number">10</span>];</div><div class="line">LL sum[maxn+<span class="number">10</span>];</div><div class="line">	<span class="keyword">int</span> n;</div><div class="line"><span class="function">LL <span class="title">calc</span><span class="params">(<span class="keyword">int</span> l,<span class="keyword">int</span> r)</span></span></div><div class="line">&#123;</div><div class="line">	<span class="keyword">if</span> (l&lt;=r) <span class="keyword">return</span> sum[r]-sum[l];</div><div class="line">	<span class="keyword">else</span> <span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">&#125;</div><div class="line"><span class="function"><span class="keyword">bool</span> <span class="title">check</span><span class="params">(LL mid)</span></span></div><div class="line">&#123;</div><div class="line">	<span class="keyword">int</span> p1=<span class="number">0</span>,p2=<span class="number">0</span>,p3=<span class="number">0</span>;</div><div class="line">	<span class="keyword">for</span>(p1=<span class="number">0</span>; p1&lt;<span class="number">2</span>*n; ++p1) &#123;</div><div class="line">		<span class="keyword">while</span>(p2&lt;=<span class="number">3</span>*n &amp;&amp; calc(p1,p2)&lt;mid) ++p2;</div><div class="line">		<span class="keyword">while</span>(p3&lt;=<span class="number">3</span>*n &amp;&amp; calc(p2,p3)&lt;mid) ++p3;</div><div class="line">		<span class="keyword">if</span> (p3&gt;<span class="number">3</span>*n) <span class="keyword">return</span> <span class="literal">false</span>;</div><div class="line">		<span class="keyword">if</span> (calc(p3,p1+n)&gt;=mid) <span class="keyword">return</span> <span class="literal">true</span>;</div><div class="line">	&#125;</div><div class="line">	<span class="keyword">return</span> <span class="literal">false</span>;</div><div class="line">&#125;</div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></div><div class="line">&#123;</div><div class="line">	iopen();</div><div class="line">	IO&gt;&gt;n;</div><div class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>; i&lt;=n; ++i) &#123;</div><div class="line">		IO&gt;&gt;a[i];</div><div class="line">		sum[i]=sum[i<span class="number">-1</span>]+a[i];</div><div class="line">	&#125;</div><div class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>; i&lt;=n; ++i) &#123;</div><div class="line">		a[n+i]=a[i];</div><div class="line">		sum[n+i]=sum[n+i<span class="number">-1</span>]+a[n+i];</div><div class="line">	&#125;</div><div class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=n+<span class="number">1</span>; i&lt;=<span class="number">2</span>*n; ++i) &#123;</div><div class="line">		a[n+i]=a[i];</div><div class="line">		sum[n+i]=sum[n+i<span class="number">-1</span>]+a[n+i];</div><div class="line">	&#125;</div><div class="line">	LL l=<span class="number">0</span>,r=sum[n];</div><div class="line">	<span class="keyword">while</span>(l&lt;r) &#123;</div><div class="line">		LL mid=(l+r+<span class="number">1</span>)/<span class="number">2</span>;</div><div class="line">		<span class="keyword">if</span> (check(mid)) l=mid;</div><div class="line">		<span class="keyword">else</span> r=mid<span class="number">-1</span>;</div><div class="line">	&#125;</div><div class="line">	IO&lt;&lt;r&lt;&lt;<span class="string">'\n'</span>;</div><div class="line">    <span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 
       
 
@@ -214,7 +214,27 @@ ga('send', 'pageview');
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">其他</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">OI</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">题解</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">LOJ</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">JOI</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">二分</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">贪心</a>
         		</li>
       		
 		</ul>
@@ -270,7 +290,7 @@ ga('send', 'pageview');
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="http://s.jiathis.com/qrcode.php?url=https://waautomaton.tk/2017/07/17/Nazo-Game/" alt="微信分享二维码">
+      <img src="http://s.jiathis.com/qrcode.php?url=https://waautomaton.tk/2018/08/12/loj-2758-题解/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -284,18 +304,9 @@ ga('send', 'pageview');
   
 <nav id="article-nav">
   
-    <a href="/2017/09/20/solution_dp1/" id="article-nav-newer" class="article-nav-link-wrap">
-      <i class="icon-circle-left"></i>
-      <div class="article-nav-title">
-        
-          DP练习题题解
-        
-      </div>
-    </a>
   
-  
-    <a href="/2017/07/07/test/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">test</div>
+    <a href="/2018/08/07/loj-2727-题解/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">[loj 2727][JOI 2015]舞踏会 舞会 题解</div>
       <i class="icon-circle-right"></i>
     </a>
   
@@ -322,7 +333,7 @@ ga('send', 'pageview');
                 </span>
                 <span class="tooltip-content">
                     <div class="toc-article">
-                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#宣传一下一个网页闯关游戏Nazo-Game"><span class="toc-number">1.</span> <span class="toc-text">宣传一下一个网页闯关游戏Nazo Game</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#网址"><span class="toc-number">1.1.</span> <span class="toc-text">网址</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#介绍"><span class="toc-number">1.2.</span> <span class="toc-text">介绍</span></a></li></ol></li></ol>
+                    <ol class="toc"><li class="toc-item toc-level-4"><a class="toc-link" href="#题目链接"><span class="toc-number">1.</span> <span class="toc-text">题目链接</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#题解"><span class="toc-number">2.</span> <span class="toc-text">题解</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#参考代码"><span class="toc-number">3.</span> <span class="toc-text">参考代码</span></a></li></ol>
                     </div>
                 </span>
             </div>
@@ -347,7 +358,7 @@ ga('send', 'pageview');
 <script src="//imsun.github.io/gitment/dist/gitment.browser.js"></script>
 <script>
 var gitment = new Gitment({
-  id: "https://waautomaton.tk/2017/07/17/Nazo-Game/",
+  id: "https://waautomaton.tk/2018/08/12/loj-2758-题解/",
   owner: 'WAAutoMaton',
   repo: 'waautomaton.github.io',
   oauth: {
