@@ -15,7 +15,7 @@
 <meta property="og:url" content="https://waautomaton.tk/2018/08/12/loj-2759-题解/index.html">
 <meta property="og:site_name" content="WA自动机的博客">
 <meta property="og:description" content="题目链接loj">
-<meta property="og:updated_time" content="2018-08-12T14:00:42.509Z">
+<meta property="og:updated_time" content="2018-08-12T14:01:55.007Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="[loj 2759][JOI 2014]飞天鼠 题解">
 <meta name="twitter:description" content="题目链接loj">
@@ -199,7 +199,7 @@ ga('send', 'pageview');
       
         <h4 id="题目链接"><a href="#题目链接" class="headerlink" title="题目链接"></a>题目链接</h4><p><a href="https://loj.ac/problem/2759" target="_blank" rel="external">loj</a>  </p>
 <a id="more"></a>
-<h4 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h4><p>&emsp;&emsp;首先有一个结论：一定存在一个最优解使得对于任意可在X时间内到达的点，从起点到这个点的路程中不向上爬；对于大于X时间的部分，一定不向下爬。（作为一名大胆猜想绝不证明的OI选手，证明自然是没有了的。）<br>&emsp;&emsp;所以我们只需要知道到某一个点的最短时间，即可确定到这个点时飞天鼠在树上的高度，这个高度是唯一的（在满足上面的结论的情况下），并且这个状态有一个优秀的性质——若s到t的最短路经过了k，则其中s到k的路径一定是s到k的最短路径。又因为整个过程“边权”都是非负的，所以我们可以用dijkstra算法求出最短路（即最优解）。若使用stl的优先队列总复杂度$O((n+m)logm)$<br>&emsp;&emsp;注意到这里我们的实际“边权”依赖于端点的最短路的值，因此边权实际上是在做dij时动态计算的。  </p>
+<h4 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h4><p>&emsp;&emsp;首先有一个结论：一定存在一个最优解使得对于任意可在X时间内到达的点，从起点到这个点的路程中不向上爬；对于大于X时间的部分，一定不向下爬。（作为一名大胆猜想绝不证明的OI选手，证明自然是没有的。）<br>&emsp;&emsp;所以我们只需要知道到某一个点的最短时间，即可确定到这个点时飞天鼠在树上的高度，这个高度是唯一的（在满足上面的结论的情况下），并且这个状态有一个优秀的性质——若s到t的最短路经过了k，则其中s到k的路径一定是s到k的最短路径。又因为整个过程“边权”都是非负的，所以我们可以用dijkstra算法求出最短路（即最优解）。若使用stl的优先队列总复杂度$O((n+m)logm)$<br>&emsp;&emsp;注意到这里我们的实际“边权”依赖于端点的最短路的值，因此边权实际上是在做dij时动态计算的。  </p>
 <h4 id="参考代码"><a href="#参考代码" class="headerlink" title="参考代码"></a>参考代码</h4><figure class="highlight cpp"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div><div class="line">82</div><div class="line">83</div><div class="line">84</div><div class="line">85</div><div class="line">86</div><div class="line">87</div><div class="line">88</div><div class="line">89</div><div class="line">90</div><div class="line">91</div><div class="line">92</div><div class="line">93</div><div class="line">94</div><div class="line">95</div><div class="line">96</div><div class="line">97</div><div class="line">98</div><div class="line">99</div><div class="line">100</div><div class="line">101</div><div class="line">102</div><div class="line">103</div><div class="line">104</div><div class="line">105</div><div class="line">106</div><div class="line">107</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></div><div class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</div><div class="line"><span class="keyword">typedef</span> <span class="keyword">long</span> <span class="keyword">long</span> LL;</div><div class="line"><span class="keyword">typedef</span> <span class="keyword">unsigned</span> <span class="keyword">long</span> <span class="keyword">long</span> ULL;</div><div class="line"></div><div class="line"><span class="keyword">template</span> &lt;<span class="keyword">size_t</span> _I_Buffer_Size = <span class="number">1</span> &lt;&lt; <span class="number">23</span>, <span class="keyword">size_t</span> _O_Buffer_Size = <span class="number">1</span> &lt;&lt; <span class="number">23</span>&gt;</div><div class="line">struct IO_Tp</div><div class="line">&#123;</div><div class="line">    <span class="comment">//这是读入优化板子，为了阅读体验此部分内容省略。</span></div><div class="line">&#125;;</div><div class="line"> IO_Tp&lt;&gt; IO;</div><div class="line"><span class="keyword">const</span> <span class="keyword">int</span> maxn = <span class="number">100000</span>;</div><div class="line"><span class="keyword">const</span> <span class="keyword">int</span> maxm = <span class="number">300000</span>;</div><div class="line"><span class="class"><span class="keyword">struct</span> <span class="title">Edge</span></span></div><div class="line">&#123;</div><div class="line">    <span class="keyword">int</span> to, next, w;</div><div class="line">&#125; e[<span class="number">2</span> * maxm + <span class="number">10</span>];</div><div class="line"><span class="keyword">int</span> head[maxn + <span class="number">10</span>];</div><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">addEdge</span><span class="params">(<span class="keyword">int</span> a, <span class="keyword">int</span> b, <span class="keyword">int</span> w)</span></span></div><div class="line">&#123;</div><div class="line">    <span class="keyword">static</span> <span class="keyword">int</span> c = <span class="number">0</span>;</div><div class="line">    e[++c] = (Edge)&#123; b, head[a], w &#125;;</div><div class="line">    head[a] = c;</div><div class="line">	e[++c]=(Edge)&#123;a,head[b],w&#125;;</div><div class="line">	head[b]=c;</div><div class="line">&#125;</div><div class="line"><span class="keyword">int</span> a[maxn + <span class="number">10</span>];</div><div class="line"><span class="keyword">int</span> n, m, beg;</div><div class="line"><span class="class"><span class="keyword">struct</span> <span class="title">Data</span></span></div><div class="line">&#123;</div><div class="line">    <span class="keyword">int</span> p;</div><div class="line">    LL dis;</div><div class="line">    Data(<span class="keyword">int</span> p, LL dis)</div><div class="line">        : p(p)</div><div class="line">        , dis(dis)</div><div class="line">    &#123;</div><div class="line">    &#125;</div><div class="line">&#125;;</div><div class="line"><span class="keyword">bool</span> <span class="keyword">operator</span>&lt;(<span class="keyword">const</span> Data &amp;a, <span class="keyword">const</span> Data &amp;b)</div><div class="line">&#123;</div><div class="line">    <span class="keyword">return</span> a.dis &gt; b.dis;</div><div class="line">&#125;</div><div class="line">LL dis[maxn + <span class="number">10</span>];</div><div class="line"><span class="keyword">const</span> LL inf = LLONG_MAX / <span class="number">10</span>;</div><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">dijkstra</span><span class="params">(<span class="keyword">int</span> s, <span class="keyword">int</span> t)</span></span></div><div class="line">&#123;</div><div class="line">    priority_queue&lt;Data&gt; q;</div><div class="line">    fill(dis + <span class="number">1</span>, dis + <span class="number">1</span> + n, inf);</div><div class="line">    q.push(Data(s, <span class="number">0</span>));</div><div class="line">    dis[s] = <span class="number">0</span>;</div><div class="line">    <span class="keyword">while</span> (!q.empty()) &#123;</div><div class="line">        Data now = q.top();</div><div class="line">        q.pop();</div><div class="line">        <span class="keyword">if</span> (now.dis != dis[now.p])</div><div class="line">            <span class="keyword">continue</span>;</div><div class="line">        <span class="keyword">int</span> u = now.p;</div><div class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = head[u]; i != <span class="number">0</span>; i = e[i].next) &#123;</div><div class="line">            LL ndis;</div><div class="line">            <span class="keyword">int</span> v = e[i].to;</div><div class="line">			<span class="keyword">if</span> (a[u]&lt;e[i].w) <span class="keyword">continue</span>;</div><div class="line">            <span class="keyword">if</span> (dis[u] &lt; beg) &#123;</div><div class="line">                LL h = beg - dis[u];</div><div class="line">                <span class="keyword">if</span> (h - e[i].w &gt; a[v]) &#123;</div><div class="line">                    ndis = beg - a[v];</div><div class="line">                &#125; <span class="keyword">else</span> <span class="keyword">if</span> (h - e[i].w &gt;= <span class="number">0</span>) &#123;</div><div class="line">                    ndis = dis[u] + e[i].w;</div><div class="line">                &#125; <span class="keyword">else</span> &#123;</div><div class="line">                    ndis = dis[u] + e[i].w + (e[i].w - h);</div><div class="line">                &#125;</div><div class="line">            &#125; <span class="keyword">else</span> &#123;</div><div class="line">                ndis = dis[u] + <span class="number">2</span> * e[i].w;</div><div class="line">            &#125;</div><div class="line">            <span class="keyword">if</span> (ndis &lt; dis[v]) &#123;</div><div class="line">                dis[v] = ndis;</div><div class="line">                q.push(Data(v, ndis));</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></div><div class="line">&#123;</div><div class="line">    iopen();</div><div class="line">    IO &gt;&gt; n &gt;&gt; m &gt;&gt; beg;</div><div class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= n; ++i) &#123;</div><div class="line">        IO &gt;&gt; a[i];</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= m; ++i) &#123;</div><div class="line">        <span class="keyword">int</span> a, b, w;</div><div class="line">        IO &gt;&gt; a &gt;&gt; b &gt;&gt; w;</div><div class="line">        addEdge(a, b, w);</div><div class="line">    &#125;</div><div class="line">    dijkstra(<span class="number">1</span>, n);</div><div class="line">    <span class="keyword">if</span> (dis[n] == inf) &#123;</div><div class="line">        <span class="built_in">puts</span>(<span class="string">"-1"</span>);</div><div class="line">    &#125; <span class="keyword">else</span> &#123;</div><div class="line">        LL d = dis[n];</div><div class="line">        LL ans;</div><div class="line">        <span class="keyword">if</span> (d &lt; beg) &#123;</div><div class="line">            LL h = beg - d;</div><div class="line">            ans = d + (a[n] - h);</div><div class="line">        &#125; <span class="keyword">else</span> &#123;</div><div class="line">            ans = d + a[n];</div><div class="line">        &#125;</div><div class="line">        IO &lt;&lt; ans &lt;&lt; <span class="string">'\n'</span>;</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 
       
@@ -299,6 +299,15 @@ ga('send', 'pageview');
 
   
 <nav id="article-nav">
+  
+    <a href="/2018/08/12/loj-2732-题解/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          [loj 2732][JOISC 2016]雇用计划 题解
+        
+      </div>
+    </a>
   
   
     <a href="/2018/08/12/loj-2758-题解/" id="article-nav-older" class="article-nav-link-wrap">
@@ -498,11 +507,11 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">灌水</a>
+                <a href="javascript:void(0)" class="js-tag color3">其他</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">其他</a>
+                <a href="javascript:void(0)" class="js-tag color3">灌水</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -522,10 +531,6 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">平衡树/map/set</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">区间DP</a>
               </li>
              
@@ -535,6 +540,18 @@ MathJax.Hub.Queue(function() {
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">贪心</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">平衡树/map/set</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">莫队</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">树状数组</a>
               </li>
              
               <li class="article-tag-list-item">

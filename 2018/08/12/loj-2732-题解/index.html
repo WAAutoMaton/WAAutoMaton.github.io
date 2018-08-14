@@ -6,14 +6,19 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="https://waautomaton.tk">
-  <title>Tag: OI | WA自动机的博客</title>
+  <title>[loj 2732][JOISC 2016]雇用计划 题解 | WA自动机的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="WA自动机的博客">
-<meta property="og:url" content="https://waautomaton.tk/tags/OI/index.html">
+  <meta name="description" content="题目链接loj">
+<meta name="keywords" content="OI,题解,LOJ,JOI,莫队,树状数组">
+<meta property="og:type" content="article">
+<meta property="og:title" content="[loj 2732][JOISC 2016]雇用计划 题解">
+<meta property="og:url" content="https://waautomaton.tk/2018/08/12/loj-2732-题解/index.html">
 <meta property="og:site_name" content="WA自动机的博客">
+<meta property="og:description" content="题目链接loj">
+<meta property="og:updated_time" content="2018-08-14T11:27:16.132Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="WA自动机的博客">
+<meta name="twitter:title" content="[loj 2732][JOISC 2016]雇用计划 题解">
+<meta name="twitter:description" content="题目链接loj">
   
     <link rel="alternative" href="/atom.xml" title="WA自动机的博客" type="application/atom+xml">
   
@@ -172,36 +177,38 @@ ga('send', 'pageview');
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-loj-2732-题解" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2018" class="archive-year">2018</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/08/12/loj-2732-题解/" class="archive-article-date">
-  	<time datetime="2018-08-12T02:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-08-12</time>
-</a>
-        </div>
-    	 
+      <header class="article-header">
+        
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/08/12/loj-2732-题解/">[loj 2732][JOISC 2016]雇用计划 题解</a>
+    <h1 class="article-title" itemprop="name">
+      [loj 2732][JOISC 2016]雇用计划 题解
     </h1>
   
 
-        <div class="article-info info-on-right">
-          
+        
+        <a href="/2018/08/12/loj-2732-题解/" class="archive-article-date">
+  	<time datetime="2018-08-12T02:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-08-12</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h4 id="题目链接"><a href="#题目链接" class="headerlink" title="题目链接"></a>题目链接</h4><p><a href="https://loj.ac/problem/2732" target="_blank" rel="external">loj</a>  </p>
+<a id="more"></a>
+<h4 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h4><p>&emsp;&emsp;这题标算是1个log的树状数组，然而由于日本OI的传统——数据范围不开满，本sb选手直接写了莫队硬肛2e5，差点被卡常了。（atcoder上最慢的点970ms）<br>&emsp;&emsp;考虑我们是对一个评价值询问，把这个值作为一个维度，由于有修改所以时间也作为一个维度，我们就得到了一个二维的莫队。其中评价值维度上的移动会触发一次修改，是$O(1)$的，时间上的移动完整的移动一次会触发$O(n)$次修改，所以均摊复杂度$O(1)$。所以分块时如果要按时间轴分块，必须按该时间的修改次数的前缀和分块，而不是时间分块。</p>
+<h4 id="参考代码"><a href="#参考代码" class="headerlink" title="参考代码"></a>参考代码</h4><figure class="highlight cpp"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div><div class="line">82</div><div class="line">83</div><div class="line">84</div><div class="line">85</div><div class="line">86</div><div class="line">87</div><div class="line">88</div><div class="line">89</div><div class="line">90</div><div class="line">91</div><div class="line">92</div><div class="line">93</div><div class="line">94</div><div class="line">95</div><div class="line">96</div><div class="line">97</div><div class="line">98</div><div class="line">99</div><div class="line">100</div><div class="line">101</div><div class="line">102</div><div class="line">103</div><div class="line">104</div><div class="line">105</div><div class="line">106</div><div class="line">107</div><div class="line">108</div><div class="line">109</div><div class="line">110</div><div class="line">111</div><div class="line">112</div><div class="line">113</div><div class="line">114</div><div class="line">115</div><div class="line">116</div><div class="line">117</div><div class="line">118</div><div class="line">119</div><div class="line">120</div><div class="line">121</div><div class="line">122</div><div class="line">123</div><div class="line">124</div><div class="line">125</div><div class="line">126</div><div class="line">127</div><div class="line">128</div><div class="line">129</div><div class="line">130</div><div class="line">131</div><div class="line">132</div><div class="line">133</div><div class="line">134</div><div class="line">135</div><div class="line">136</div><div class="line">137</div><div class="line">138</div><div class="line">139</div><div class="line">140</div><div class="line">141</div><div class="line">142</div><div class="line">143</div><div class="line">144</div><div class="line">145</div><div class="line">146</div><div class="line">147</div><div class="line">148</div><div class="line">149</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></div><div class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</div><div class="line"><span class="keyword">typedef</span> <span class="keyword">long</span> <span class="keyword">long</span> LL;</div><div class="line"><span class="keyword">typedef</span> <span class="keyword">unsigned</span> <span class="keyword">long</span> <span class="keyword">long</span> ULL;</div><div class="line"></div><div class="line"><span class="keyword">template</span> &lt;<span class="keyword">size_t</span> _I_Buffer_Size = <span class="number">1</span> &lt;&lt; <span class="number">23</span>, <span class="keyword">size_t</span> _O_Buffer_Size = <span class="number">1</span> &lt;&lt; <span class="number">23</span>&gt;</div><div class="line">struct IO_Tp</div><div class="line">&#123;</div><div class="line">    <span class="comment">//这是读入优化板子，为了阅读体验此部分内容省略。</span></div><div class="line">&#125;;</div><div class="line"> IO_Tp&lt;<span class="number">1</span>&lt;&lt;<span class="number">25</span>,<span class="number">1</span>&lt;&lt;<span class="number">25</span>&gt; IO;</div><div class="line"><span class="keyword">const</span> <span class="keyword">int</span> maxn = <span class="number">200000</span>;</div><div class="line"><span class="class"><span class="keyword">struct</span> <span class="title">Change</span></span></div><div class="line">&#123;</div><div class="line">    <span class="keyword">int</span> p, before, after;</div><div class="line">&#125; ch[maxn + <span class="number">10</span>];</div><div class="line"><span class="keyword">int</span> a[maxn + <span class="number">10</span>];</div><div class="line"><span class="class"><span class="keyword">struct</span> <span class="title">Query</span></span></div><div class="line">&#123;</div><div class="line">    <span class="keyword">int</span> l, r, id;</div><div class="line">&#125; q[maxn + <span class="number">10</span>];</div><div class="line"><span class="keyword">int</span> qcnt, ccnt;</div><div class="line"><span class="keyword">int</span> tong[<span class="number">3</span> * maxn + <span class="number">10</span>], tcnt;</div><div class="line"><span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; pl[<span class="number">3</span> * maxn + <span class="number">10</span>];</div><div class="line"><span class="keyword">int</span> n, m;</div><div class="line"><span class="keyword">int</span> nans;</div><div class="line"><span class="keyword">int</span> l = ccnt, r = tcnt;</div><div class="line"><span class="keyword">bool</span> b[maxn + <span class="number">10</span>];</div><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">change</span><span class="params">(<span class="keyword">int</span> p, <span class="keyword">int</span> k)</span></span></div><div class="line">&#123;</div><div class="line">    <span class="keyword">int</span> cnt = <span class="number">0</span>;</div><div class="line">    <span class="keyword">if</span> (b[p - <span class="number">1</span>])</div><div class="line">        ++cnt;</div><div class="line">    <span class="keyword">if</span> (b[p + <span class="number">1</span>])</div><div class="line">        ++cnt;</div><div class="line">    <span class="keyword">if</span> (k == <span class="number">1</span>) &#123;</div><div class="line">        <span class="keyword">if</span> (cnt == <span class="number">0</span>)</div><div class="line">            ++nans;</div><div class="line">        <span class="keyword">else</span> <span class="keyword">if</span> (cnt == <span class="number">2</span>)</div><div class="line">            --nans;</div><div class="line">		massert(!b[p]);</div><div class="line">        b[p] = <span class="literal">true</span>;</div><div class="line">    &#125; <span class="keyword">else</span> &#123;</div><div class="line">        <span class="keyword">if</span> (cnt == <span class="number">0</span>)</div><div class="line">            --nans;</div><div class="line">        <span class="keyword">else</span> <span class="keyword">if</span> (cnt == <span class="number">2</span>)</div><div class="line">            ++nans;</div><div class="line">		massert(b[p]);</div><div class="line">        b[p] = <span class="literal">false</span>;</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">movl</span><span class="params">(<span class="keyword">int</span> l, <span class="keyword">int</span> k)</span></span></div><div class="line">&#123;</div><div class="line">    <span class="keyword">if</span> (ch[l].before &lt;= r &amp;&amp; ch[l].after &gt; r)</div><div class="line">        change(ch[l].p, k);</div><div class="line">    <span class="keyword">else</span> <span class="keyword">if</span> (ch[l].before &gt; r &amp;&amp; ch[l].after &lt;= r)</div><div class="line">        change(ch[l].p, k ^ <span class="number">1</span>);</div><div class="line">    <span class="keyword">if</span> (k == <span class="number">1</span>) &#123;</div><div class="line">        a[ch[l].p] = ch[l].after;</div><div class="line">    &#125; <span class="keyword">else</span> &#123;</div><div class="line">        a[ch[l].p] = ch[l].before;</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">movr</span><span class="params">(<span class="keyword">int</span> r, <span class="keyword">int</span> k)</span></span></div><div class="line">&#123;</div><div class="line">    <span class="keyword">for</span> (<span class="keyword">auto</span> i : pl[r]) &#123;</div><div class="line">        <span class="keyword">if</span> (a[i] == r)</div><div class="line">            change(i, k);</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"><span class="keyword">int</span> ans[maxn + <span class="number">10</span>];</div><div class="line"><span class="keyword">int</span> sum[maxn+<span class="number">10</span>];</div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></div><div class="line">&#123;</div><div class="line">    iopen();</div><div class="line">    IO &gt;&gt; n &gt;&gt; m;</div><div class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= n; ++i) &#123;</div><div class="line">        IO &gt;&gt; a[i];</div><div class="line">        tong[++tcnt] = a[i];</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= m; ++i) &#123;</div><div class="line">        <span class="keyword">int</span> op;</div><div class="line">        IO &gt;&gt; op;</div><div class="line">        <span class="keyword">if</span> (op == <span class="number">1</span>) &#123;</div><div class="line">            <span class="keyword">int</span> b;</div><div class="line">            IO &gt;&gt; b;</div><div class="line">            --b;</div><div class="line">            tong[++tcnt] = b;</div><div class="line">            ++qcnt;</div><div class="line">            q[qcnt] = &#123; ccnt, b, qcnt &#125;;</div><div class="line">        &#125; <span class="keyword">else</span> &#123;</div><div class="line">            <span class="keyword">int</span> p, after;</div><div class="line">            IO &gt;&gt; p &gt;&gt; after;</div><div class="line">            ch[++ccnt] = &#123; p, a[p], after &#125;;</div><div class="line">            tong[++tcnt] = after;</div><div class="line">            a[p] = after;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">    sort(tong + <span class="number">1</span>, tong + <span class="number">1</span> + tcnt);</div><div class="line">    tcnt = unique(tong + <span class="number">1</span>, tong + <span class="number">1</span> + tcnt) - tong - <span class="number">1</span>;</div><div class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= n; ++i) &#123;</div><div class="line">        a[i] = lower_bound(tong + <span class="number">1</span>, tong + <span class="number">1</span> + tcnt, a[i]) - tong;</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= ccnt; ++i) &#123;</div><div class="line">        ch[i].before = lower_bound(tong + <span class="number">1</span>, tong + <span class="number">1</span> + tcnt, ch[i].before) - tong;</div><div class="line">        ch[i].after = lower_bound(tong + <span class="number">1</span>, tong + <span class="number">1</span> + tcnt, ch[i].after) - tong;</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= qcnt; ++i) &#123;</div><div class="line">        q[i].r = lower_bound(tong + <span class="number">1</span>, tong + <span class="number">1</span> + tcnt, q[i].r) - tong;</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= n; ++i) &#123;</div><div class="line">        pl[a[i]].push_back(i);</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= ccnt; ++i) &#123;</div><div class="line">        pl[ch[i].before].push_back(ch[i].p);</div><div class="line">    &#125;</div><div class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>; i&lt;=tcnt; ++i) &#123;</div><div class="line">		sort(pl[i].begin(),pl[i].end());</div><div class="line">		<span class="keyword">int</span> t=unique(pl[i].begin(),pl[i].end())-pl[i].begin();</div><div class="line">		<span class="keyword">while</span>(pl[i].size()&gt;t) pl[i].pop_back();</div><div class="line">		sum[i]=sum[i<span class="number">-1</span>]+t;</div><div class="line">	&#125;</div><div class="line">    <span class="keyword">int</span> S = <span class="built_in">sqrt</span>(sum[tcnt]);</div><div class="line">   sort(q + <span class="number">1</span>, q + <span class="number">1</span> + qcnt, [S](<span class="keyword">const</span> Query &amp;a, <span class="keyword">const</span> Query &amp;b) &#123;</div><div class="line">        <span class="keyword">if</span> (sum[a.r] / S == sum[b.r] / S)</div><div class="line">            <span class="keyword">return</span> (sum[a.r]/S %<span class="number">2</span> ==<span class="number">1</span>)?a.l &lt; b.l:a.l&gt;b.l;</div><div class="line">        <span class="keyword">return</span> sum[a.r] / S &lt; sum[b.r] / S;</div><div class="line">    &#125;);</div><div class="line">    l = ccnt;</div><div class="line">    r = <span class="number">0</span>;</div><div class="line">    <span class="built_in">memset</span>(b, <span class="literal">true</span>, <span class="keyword">sizeof</span>(b));</div><div class="line">    b[<span class="number">0</span>] = b[n + <span class="number">1</span>] = <span class="literal">false</span>;</div><div class="line">    nans = <span class="number">1</span>;</div><div class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= qcnt; ++i) &#123;</div><div class="line">        <span class="keyword">while</span> (l &lt; q[i].l)</div><div class="line">            movl(++l, <span class="number">1</span>);</div><div class="line">        <span class="keyword">while</span> (l &gt; q[i].l)</div><div class="line">            movl(l--, <span class="number">0</span>);</div><div class="line">        <span class="keyword">while</span> (r &lt; q[i].r)</div><div class="line">            movr(++r, <span class="number">0</span>);</div><div class="line">        <span class="keyword">while</span> (r &gt; q[i].r)</div><div class="line">            movr(r--, <span class="number">1</span>);</div><div class="line">        ans[q[i].id] = nans;</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= qcnt; ++i) &#123;</div><div class="line">        IO &lt;&lt; ans[i] &lt;&lt; <span class="string">'\n'</span>;</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
@@ -233,500 +240,134 @@ ga('send', 'pageview');
 		</ul>
 	</div>
 
-          
+      
 
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="http://s.jiathis.com/qrcode.php?url=https://waautomaton.tk/2018/08/12/loj-2732-题解/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/08/12/loj-2759-题解/" class="archive-article-date">
-  	<time datetime="2018-08-12T02:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-08-12</time>
-</a>
+<nav id="article-nav">
+  
+  
+    <a href="/2018/08/12/loj-2759-题解/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">[loj 2759][JOI 2014]飞天鼠 题解</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
         </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/08/12/loj-2759-题解/">[loj 2759][JOI 2014]飞天鼠 题解</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">OI</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">题解</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">LOJ</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">JOI</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">最短路</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
+        
+        
+        <div class="toc-container tooltip-left">
+            <i class="icon-font icon-category"></i>
+            <div class="tooltip tooltip-east">
+                <span class="tooltip-item">
+                </span>
+                <span class="tooltip-content">
+                    <div class="toc-article">
+                    <ol class="toc"><li class="toc-item toc-level-4"><a class="toc-link" href="#题目链接"><span class="toc-number">1.</span> <span class="toc-text">题目链接</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#题解"><span class="toc-number">2.</span> <span class="toc-text">题解</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#参考代码"><span class="toc-number">3.</span> <span class="toc-text">参考代码</span></a></li></ol>
+                    </div>
+                </span>
+            </div>
         </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
+        
+    </div>
+</aside>
+
+
+
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/08/12/loj-2758-题解/" class="archive-article-date">
-  	<time datetime="2018-08-12T00:36:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-08-12</time>
-</a>
-        </div>
-    	 
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/08/12/loj-2758-题解/">[loj 2758][JOI 2014]年轮蛋糕 题解</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">OI</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">题解</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">LOJ</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">JOI</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">二分</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">贪心</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/08/07/loj-2727-题解/" class="archive-article-date">
-  	<time datetime="2018-08-07T13:08:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-08-07</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/08/07/loj-2727-题解/">[loj 2727][JOI 2015]舞踏会 舞会 题解</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">OI</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">题解</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">LOJ</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">JOI</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/08/07/loj-2726-题解/" class="archive-article-date">
-  	<time datetime="2018-08-07T08:26:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-08-07</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/08/07/loj-2726-题解/">[loj 2726][JOI 2015]JOI公園 JOI公园 题解</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">OI</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">题解</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">LOJ</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">JOI</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">最短路</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/08/07/loj-2725-分蛋糕-题解/" class="archive-article-date">
-  	<time datetime="2018-08-07T07:30:22.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-08-07</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/08/07/loj-2725-分蛋糕-题解/">[loj 2725][JOI 2015]ケーキの切り分け２ 分蛋糕2 题解</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">OI</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">题解</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">LOJ</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">JOI</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">区间DP</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/05/13/配对堆/" class="archive-article-date">
-  	<time datetime="2018-05-13T02:48:17.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-05-13</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/05/13/配对堆/">配对堆</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">OI</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">数据结构</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">堆</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/05/01/loj-2345-题解/" class="archive-article-date">
-  	<time datetime="2018-05-01T12:33:53.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-05-01</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/05/01/loj-2345-题解/">[loj 2345][JOI 2016]縄張り 领地 题解</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">OI</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">题解</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">LOJ</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">JOI</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">平衡树/map/set</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/04/29/loj-2350-题解/" class="archive-article-date">
-  	<time datetime="2018-04-29T13:07:56.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-04-29</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/04/29/loj-2350-题解/">[loj 2350][JOI 2018]定期券 月票购买 题解</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">OI</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">题解</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">LOJ</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">JOI</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">最短路</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/04/18/loj-2335-足球-题解/" class="archive-article-date">
-  	<time datetime="2018-04-18T12:26:22.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-04-18</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/04/18/loj-2335-足球-题解/">[loj 2335][JOI 2017]サッカー 足球 题解</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">OI</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">题解</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">LOJ</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">JOI</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">最短路</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-  
-    </div></section>
-  
-
-    
-    <nav id="page-nav">
-      <span class="page-number current">1</span><a class="page-number" href="/tags/OI/page/2/">2</a><a class="extend next" rel="next" href="/tags/OI/page/2/">Next &raquo;</a>
-    </nav>
+  <div id="gitment-ctn"></div> 
+<link rel="stylesheet" href="//imsun.github.io/gitment/style/default.css">
+<script src="//imsun.github.io/gitment/dist/gitment.browser.js"></script>
+<script>
+var gitment = new Gitment({
+  id: "https://waautomaton.tk/2018/08/12/loj-2732-题解/",
+  owner: 'WAAutoMaton',
+  repo: 'waautomaton.github.io',
+  oauth: {
+    client_id: '082c6dd30bf1c82ac2ab',
+    client_secret: '21e8a445c3b2c58db1433f3419a74991452ec0a9',
+  },
+})
+gitment.render('gitment-ctn')
+</script>
   
 
 
@@ -750,9 +391,9 @@ ga('send', 'pageview');
 	var yiliaConfig = {
 		mathjax: true,
 		isHome: false,
-		isPost: false,
+		isPost: true,
 		isArchive: false,
-		isTag: true,
+		isTag: false,
 		isCategory: false,
 		open_in_new: false,
 		toc_hide_index: false,
