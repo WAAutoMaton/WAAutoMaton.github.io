@@ -6,14 +6,19 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="https://wa-am.com">
-  <title>Tag: 最短路 | WA自动机的博客</title>
+  <title>[loj 2039][bzoj 4595][SHOI 2015]激光发生器 题解 | WA自动机的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="WA自动机的博客">
-<meta property="og:url" content="https://wa-am.com/tags/最短路/index.html">
+  <meta name="description" content="题目链接loj 洛谷 bzoj 题目大意平面上有若干个镜子（都是线段，入射角/反射角的比值各不相同（这不物理啊）），现在射出一道激光，问激光经过各种反射之后会撞上哪些镜子。 题解">
+<meta name="keywords" content="OI,题解,计算几何">
+<meta property="og:type" content="article">
+<meta property="og:title" content="[loj 2039][bzoj 4595][SHOI 2015]激光发生器 题解">
+<meta property="og:url" content="https://wa-am.com/2018/11/28/loj-2039-题解/index.html">
 <meta property="og:site_name" content="WA自动机的博客">
+<meta property="og:description" content="题目链接loj 洛谷 bzoj 题目大意平面上有若干个镜子（都是线段，入射角/反射角的比值各不相同（这不物理啊）），现在射出一道激光，问激光经过各种反射之后会撞上哪些镜子。 题解">
+<meta property="og:updated_time" content="2018-11-28T13:30:09.348Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="WA自动机的博客">
+<meta name="twitter:title" content="[loj 2039][bzoj 4595][SHOI 2015]激光发生器 题解">
+<meta name="twitter:description" content="题目链接loj 洛谷 bzoj 题目大意平面上有若干个镜子（都是线段，入射角/反射角的比值各不相同（这不物理啊）），现在射出一道激光，问激光经过各种反射之后会撞上哪些镜子。 题解">
   
     <link rel="alternative" href="/atom.xml" title="WA自动机的博客" type="application/atom+xml">
   
@@ -174,36 +179,44 @@ ga('send', 'pageview');
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-loj-2039-题解" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      [loj 2039][bzoj 4595][SHOI 2015]激光发生器 题解
+    </h1>
+  
+
+        
+        <a href="/2018/11/28/loj-2039-题解/" class="archive-article-date">
+  	<time datetime="2018-11-28T13:03:36.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-11-28</time>
+</a>
+        
+      </header>
     
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h4 id="题目链接"><a href="#题目链接" class="headerlink" title="题目链接"></a>题目链接</h4><p><a href="https://loj.ac/problem/2039" target="_blank" rel="external">loj</a></p>
+<p><a href="https://www.luogu.org/problemnew/show/P4361" target="_blank" rel="external">洛谷</a></p>
+<p><a href="https://lydsy.com/JudgeOnline/problem.php?id=4595" target="_blank" rel="external">bzoj</a></p>
+<h4 id="题目大意"><a href="#题目大意" class="headerlink" title="题目大意"></a>题目大意</h4><p>平面上有若干个镜子（都是线段，入射角/反射角的比值各不相同（这不物理啊）），现在射出一道激光，问激光经过各种反射之后会撞上哪些镜子。</p>
+<h4 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h4><a id="more"></a>
+<p>因为自己计算几何能力太弱所以开了这题（PKUSC2018肝了半场的计算几何题最后还是爆零的阴影）。  </p>
+<p>这是一道比较显然的计算几何题，基本只需用计算几何的各种基本操作去模拟题意就能做了，也没啥坑点。  </p>
+<p>但是我太弱了，计算几何板子只能照着蓝书打，主算法部分也是看着<a href="http://www.cnblogs.com/KKKorange/p/8646447.html" target="_blank" rel="external">另一份题解</a>写的（捂脸）。</p>
+<p>具体的算法过程都写在下面代码的注释里了，应该是很好理解的吧（逃</p>
+<h4 id="参考代码"><a href="#参考代码" class="headerlink" title="参考代码"></a>参考代码</h4><figure class="highlight cpp"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div><div class="line">82</div><div class="line">83</div><div class="line">84</div><div class="line">85</div><div class="line">86</div><div class="line">87</div><div class="line">88</div><div class="line">89</div><div class="line">90</div><div class="line">91</div><div class="line">92</div><div class="line">93</div><div class="line">94</div><div class="line">95</div><div class="line">96</div><div class="line">97</div><div class="line">98</div><div class="line">99</div><div class="line">100</div><div class="line">101</div><div class="line">102</div><div class="line">103</div><div class="line">104</div><div class="line">105</div><div class="line">106</div><div class="line">107</div><div class="line">108</div><div class="line">109</div><div class="line">110</div><div class="line">111</div><div class="line">112</div><div class="line">113</div><div class="line">114</div><div class="line">115</div><div class="line">116</div><div class="line">117</div><div class="line">118</div><div class="line">119</div><div class="line">120</div><div class="line">121</div><div class="line">122</div><div class="line">123</div><div class="line">124</div><div class="line">125</div><div class="line">126</div><div class="line">127</div><div class="line">128</div><div class="line">129</div><div class="line">130</div><div class="line">131</div><div class="line">132</div><div class="line">133</div><div class="line">134</div><div class="line">135</div><div class="line">136</div><div class="line">137</div><div class="line">138</div><div class="line">139</div><div class="line">140</div><div class="line">141</div><div class="line">142</div><div class="line">143</div></pre></td><td class="code"><pre><div class="line"><span class="comment">/*+lmake</span></div><div class="line"> * DEFINE += WAAUTOMATON</div><div class="line"> */</div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">ifdef</span> WAAUTOMATON</span></div><div class="line"><span class="meta">#<span class="meta-keyword">define</span> debug(args...)                                                                             \</span></div><div class="line">    &#123;                                                                                              \</div><div class="line">        dbg, args;                                                                                 \</div><div class="line">        cerr &lt;&lt; endl;                                                                              \</div><div class="line">    &#125;</div><div class="line"><span class="meta">#<span class="meta-keyword">define</span> massert(x) assert(x)</span></div><div class="line"><span class="meta">#<span class="meta-keyword">else</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">define</span> debug(args...) <span class="comment">// Just strip off all debug tokens</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">define</span> massert(x)</span></div><div class="line"><span class="meta">#<span class="meta-keyword">endif</span></span></div><div class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</div><div class="line"><span class="keyword">typedef</span> <span class="keyword">long</span> <span class="keyword">long</span> LL;</div><div class="line"><span class="keyword">typedef</span> <span class="keyword">unsigned</span> <span class="keyword">long</span> <span class="keyword">long</span> ULL;</div><div class="line"><span class="keyword">typedef</span> <span class="built_in">std</span>::pair&lt;<span class="keyword">int</span>,<span class="keyword">int</span>&gt; pii;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">iopen</span><span class="params">()</span></span></div><div class="line">&#123;</div><div class="line">    <span class="keyword">static</span> <span class="keyword">bool</span> isOpen = <span class="literal">false</span>;</div><div class="line">    <span class="keyword">if</span> (!isOpen) &#123;</div><div class="line">        isOpen = <span class="literal">true</span>;</div><div class="line"><span class="meta">#<span class="meta-keyword">ifdef</span> WAAUTOMATON</span></div><div class="line">        freopen(<span class="string">"in.txt"</span>, <span class="string">"r"</span>, <span class="built_in">stdin</span>);</div><div class="line"><span class="meta">#<span class="meta-keyword">endif</span></span></div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">template</span> &lt;<span class="keyword">size_t</span> _I_Buffer_Size = <span class="number">1</span> &lt;&lt; <span class="number">23</span>, <span class="keyword">size_t</span> _O_Buffer_Size = <span class="number">1</span> &lt;&lt; <span class="number">23</span>&gt;</div><div class="line">struct IO_Tp</div><div class="line">&#123;</div><div class="line">    <span class="comment">//这是IO优化板子，为了阅读体验此部分省略</span></div><div class="line">&#125;;</div><div class="line">IO_Tp&lt;&gt; IO;</div><div class="line"></div><div class="line"><span class="comment">//从这里开始是计算几何模板</span></div><div class="line"><span class="keyword">const</span> <span class="keyword">double</span> eps=<span class="number">1e-8</span>;</div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">dcmp</span><span class="params">(<span class="keyword">double</span> x,<span class="keyword">double</span> y)</span></span></div><div class="line">&#123;</div><div class="line">	<span class="keyword">if</span> (<span class="built_in">abs</span>(x-y)&lt;eps) <span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">	<span class="keyword">else</span> <span class="keyword">return</span> x-y&lt;<span class="number">0</span>?<span class="number">-1</span>:<span class="number">1</span>;</div><div class="line">&#125;</div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">dcmp</span><span class="params">(<span class="keyword">double</span> x)</span></span></div><div class="line">&#123;</div><div class="line">	<span class="keyword">if</span> (<span class="built_in">abs</span>(x)&lt;eps) <span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">	<span class="keyword">else</span> <span class="keyword">return</span> x&lt;<span class="number">0</span>?<span class="number">-1</span>:<span class="number">1</span>;</div><div class="line">&#125;</div><div class="line"><span class="class"><span class="keyword">struct</span> <span class="title">Point</span></span></div><div class="line">&#123;</div><div class="line">	<span class="keyword">double</span> x,y;</div><div class="line">	Point(<span class="keyword">double</span> x=<span class="number">0</span>,<span class="keyword">double</span> y=<span class="number">0</span>):x(x),y(y)&#123;&#125;</div><div class="line">&#125;;</div><div class="line"><span class="keyword">typedef</span> Point Vector;</div><div class="line">Vector <span class="keyword">operator</span>+(<span class="keyword">const</span> Vector&amp; a,<span class="keyword">const</span> Vector&amp; b)&#123;<span class="keyword">return</span> Vector(a.x+b.x,a.y+b.y);&#125; </div><div class="line">Vector <span class="keyword">operator</span>-(<span class="keyword">const</span> Vector&amp; a,<span class="keyword">const</span> Vector&amp; b)&#123;<span class="keyword">return</span> Vector(a.x-b.x,a.y-b.y);&#125;</div><div class="line">Vector <span class="keyword">operator</span>*(<span class="keyword">const</span> Vector&amp; a,<span class="keyword">double</span> b)&#123;<span class="keyword">return</span> Vector(a.x*b,a.y*b);&#125;</div><div class="line">Vector <span class="keyword">operator</span>/(<span class="keyword">const</span> Vector&amp; a,<span class="keyword">double</span> b)&#123;<span class="keyword">return</span> Vector(a.x/b,a.y/b);&#125;</div><div class="line"><span class="keyword">bool</span> <span class="keyword">operator</span>&lt;(<span class="keyword">const</span> Point&amp; a,<span class="keyword">const</span> Point&amp; b)</div><div class="line">&#123;</div><div class="line">	<span class="keyword">if</span> (dcmp(a.x,b.x)==<span class="number">0</span>) <span class="keyword">return</span> a.y&lt;b.y;</div><div class="line">	<span class="keyword">else</span> <span class="keyword">return</span> a.x&lt;b.x;</div><div class="line">&#125;</div><div class="line"><span class="keyword">bool</span> <span class="keyword">operator</span>==(<span class="keyword">const</span> Point&amp; a,<span class="keyword">const</span> Point&amp; b)</div><div class="line">&#123;</div><div class="line">	<span class="keyword">return</span> dcmp(a.x,b.x)==<span class="number">0</span> &amp;&amp; dcmp(a.y,b.y)==<span class="number">0</span>;</div><div class="line">&#125;</div><div class="line"><span class="function"><span class="keyword">double</span> <span class="title">dot</span><span class="params">(<span class="keyword">const</span> Vector&amp; a,<span class="keyword">const</span> Vector&amp; b)</span> </span>&#123;<span class="keyword">return</span> a.x*b.x+a.y*b.y;&#125; <span class="comment">//点积</span></div><div class="line"><span class="function"><span class="keyword">double</span> <span class="title">length</span><span class="params">(<span class="keyword">const</span> Vector&amp; a)</span></span>&#123;<span class="keyword">return</span> <span class="built_in">sqrt</span>(dot(a,a));&#125; <span class="comment">//向量的模</span></div><div class="line"><span class="function"><span class="keyword">double</span> <span class="title">angle</span><span class="params">(<span class="keyword">const</span> Vector&amp; a,<span class="keyword">const</span> Vector&amp; b)</span></span>&#123;<span class="keyword">return</span> <span class="built_in">acos</span>(dot(a,b)/length(a)/length(b));&#125; <span class="comment">//求2个向量的夹角</span></div><div class="line"><span class="function"><span class="keyword">double</span> <span class="title">cross</span><span class="params">(<span class="keyword">const</span> Vector&amp; a,<span class="keyword">const</span> Vector&amp; b)</span></span>&#123;<span class="keyword">return</span> a.x*b.y-a.y*b.x;&#125; <span class="comment">//叉积</span></div><div class="line"><span class="function">Vector <span class="title">rotate</span><span class="params">(Vector a,<span class="keyword">double</span> rad)</span> <span class="comment">//将一个向量绕起点转rad</span></span></div><div class="line">&#123;</div><div class="line">	<span class="keyword">return</span> Vector(a.x*<span class="built_in">cos</span>(rad)-a.y*<span class="built_in">sin</span>(rad),a.x*<span class="built_in">sin</span>(rad)+a.y*<span class="built_in">cos</span>(rad));</div><div class="line">&#125;</div><div class="line"><span class="function">Point <span class="title">getLineIntersection</span><span class="params">(<span class="keyword">const</span> Point &amp;p,<span class="keyword">const</span> Vector&amp; v,<span class="keyword">const</span> Point&amp; q,<span class="keyword">const</span> Vector &amp; w)</span> <span class="comment">//求2个直线交点（需保证有且只有1个交点）</span></span></div><div class="line">&#123;</div><div class="line">	Vector u=p-q;</div><div class="line">	<span class="keyword">double</span> t=cross(w,u)/cross(v,w);</div><div class="line">	<span class="keyword">return</span> p+v*t;</div><div class="line">&#125;</div><div class="line"><span class="function"><span class="keyword">bool</span> <span class="title">onSegment</span><span class="params">(<span class="keyword">const</span> Point&amp; p,<span class="keyword">const</span> Point&amp; a1,<span class="keyword">const</span> Point&amp; a2)</span> <span class="comment">//求一个点是否在线段上</span></span></div><div class="line">&#123;</div><div class="line">	<span class="keyword">return</span> dcmp(cross(a1-p,a2-p))==<span class="number">0</span> &amp;&amp; dcmp(dot(a1-p,a2-p))&lt;<span class="number">0</span>;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="comment">//以上为计算几何模板，全部来自蓝书</span></div><div class="line"></div><div class="line"><span class="keyword">const</span> <span class="keyword">int</span> MAXN=<span class="number">100</span>;</div><div class="line"><span class="class"><span class="keyword">struct</span> <span class="title">Data</span></span></div><div class="line">&#123;</div><div class="line">	Point p1,p2;</div><div class="line">	<span class="keyword">int</span> a,b;</div><div class="line">&#125;a[MAXN+<span class="number">10</span>];</div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></div><div class="line">&#123;</div><div class="line">	iopen();</div><div class="line">	<span class="keyword">int</span> x,y,dx,dy,n;</div><div class="line">	<span class="built_in">cin</span>&gt;&gt;x&gt;&gt;y&gt;&gt;dx&gt;&gt;dy&gt;&gt;n;</div><div class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>; i&lt;=n; ++i) &#123;</div><div class="line">		<span class="built_in">cin</span>&gt;&gt;a[i].p1.x&gt;&gt;a[i].p1.y&gt;&gt;a[i].p2.x&gt;&gt;a[i].p2.y&gt;&gt;a[i].a&gt;&gt;a[i].b;</div><div class="line">	&#125;</div><div class="line">	<span class="function">Point <span class="title">p</span><span class="params">(x,y)</span></span>; <span class="comment">//当前激光起点坐标</span></div><div class="line">	<span class="function">Vector <span class="title">v</span><span class="params">(dx,dy)</span></span>; <span class="comment">//当前激光的方向向量</span></div><div class="line">	<span class="keyword">bool</span> flag=<span class="literal">true</span>;</div><div class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> t=<span class="number">1</span>; t&lt;=<span class="number">10</span>; ++t) &#123;</div><div class="line">		<span class="keyword">double</span> mdis=<span class="number">1e100</span>;</div><div class="line">		<span class="keyword">int</span> id=<span class="number">0</span>; </div><div class="line">        <span class="comment">// 下面这个for找出所有与当前激光有交的镜子，并求出其中交点与p距离最短的镜子（显然激光接下来一定撞在这个镜子上）。</span></div><div class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>; i&lt;=n; ++i) &#123;</div><div class="line">			<span class="keyword">if</span> (dcmp(cross(a[i].p1-a[i].p2,v))!=<span class="number">0</span>) &#123; <span class="comment">//排除激光与镜子平行的情况</span></div><div class="line">				Point t=getLineIntersection(a[i].p1,a[i].p2-a[i].p1,p,v); <span class="comment">//求交点</span></div><div class="line">				<span class="keyword">if</span> (onSegment(t,a[i].p1,a[i].p2) &amp;&amp; dcmp(dot(v,t-p))&gt;<span class="number">0</span>) &#123; <span class="comment">//判断交点在镜子上，并且不在激光的另一侧（激光是一条射线）</span></div><div class="line">					<span class="keyword">double</span> dis=length(p-t); <span class="comment">//计算距离</span></div><div class="line">					<span class="keyword">if</span> (dis&lt;mdis) &#123;</div><div class="line">						mdis=dis;</div><div class="line">						id=i;</div><div class="line">					&#125;</div><div class="line">				&#125;</div><div class="line">			&#125; </div><div class="line">		&#125;</div><div class="line">		<span class="keyword">if</span> (id==<span class="number">0</span>) <span class="keyword">break</span>;</div><div class="line">		p=getLineIntersection(a[id].p1,a[id].p2-a[id].p1,p,v); <span class="comment">//求交点，并作为新的激光起点</span></div><div class="line">        <span class="comment">//接下来求新的激光方向</span></div><div class="line">		<span class="keyword">if</span> (dcmp(dot(a[id].p1-a[id].p2,v))==<span class="number">0</span>) &#123; <span class="comment">//如果镜子与激光垂直，直接方向向量取反即可</span></div><div class="line">			v=v*<span class="number">-1</span>;</div><div class="line">		&#125; <span class="keyword">else</span> &#123;</div><div class="line">			Vector t;</div><div class="line">			t=a[id].p2-a[id].p1; <span class="comment">//求镜子的方向向量</span></div><div class="line">			<span class="keyword">if</span> (dcmp(dot(a[id].p1-a[id].p2,v))&gt;<span class="number">0</span>) t=<span class="number">0</span>-t; <span class="comment">//入射角要取锐角</span></div><div class="line">			<span class="keyword">double</span> alpha=<span class="built_in">acos</span>(<span class="number">-1</span>)/<span class="number">2</span>-angle(t,v); <span class="comment">//计算入射角</span></div><div class="line">			<span class="keyword">int</span> bt=dcmp(cross(t,v)); </div><div class="line">			v=rotate(t,bt*(alpha*a[id].a/a[id].b-<span class="built_in">acos</span>(<span class="number">-1</span>)/<span class="number">2</span>)); <span class="comment">//先计算出反射角（再吐槽一次，入射角不等于反射角，这一点都不物理啊），然后把镜子的方向向量转那个角度，得到的就是新的激光方向向量了。</span></div><div class="line">		&#125;</div><div class="line">		<span class="built_in">cout</span>&lt;&lt;id&lt;&lt;<span class="string">' '</span>;</div><div class="line">		flag= <span class="literal">false</span>;</div><div class="line">	&#125;</div><div class="line">	<span class="keyword">if</span> (flag) <span class="built_in">cout</span>&lt;&lt;<span class="string">"NONE"</span>;</div><div class="line">	<span class="built_in">cout</span>&lt;&lt;<span class="built_in">endl</span>;</div><div class="line">    <span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
       
       
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2018" class="archive-year">2018</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/08/12/loj-2759-题解/" class="archive-article-date">
-  	<time datetime="2018-08-12T02:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-08-12</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/08/12/loj-2759-题解/">[loj 2759][JOI 2014]飞天鼠 题解</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
@@ -217,195 +230,99 @@ ga('send', 'pageview');
         		</li>
       		 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">LOJ</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">JOI</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">最短路</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">计算几何</a>
         		</li>
       		
 		</ul>
 	</div>
 
-          
+      
 
-        </div>
-        <div class="clearfix"></div>
-    </header>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/08/07/loj-2726-题解/" class="archive-article-date">
-  	<time datetime="2018-08-07T08:26:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-08-07</time>
-</a>
+<nav id="article-nav">
+  
+    <a href="/2018/12/12/loj-2840-题解/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          [JOISC2018]飴 糖
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2018/08/14/loj-2732-题解/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">[loj 2732][JOISC 2016]雇用计划 题解</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
         </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/08/07/loj-2726-题解/">[loj 2726][JOI 2015]JOI公園 JOI公园 题解</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">OI</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">题解</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">LOJ</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">JOI</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">最短路</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
+        
+        
+        <div class="toc-container tooltip-left">
+            <i class="icon-font icon-category"></i>
+            <div class="tooltip tooltip-east">
+                <span class="tooltip-item">
+                </span>
+                <span class="tooltip-content">
+                    <div class="toc-article">
+                    <ol class="toc"><li class="toc-item toc-level-4"><a class="toc-link" href="#题目链接"><span class="toc-number">1.</span> <span class="toc-text">题目链接</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#题目大意"><span class="toc-number">2.</span> <span class="toc-text">题目大意</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#题解"><span class="toc-number">3.</span> <span class="toc-text">题解</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#参考代码"><span class="toc-number">4.</span> <span class="toc-text">参考代码</span></a></li></ol>
+                    </div>
+                </span>
+            </div>
         </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
+        
+    </div>
+</aside>
+
+
+
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/04/29/loj-2350-题解/" class="archive-article-date">
-  	<time datetime="2018-04-29T13:07:56.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-04-29</time>
-</a>
-        </div>
-    	 
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/04/29/loj-2350-题解/">[loj 2350][JOI 2018]定期券 月票购买 题解</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">OI</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">题解</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">LOJ</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">JOI</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">最短路</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/04/18/loj-2335-足球-题解/" class="archive-article-date">
-  	<time datetime="2018-04-18T12:26:22.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-04-18</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/04/18/loj-2335-足球-题解/">[loj 2335][JOI 2017]サッカー 足球 题解</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">OI</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">题解</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">LOJ</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">JOI</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">最短路</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-  
-    </div></section>
   
 
-    
+  
+  <div id="gitment-ctn"></div> 
+<link rel="stylesheet" href="//imsun.github.io/gitment/style/default.css">
+<script src="//imsun.github.io/gitment/dist/gitment.browser.js"></script>
+<script>
+var gitment = new Gitment({
+  id: "https://wa-am.com/2018/11/28/loj-2039-题解/",
+  owner: 'WAAutoMaton',
+  repo: 'waautomaton.github.io',
+  oauth: {
+    client_id: '082c6dd30bf1c82ac2ab',
+    client_secret: '21e8a445c3b2c58db1433f3419a74991452ec0a9',
+  },
+})
+gitment.render('gitment-ctn')
+</script>
+  
 
 
           </div>
@@ -428,9 +345,9 @@ ga('send', 'pageview');
 	var yiliaConfig = {
 		mathjax: true,
 		isHome: false,
-		isPost: false,
+		isPost: true,
 		isArchive: false,
-		isTag: true,
+		isTag: false,
 		isCategory: false,
 		open_in_new: false,
 		toc_hide_index: false,

@@ -5,26 +5,26 @@
   
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
-  <link rel="dns-prefetch" href="https://waautomaton.tk">
+  <link rel="dns-prefetch" href="https://wa-am.com">
   <title>配对堆 | WA自动机的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="description" content="简介&amp;emsp;&amp;emsp;配对堆是一个支持插入，查询/删除最小值，合并，修改元素等操作的数据结构，也就是俗称的可并堆。&amp;emsp;&amp;emsp;配对堆在OI界十分的冷门，很少见有人用，但其实跑得非常快（复杂度低还常数小），很好写（如果没有decrease-key操作的话），除了不能可持久化（因为配对堆复杂度是势能分析出来的均摊复杂度）之外比常见的左偏树高到不知道哪里去了（逃。">
-<meta name="keywords" content="OI,数据结构,堆">
+<meta name="keywords" content="OI,堆,数据结构">
 <meta property="og:type" content="article">
 <meta property="og:title" content="配对堆">
-<meta property="og:url" content="https://waautomaton.tk/2018/05/13/配对堆/index.html">
+<meta property="og:url" content="https://wa-am.com/2018/05/13/配对堆/index.html">
 <meta property="og:site_name" content="WA自动机的博客">
 <meta property="og:description" content="简介&amp;emsp;&amp;emsp;配对堆是一个支持插入，查询/删除最小值，合并，修改元素等操作的数据结构，也就是俗称的可并堆。&amp;emsp;&amp;emsp;配对堆在OI界十分的冷门，很少见有人用，但其实跑得非常快（复杂度低还常数小），很好写（如果没有decrease-key操作的话），除了不能可持久化（因为配对堆复杂度是势能分析出来的均摊复杂度）之外比常见的左偏树高到不知道哪里去了（逃。">
-<meta property="og:image" content="https://waautomaton.tk/static/images/配对堆/4.png">
-<meta property="og:image" content="https://waautomaton.tk/static/images/配对堆/5.png">
-<meta property="og:image" content="https://waautomaton.tk/static/images/配对堆/6.png">
-<meta property="og:image" content="https://waautomaton.tk/static/images/配对堆/7.jpg">
-<meta property="og:image" content="https://waautomaton.tk/static/images/配对堆/8.jpg">
-<meta property="og:updated_time" content="2018-08-07T07:10:57.956Z">
+<meta property="og:image" content="https://wa-am.com/static/images/配对堆/4.png">
+<meta property="og:image" content="https://wa-am.com/static/images/配对堆/5.png">
+<meta property="og:image" content="https://wa-am.com/static/images/配对堆/6.png">
+<meta property="og:image" content="https://wa-am.com/static/images/配对堆/7.jpg">
+<meta property="og:image" content="https://wa-am.com/static/images/配对堆/8.jpg">
+<meta property="og:updated_time" content="2019-02-01T05:48:25.381Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="配对堆">
 <meta name="twitter:description" content="简介&amp;emsp;&amp;emsp;配对堆是一个支持插入，查询/删除最小值，合并，修改元素等操作的数据结构，也就是俗称的可并堆。&amp;emsp;&amp;emsp;配对堆在OI界十分的冷门，很少见有人用，但其实跑得非常快（复杂度低还常数小），很好写（如果没有decrease-key操作的话），除了不能可持久化（因为配对堆复杂度是势能分析出来的均摊复杂度）之外比常见的左偏树高到不知道哪里去了（逃。">
-<meta name="twitter:image" content="https://waautomaton.tk/static/images/配对堆/4.png">
+<meta name="twitter:image" content="https://wa-am.com/static/images/配对堆/4.png">
   
     <link rel="alternative" href="/atom.xml" title="WA自动机的博客" type="application/atom+xml">
   
@@ -72,7 +72,7 @@ ga('send', 'pageview');
 		  <h1 class="header-author"><a href="null">WA自动机</a></h1>
 		</hgroup>
 		
-		<p class="header-subtitle">有些东西，只有失去过，才会懂得珍惜。</p>
+		<p class="header-subtitle">最后的挣扎</p>
 		
 
 		<nav class="header-menu">
@@ -132,7 +132,7 @@ ga('send', 'pageview');
 			  <h1 class="header-author js-header-author">WA自动机</h1>
 			</hgroup>
 			
-			<p class="header-subtitle"><i class="icon icon-quo-left"></i>有些东西，只有失去过，才会懂得珍惜。<i class="icon icon-quo-right"></i></p>
+			<p class="header-subtitle"><i class="icon icon-quo-left"></i>最后的挣扎<i class="icon icon-quo-right"></i></p>
 			
 			
 			
@@ -219,38 +219,38 @@ ga('send', 'pageview');
 <tbody>
 <tr>
 <td style="text-align:center">插入（insert）</td>
-<td style="text-align:center">$\mathcal O(1)$</td>
-<td style="text-align:center">$\mathcal O(\log n)$</td>
-<td style="text-align:center">$\mathcal O(\log n)$</td>
-<td style="text-align:center">$\mathcal O(1)$</td>
+<td style="text-align:center">$ O(1)$</td>
+<td style="text-align:center">$ O(\log n)$</td>
+<td style="text-align:center">$ O(\log n)$</td>
+<td style="text-align:center">$ O(1)$</td>
 </tr>
 <tr>
 <td style="text-align:center">查询最小值（find-min）</td>
-<td style="text-align:center">$\mathcal O(1)$</td>
-<td style="text-align:center">$\mathcal O(1)$</td>
-<td style="text-align:center">$\mathcal O(1)$</td>
-<td style="text-align:center">$\mathcal O(1)$</td>
+<td style="text-align:center">$ O(1)$</td>
+<td style="text-align:center">$ O(1)$</td>
+<td style="text-align:center">$ O(1)$</td>
+<td style="text-align:center">$ O(1)$</td>
 </tr>
 <tr>
 <td style="text-align:center">删除最小值（delete-min）</td>
-<td style="text-align:center">$\mathcal O(\log n)$</td>
-<td style="text-align:center">$\mathcal O(\log n)$</td>
-<td style="text-align:center">$\mathcal O(\log n)$</td>
-<td style="text-align:center">$\mathcal O(\log n)$</td>
+<td style="text-align:center">$ O(\log n)$</td>
+<td style="text-align:center">$ O(\log n)$</td>
+<td style="text-align:center">$ O(\log n)$</td>
+<td style="text-align:center">$ O(\log n)$</td>
 </tr>
 <tr>
 <td style="text-align:center">合并</td>
-<td style="text-align:center">$\mathcal O(1)$</td>
-<td style="text-align:center">$\mathcal O(n)$</td>
-<td style="text-align:center">$\mathcal O(\log n)$</td>
-<td style="text-align:center">$\mathcal O(1)$</td>
+<td style="text-align:center">$ O(1)$</td>
+<td style="text-align:center">$ O(n)$</td>
+<td style="text-align:center">$ O(\log n)$</td>
+<td style="text-align:center">$ O(1)$</td>
 </tr>
 <tr>
 <td style="text-align:center">减小一个元素的值</td>
-<td style="text-align:center">$o(\log n) (下界\Omega(\log \log n) ，\\上界\mathcal O(2^{2\sqrt{\log \log n}}) )$</td>
-<td style="text-align:center">$\mathcal O(\log n)$</td>
-<td style="text-align:center">$\mathcal O(logn)$</td>
-<td style="text-align:center">$\mathcal O(1)$</td>
+<td style="text-align:center">$o(\log n) (下界\Omega(\log \log n) ，\\上界 O(2^{2\sqrt{\log \log n}}) )$</td>
+<td style="text-align:center">$ O(\log n)$</td>
+<td style="text-align:center">$ O(logn)$</td>
+<td style="text-align:center">$ O(1)$</td>
 </tr>
 </tbody>
 </table>
@@ -260,12 +260,12 @@ ga('send', 'pageview');
 <h3 id="各项操作的实现"><a href="#各项操作的实现" class="headerlink" title="各项操作的实现"></a>各项操作的实现</h3><h4 id="存储结构定义"><a href="#存储结构定义" class="headerlink" title="存储结构定义"></a>存储结构定义</h4><p>&emsp;&emsp;就是普通的带权多叉树的表示方式。  </p>
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">struct</span> <span class="title">Node</span></span></div><div class="line">&#123;</div><div class="line">	T v; <span class="comment">//T为权值类型</span></div><div class="line">	Node *ch,*xd; <span class="comment">//ch为该节点儿子的指针，xd为该节点兄弟的指针。</span></div><div class="line">    			 <span class="comment">//若该节点没有儿子/兄弟则指针指向虚拟空节点。</span></div><div class="line">&#125;;</div></pre></td></tr></table></figure>
 <h4 id="查询最小值"><a href="#查询最小值" class="headerlink" title="查询最小值"></a>查询最小值</h4><p>&emsp;&emsp;从配对堆的定义可看出，配对堆的根节点的权值一定最小，所以我们直接返回根节点就行了。</p>
-<h4 id="合并"><a href="#合并" class="headerlink" title="合并"></a>合并</h4><p>&emsp;&emsp;配对堆的合并操作极为简单，直接把根节点权值较大的那个配对堆设成另一个的儿子就好了。（如下图）<br><img src="/static/images/配对堆/6.png" alt=""><br>&emsp;&emsp;复杂度的话，操作本身显然是$\mathcal O(1)$ 的，考虑到对势能的影响后还是均摊$\mathcal O(1)$</p>
+<h4 id="合并"><a href="#合并" class="headerlink" title="合并"></a>合并</h4><p>&emsp;&emsp;配对堆的合并操作极为简单，直接把根节点权值较大的那个配对堆设成另一个的儿子就好了。（如下图）<br><img src="/static/images/配对堆/6.png" alt=""><br>&emsp;&emsp;复杂度的话，操作本身显然是$ O(1)$ 的，考虑到对势能的影响后还是均摊$ O(1)$</p>
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="function">Node* <span class="title">merge</span><span class="params">(Node* a,Node* b)</span></span></div><div class="line">&#123;</div><div class="line">     <span class="comment">// 若有一个为空则直接返回另一个</span></div><div class="line">	<span class="keyword">if</span> (a==node) <span class="keyword">return</span> b;  </div><div class="line">	<span class="keyword">if</span> (b==node) <span class="keyword">return</span> a;</div><div class="line">	<span class="keyword">if</span> (a-&gt;v&gt;b-&gt;v) swap(a,b); <span class="comment">//swap后a为权值小的堆，b为权值大的堆</span></div><div class="line">    <span class="comment">//将b设为a的儿子</span></div><div class="line">	b-&gt;xd=a-&gt;ch; </div><div class="line">	a-&gt;ch=b;</div><div class="line">	<span class="keyword">return</span> a;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <h4 id="插入"><a href="#插入" class="headerlink" title="插入"></a>插入</h4><p>&emsp;&emsp;合并都有了，插入就直接把新元素视为一个新的配对堆和原堆合并就行啦。</p>
-<h4 id="删除最小值"><a href="#删除最小值" class="headerlink" title="删除最小值"></a>删除最小值</h4><p>&emsp;&emsp;到这里我们会发现，前面的几个操作都十分偷懒，几乎完全没有对数据结构进行维护，所以删除最小值是配对堆最重要的（也是最复杂）的一个惭怍。<br>&emsp;&emsp;考虑我们拿掉根节点之后会发生什么，根节点原来的所有儿子构成了一片森林，所以我们要把他们合并起来。<br>&emsp;&emsp;一个很自然的想法是使用merge函数把儿子们一个一个并在一起，这样做的话正确性是显然的，但是会导致复杂度退化到$\mathcal O(n)$。为了保证删除操作的均摊复杂度为$\mathcal O(\log n)$，配对堆的发明者提出了一个神仙做法：把儿子们两两配成一对（我怀疑这就是“配对堆”这个名字的由来），先用merge操作把被配成同一对的2个儿子合并到一起(见下图1)，再按上述方法将新产生的堆暴力合并在一起（见下图2）。听起来好像没什么很大的区别？但这样就是能证明均摊复杂度为$\mathcal O(\log n)$。<br><img src="/static/images/配对堆/7.jpg" alt=""><br><img src="/static/images/配对堆/8.jpg" alt="">    </p>
+<h4 id="删除最小值"><a href="#删除最小值" class="headerlink" title="删除最小值"></a>删除最小值</h4><p>&emsp;&emsp;到这里我们会发现，前面的几个操作都十分偷懒，几乎完全没有对数据结构进行维护，所以删除最小值是配对堆最重要的（也是最复杂）的一个操作。<br>&emsp;&emsp;考虑我们拿掉根节点之后会发生什么，根节点原来的所有儿子构成了一片森林，所以我们要把他们合并起来。<br>&emsp;&emsp;一个很自然的想法是使用merge函数把儿子们一个一个并在一起，这样做的话正确性是显然的，但是会导致复杂度退化到$ O(n)$。为了保证删除操作的均摊复杂度为$ O(\log n)$，配对堆的发明者提出了一个神仙做法：把儿子们两两配成一对（我怀疑这就是“配对堆”这个名字的由来），先用merge操作把被配成同一对的2个儿子合并到一起(见下图1)，再按上述方法将新产生的堆暴力合并在一起（见下图2）。听起来好像没什么很大的区别？但这样就是能证明均摊复杂度为$ O(\log n)$。<br><img src="/static/images/配对堆/7.jpg" alt=""><br><img src="/static/images/配对堆/8.jpg" alt="">    </p>
 <p>&emsp;&emsp;先实现一个辅助函数<del>（实际上是主要函数）</del><code>merges</code>，作用是合并一个节点的所有兄弟。  </p>
-<h5 id="递归版本（推荐）"><a href="#递归版本（推荐）" class="headerlink" title="递归版本（推荐）"></a>递归版本（推荐）</h5><p>&emsp;&emsp;实现上，推荐使用这种好写的递归式实现，缺点是常数比迭代式大，但在配对堆本身优越的常数下这个问题并不大（通常跑的还是比左偏树快）。 </p>
+<h5 id="递归版本（推荐）"><a href="#递归版本（推荐）" class="headerlink" title="递归版本（推荐）"></a>递归版本（推荐）</h5><p>&emsp;&emsp;实现上，推荐使用这种好写的递归式实现。</p>
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="function">Node* <span class="title">merges</span><span class="params">(Node* x)</span> </span></div><div class="line">&#123;</div><div class="line">	<span class="keyword">if</span> (x==node || x-&gt;xd==node) <span class="keyword">return</span> x; <span class="comment">//如果该树为空或他没有兄弟（即他的父亲的儿子数小于2），就直接return。</span></div><div class="line">	Node* a=x-&gt;xd,*b=a-&gt;xd; <span class="comment">//a：x的一个兄弟，b：x的另一个兄弟</span></div><div class="line">	x-&gt;xd=a-&gt;xd=node; <span class="comment">//拆散</span></div><div class="line">	<span class="keyword">return</span> merge(merge(x,a),merges(b)); <span class="comment">//核心部分</span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <p>&emsp;&emsp;最后一句话是该函数的核心，这句话分三部分：  </p>
 <ol>
@@ -273,11 +273,15 @@ ga('send', 'pageview');
 <li><code>merges(b)</code>递归合并b和他的兄弟们。  </li>
 <li>将上面2个操作产生的2个新树合并。  </li>
 </ol>
-<h5 id="迭代版本"><a href="#迭代版本" class="headerlink" title="迭代版本"></a>迭代版本</h5><p>&emsp;&emsp;由于迭代版本相对来说没那么好写，而且配对堆本身常数已经足够小，一般不会被卡常，所以仅推荐在极限卡常时使用。<br><figure class="highlight cpp"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="function">Node *<span class="title">merges</span><span class="params">(Node *x)</span></span></div><div class="line">&#123;</div><div class="line">	Node* t=x; x=x-&gt;xd;</div><div class="line">	t-&gt;xd=node;</div><div class="line">	<span class="keyword">while</span>(x-&gt;xd!=node) &#123;</div><div class="line">		Node* a=x-&gt;xd,*b=a-&gt;xd;</div><div class="line">		x-&gt;xd=a-&gt;xd=node;</div><div class="line">		t=merge(t,merge(x,a));</div><div class="line">		x=b;</div><div class="line">	&#125;</div><div class="line">	<span class="keyword">return</span> merge(t,x);</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-<p>&emsp;&emsp; 然后<code>delete-min</code>操作就显然了。  </p>
+<h5 id="迭代版本"><a href="#迭代版本" class="headerlink" title="迭代版本"></a>迭代版本</h5><p>&emsp;&emsp;迭代版本不仅不好写，而且实现不优越的话还不一定比递归版快（下面这个就是不优越的实现，跑的不比上面的递归版本快），所以更推荐写递归版。<br><figure class="highlight cpp"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="function">Node *<span class="title">merges</span><span class="params">(Node *x)</span></span></div><div class="line">&#123;</div><div class="line">	Node* t=x; x=x-&gt;xd;</div><div class="line">	t-&gt;xd=node;</div><div class="line">	<span class="keyword">while</span>(x-&gt;xd!=node) &#123;</div><div class="line">		Node* a=x-&gt;xd,*b=a-&gt;xd;</div><div class="line">		x-&gt;xd=a-&gt;xd=node;</div><div class="line">		t=merge(t,merge(x,a));</div><div class="line">		x=b;</div><div class="line">	&#125;</div><div class="line">	<span class="keyword">return</span> merge(t,x);</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>&emsp;&emsp; 然后<code>delete-min</code>操作就显然了。（因为这个封装实在没啥用，实际在实现时中一般不显式写出这个函数）  </p>
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="function">Node* <span class="title">delete_min</span><span class="params">(Node* x)</span></span></div><div class="line">&#123;</div><div class="line">    <span class="keyword">return</span> merges(x-&gt;ch);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<h4 id="减小一个元素的值"><a href="#减小一个元素的值" class="headerlink" title="减小一个元素的值"></a>减小一个元素的值</h4><p>&emsp;&emsp;要实现这个操作，需要给节点添加一个father指针，会使实现变得相对复杂。<br>    【未完待续】</p>
-<h3 id="复杂度分析"><a href="#复杂度分析" class="headerlink" title="复杂度分析"></a>复杂度分析</h3><p>&emsp;&emsp;分析是永远不可能会分析的，只会记个结论了。(逃<br>&emsp;&emsp;好吧正经的说，要计算配对堆的复杂度需要势能分析<del>（但是我不会）</del>，感兴趣的话可以看配对堆的论文。</p>
+<h4 id="减小一个元素的值"><a href="#减小一个元素的值" class="headerlink" title="减小一个元素的值"></a>减小一个元素的值</h4><p>&emsp;&emsp;要实现这个操作，需要给节点添加一个father指针，会使实现变得相对复杂。<br>&emsp;&emsp;首先节点的定义修改为：</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">struct</span> <span class="title">Node</span></span></div><div class="line">&#123;</div><div class="line">	T v; </div><div class="line">	Node *ch,*xd; </div><div class="line">    Node *fa; <span class="comment">//新增：fa指针，指向该节点的父亲，若该节点为根节点则指向虚拟空节点</span></div><div class="line">&#125;;</div></pre></td></tr></table></figure>
+<p>&emsp;&emsp;merge操作修改为：<br><figure class="highlight cpp"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="function">Node* <span class="title">merge</span><span class="params">(Node* a,Node* b)</span></span></div><div class="line">&#123;</div><div class="line">	<span class="keyword">if</span> (a==node) <span class="keyword">return</span> b;  </div><div class="line">	<span class="keyword">if</span> (b==node) <span class="keyword">return</span> a;</div><div class="line">	<span class="keyword">if</span> (a-&gt;v&gt;b-&gt;v) swap(a,b);</div><div class="line">	a-&gt;fa=node; b-&gt;fa=node; <span class="comment">//新增：维护fa指针</span></div><div class="line">	b-&gt;xd=a-&gt;ch; </div><div class="line">	a-&gt;ch-&gt;fa=b; <span class="comment">//新增：维护fa指针</span></div><div class="line">	a-&gt;ch=b;</div><div class="line">	<span class="keyword">return</span> a;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>&emsp;&emsp;merges操作修改为:<br><figure class="highlight cpp"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="function">Node* <span class="title">merges</span><span class="params">(Node* x)</span> </span></div><div class="line">&#123;</div><div class="line">	x-&gt;fa=node; <span class="comment">//新增：维护fa指针</span></div><div class="line">	<span class="keyword">if</span> (x==node || x-&gt;xd==node) <span class="keyword">return</span> x; </div><div class="line">	Node* a=x-&gt;xd,*b=a-&gt;xd; </div><div class="line">	x-&gt;xd=a-&gt;xd=node; </div><div class="line">	a-&gt;fa=node; <span class="comment">//新增：维护fa指针</span></div><div class="line">	<span class="keyword">return</span> merge(merge(x,a),merges(b)); </div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>&emsp;&emsp;现在我们来考虑如何实现decrease-key操作。<br>&emsp;&emsp;首先我们发现，当我们对节点x进行dec-key操作后，以x为根的子树仍然满足配对堆性质，但x的父亲和x之间可能不再满足堆性质。<br>&emsp;&emsp;因此我们可以把整棵以x为根的子树剖出来，这样现在两棵树都符合配对堆性质了，再把他们merge起来就做完了。<br>&emsp;&emsp;这个操作本身复杂度显然为 $O(1)$，但会破坏原有的势能分析过程，因此均摊复杂度难以证明（目前学术界还无法给出复杂度的精确值），通常可以简单的认为复杂度为 $o(\log n)$（注意这里为小o）。<br><figure class="highlight cpp"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//root为堆的根，x为要操作的节点，v为新的权值，调用时需保证x-&gt;v&lt;=v</span></div><div class="line"><span class="comment">//返回值为新的根节点</span></div><div class="line">Node* decrease-key(Node* root,Node* x,LL v) </div><div class="line">&#123;</div><div class="line">	x-&gt;v=v; <span class="comment">//修改权值</span></div><div class="line">	<span class="keyword">if</span> (x-&gt;fa==node) <span class="keyword">return</span> x; <span class="comment">//如果x为根，就不用接下去的步骤了。</span></div><div class="line">	<span class="comment">//把x从fa的子节点中剖出去，这里要分x的位置讨论一下。</span></div><div class="line">	<span class="keyword">if</span> (x-&gt;fa-&gt;ch==x) x-&gt;fa-&gt;ch=x-&gt;xd; </div><div class="line">	<span class="keyword">else</span> x-&gt;fa-&gt;xd=x-&gt;xd;</div><div class="line">	x-&gt;xd-&gt;fa=x-&gt;fa; </div><div class="line">	x-&gt;xd=node; x-&gt;fa=node;</div><div class="line">	<span class="keyword">return</span> merge(root,x); <span class="comment">//合并root和x。</span></div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<h3 id="复杂度分析"><a href="#复杂度分析" class="headerlink" title="复杂度分析"></a>复杂度分析</h3><p>&emsp;&emsp;分析是永远不可能会分析的，只会记个结论了。(逃<br>&emsp;&emsp;好吧正经的说，要计算配对堆的复杂度需要势能分析<del>（但是我不会）</del>，感兴趣的话可以看配对堆的<a href="http://www.cs.cmu.edu/~sleator/papers/pairing-heaps.pdf" target="_blank" rel="external">论文</a>。</p>
 <h3 id="参考文献"><a href="#参考文献" class="headerlink" title="参考文献"></a>参考文献</h3><ol>
 <li><a href="https://hooccooh.blog.luogu.org/solution-p3377" target="_blank" rel="external">HOOCCOOH的题解</a></li>
 <li>集训队论文《黄源河–左偏树的特点及其应用》</li>
@@ -303,11 +307,11 @@ ga('send', 'pageview');
         		</li>
       		 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">数据结构</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">堆</a>
         		</li>
       		 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">堆</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">数据结构</a>
         		</li>
       		
 		</ul>
@@ -317,57 +321,6 @@ ga('send', 'pageview');
 
       
 
-      
-        
-<div class="share-btn share-icons tooltip-left">
-  <div class="tooltip tooltip-east">
-    <span class="tooltip-item">
-      <a href="javascript:;" class="share-sns share-outer">
-        <i class="icon icon-share"></i>
-      </a>
-    </span>
-    <span class="tooltip-content">
-      <div class="share-wrap">
-        <div class="share-icons">
-          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
-            <i class="icon icon-weibo"></i>
-          </a>
-          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
-            <i class="icon icon-weixin"></i>
-          </a>
-          <a class="qq share-sns" href="javascript:;" data-type="qq">
-            <i class="icon icon-qq"></i>
-          </a>
-          <a class="douban share-sns" href="javascript:;" data-type="douban">
-            <i class="icon icon-douban"></i>
-          </a>
-          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
-            <i class="icon icon-qzone"></i>
-          </a>
-          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
-            <i class="icon icon-facebook"></i>
-          </a>
-          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
-            <i class="icon icon-twitter"></i>
-          </a>
-          <a class="google share-sns" href="javascript:;" data-type="google">
-            <i class="icon icon-google"></i>
-          </a>
-        </div>
-      </div>
-    </span>
-  </div>
-</div>
-
-<div class="page-modal wx-share js-wx-box">
-    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
-    <p>扫一扫，分享到微信</p>
-    <div class="wx-qrcode">
-      <img src="http://s.jiathis.com/qrcode.php?url=https://waautomaton.tk/2018/05/13/配对堆/" alt="微信分享二维码">
-    </div>
-</div>
-
-<div class="mask js-mask"></div>
       
       <div class="clearfix"></div>
     </div>
@@ -440,7 +393,7 @@ ga('send', 'pageview');
 <script src="//imsun.github.io/gitment/dist/gitment.browser.js"></script>
 <script>
 var gitment = new Gitment({
-  id: "https://waautomaton.tk/2018/05/13/配对堆/",
+  id: "https://wa-am.com/2018/05/13/配对堆/",
   owner: 'WAAutoMaton',
   repo: 'waautomaton.github.io',
   oauth: {
@@ -460,7 +413,7 @@ gitment.render('gitment-ctn')
   <div class="outer">
     <div id="footer-info">
     	<div class="footer-left">
-    		&copy; 2018 WA自动机
+    		&copy; 2019 WA自动机
     	</div>
       	<div class="footer-right">
       		<a href="http://hexo.io/" target="_blank">Hexo</a>  Theme <a href="https://github.com/litten/hexo-theme-yilia" target="_blank">Yilia</a> by Litten
@@ -600,6 +553,10 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">计算几何</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">最短路</a>
               </li>
              
@@ -628,15 +585,15 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">堆</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">树链剖分</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">数据结构</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">堆</a>
               </li>
             
             <div class="clearfix"></div>
@@ -688,6 +645,10 @@ MathJax.Hub.Queue(function() {
         <ul class="search-ul">
           
             <li class="search-li">
+              <a href="https://cnyali-lk.com/" target="_blank" class="search-title"><i class="icon-quo-left icon"></i>老K</a>
+            </li>
+          
+            <li class="search-li">
               <a href="https://blog.hookan.top/" target="_blank" class="search-title"><i class="icon-quo-left icon"></i>Hookan</a>
             </li>
           
@@ -732,7 +693,7 @@ MathJax.Hub.Queue(function() {
             </li>
           
             <li class="search-li">
-              <a href="https://www.cnblogs.com/HC-LittleJian" target="_blank" class="search-title"><i class="icon-quo-left icon"></i>LittleJian</a>
+              <a href="https://chenhowe.me" target="_blank" class="search-title"><i class="icon-quo-left icon"></i>LittleJian</a>
             </li>
           
             <li class="search-li">
