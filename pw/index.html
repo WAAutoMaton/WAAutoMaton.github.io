@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Hash</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="lib/mdui.min.css">
+    <script src="lib/mdui.min.js"></script>
+    <script src="lib/jquery.min.js"></script>
+    <!-- These two libraries are highly recommended for encoding password/salt -->
+    <script src="lib/buffer.js" type="text/javascript"></script>
+    <script src="lib/unorm.js" type="text/javascript"></script>
+
+    <!-- This shim library greatly improves performance of the scrypt algorithm -->
+    <script src="lib/setImmediate.js" type="text/javascript"></script>
+
+    <script src="lib/scrypt.js" type="text/javascript"></script>
+
+    <script src="lib/clipboard.min.js" type="text/javascript"></script>
+
+    <script src="main.js"></script>
+</head>
+<body class="mdui-theme-primary-indigo mdui-theme-accent-pink" style="background-color: deepskyblue">
+<div class="mdui-container mdui-center " style="width: 400px">
+    <div class="mdui-typo-display-3 mdui-text-center">Hash</div>
+        <div class="mdui-textfield">
+            <input class="mdui-textfield-input" type="password" name="password" id="password" value="" onpaste="return true" oncopy="return true" oncut="return true"/>
+        </div>
+        <button class="mdui-btn mdui-color-theme-accent mdui-ripple mdui-center" onclick="main()"><i class="mdui-icon mdui-icon-right material-icons">done</i>Hash!</button>
+        <input class="mdui-textfield-input" name="pw" id="pw" style="width:10px;">
+    <br>
+</div>
+</body>
+</html>
